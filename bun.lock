@@ -461,6 +461,18 @@
         "typescript": "^5.9.3",
       },
     },
+    "packages/adapters": {
+      "name": "@valence/adapters",
+      "version": "0.1.0",
+      "dependencies": {
+        "zod": "^4.3.5",
+      },
+      "devDependencies": {
+        "@valence/typescript": "workspace:*",
+        "bun-types": "^1.3.1",
+        "typescript": "^5.9.3",
+      },
+    },
     "packages/auth": {
       "name": "@valence/auth",
       "version": "0.1.0",
@@ -620,6 +632,10 @@
         "bun-types": "^1.3.1",
         "typescript": "^5.9.3",
       },
+    },
+    "packages/observability": {
+      "name": "@valence/observability",
+      "version": "0.1.0",
     },
     "packages/pane-layout": {
       "name": "@valence/pane-layout",
@@ -2480,6 +2496,8 @@
 
     "@upstash/redis": ["@upstash/redis@1.37.0", "", { "dependencies": { "uncrypto": "^0.1.3" } }, "sha512-LqOJ3+XWPLSZ2rGSed5DYG3ixybxb8EhZu3yQqF7MdZX1wLBG/FRcI6xcUZXHy/SS7mmXWyadrud0HJHkOc+uw=="],
 
+    "@valence/adapters": ["@valence/adapters@workspace:packages/adapters"],
+
     "@valence/api": ["@valence/api@workspace:apps/api"],
 
     "@valence/auth": ["@valence/auth@workspace:packages/auth"],
@@ -2503,6 +2521,8 @@
     "@valence/mcp": ["@valence/mcp@workspace:packages/mcp"],
 
     "@valence/mobile": ["@valence/mobile@workspace:apps/mobile"],
+
+    "@valence/observability": ["@valence/observability@workspace:packages/observability"],
 
     "@valence/pane-layout": ["@valence/pane-layout@workspace:packages/pane-layout"],
 
