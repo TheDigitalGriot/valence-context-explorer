@@ -23,6 +23,14 @@
 		"./claude-code-hooks": {
 			"types": "./src/claude-code-hooks/index.ts",
 			"default": "./src/claude-code-hooks/index.ts"
+		},
+		"./codex-otel": {
+			"types": "./src/codex-otel/index.ts",
+			"default": "./src/codex-otel/index.ts"
+		},
+		"./cursor-logs": {
+			"types": "./src/cursor-logs/index.ts",
+			"default": "./src/cursor-logs/index.ts"
 		}
 	},
 	"dependencies": {

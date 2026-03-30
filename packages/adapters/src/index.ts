@@ -29,3 +29,7 @@ export {
 	HookEventServer,
 	type HookEventServerOptions,
 } from "./claude-code-hooks";
+
+// Stub adapters
+export { CodexOTelAdapter } from "./codex-otel";
+export { CursorLogAdapter } from "./cursor-logs";
