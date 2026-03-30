@@ -12,3 +12,9 @@ export type {
 } from "./types";
 
 export { normalizedEventSchema, normalizedTraceSchema } from "./schema";
+
+// JSON Schema to Zod conversion
+export {
+	jsonSchemaToZod,
+	jsonSchemaToZodShape,
+} from "./json-schema-to-zod";
