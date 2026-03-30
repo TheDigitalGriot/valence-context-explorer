@@ -1,6 +1,6 @@
+import { getNeo4jSession } from "@valence/db/neo4j";
 import { z } from "zod";
 import { publicProcedure, router } from "../..";
-import { getNeo4jSession } from "@valence/db/neo4j";
 
 /**
  * Helper to convert Neo4j Integer objects to plain JS numbers.
@@ -58,7 +58,7 @@ export const createContextGraphRouter = () => {
 					sessionId: z.string().optional(),
 					projectPath: z.string().optional(),
 					limit: z.number().optional().default(200),
-				})
+				}),
 			)
 			.query(async ({ input }) => {
 				const session = getNeo4jSession();
@@ -70,29 +70,24 @@ export const createContextGraphRouter = () => {
 
 					if (input.sessionId) {
 						conditions.push(
-							"(n.sessionId = $sessionId OR m.sessionId = $sessionId)"
+							"(n.sessionId = $sessionId OR m.sessionId = $sessionId)",
 						);
 						params.sessionId = input.sessionId;
 					}
 					if (input.projectPath) {
 						conditions.push(
-							"(n.projectPath = $projectPath OR m.projectPath = $projectPath)"
+							"(n.projectPath = $projectPath OR m.projectPath = $projectPath)",
 						);
 						params.projectPath = input.projectPath;
 					}
 
 					const whereClause =
-						conditions.length > 0
-							? `WHERE ${conditions.join(" AND ")}`
-							: "";
+						conditions.length > 0 ? `WHERE ${conditions.join(" AND ")}` : "";
 
 					const query = `MATCH (n)-[r]->(m) ${whereClause} RETURN n, r, m LIMIT $limit`;
 					const result = await session.run(query, params);
 
-					const nodesMap = new Map<
-						string,
-						ReturnType<typeof serializeNode>
-					>();
+					const nodesMap = new Map<string, ReturnType<typeof serializeNode>>();
 					const edges: ReturnType<typeof serializeEdge>[] = [];
 
 					for (const record of result.records) {
@@ -124,7 +119,7 @@ export const createContextGraphRouter = () => {
 				z.object({
 					nodeId: z.string(),
 					depth: z.number().optional().default(1),
-				})
+				}),
 			)
 			.query(async ({ input }) => {
 				const session = getNeo4jSession();
@@ -140,10 +135,7 @@ export const createContextGraphRouter = () => {
 						nodeId: parseInt(input.nodeId, 10),
 					});
 
-					const nodesMap = new Map<
-						string,
-						ReturnType<typeof serializeNode>
-					>();
+					const nodesMap = new Map<string, ReturnType<typeof serializeNode>>();
 					const edges: ReturnType<typeof serializeEdge>[] = [];
 
 					for (const record of result.records) {
@@ -176,13 +168,13 @@ export const createContextGraphRouter = () => {
 				z.object({
 					query: z.string(),
 					limit: z.number().optional().default(50),
-				})
+				}),
 			)
 			.query(async ({ input }) => {
 				const session = getNeo4jSession();
 				try {
 					// Try full-text index first; fall back to CONTAINS
-					let result;
+					let result: Awaited<ReturnType<typeof session.run>>;
 					try {
 						result = await session.run(
 							`CALL db.index.fulltext.queryNodes("nodeContent", $query)
@@ -190,7 +182,7 @@ export const createContextGraphRouter = () => {
 							 RETURN node, score
 							 ORDER BY score DESC
 							 LIMIT $limit`,
-							{ query: input.query, limit: input.limit }
+							{ query: input.query, limit: input.limit },
 						);
 					} catch {
 						// Full-text index may not exist — fall back to property match
@@ -199,7 +191,7 @@ export const createContextGraphRouter = () => {
 							 WHERE any(key IN keys(n) WHERE toString(n[key]) CONTAINS $query)
 							 RETURN n AS node
 							 LIMIT $limit`,
-							{ query: input.query, limit: input.limit }
+							{ query: input.query, limit: input.limit },
 						);
 					}
 
@@ -207,9 +199,7 @@ export const createContextGraphRouter = () => {
 						const node = record.get("node");
 						return {
 							...serializeNode(node),
-							score: record.has("score")
-								? record.get("score")
-								: null,
+							score: record.has("score") ? record.get("score") : null,
 						};
 					});
 				} finally {
@@ -224,7 +214,7 @@ export const createContextGraphRouter = () => {
 			.input(
 				z.object({
 					projectPath: z.string().optional(),
-				})
+				}),
 			)
 			.query(async ({ input }) => {
 				const session = getNeo4jSession();
@@ -234,15 +224,14 @@ export const createContextGraphRouter = () => {
 
 					// Drop existing projection if present
 					try {
-						await session.run(
-							`CALL gds.graph.drop($name, false)`,
-							{ name: graphName }
-						);
+						await session.run(`CALL gds.graph.drop($name, false)`, {
+							name: graphName,
+						});
 					} catch {
 						// Graph may not exist — ignore
 					}
 
-					const nodeFilter = input.projectPath
+					const _nodeFilter = input.projectPath
 						? `{nodeQuery: 'MATCH (n) WHERE n.projectPath = "${input.projectPath}" RETURN id(n) AS id'}`
 						: "";
 
@@ -255,10 +244,8 @@ export const createContextGraphRouter = () => {
 						)`,
 						{
 							name: graphName,
-							...(input.projectPath
-								? { projectPath: input.projectPath }
-								: {}),
-						}
+							...(input.projectPath ? { projectPath: input.projectPath } : {}),
+						},
 					);
 
 					// Run Leiden
@@ -267,7 +254,7 @@ export const createContextGraphRouter = () => {
 						 YIELD nodeId, communityId
 						 RETURN gds.util.asNode(nodeId).uuid AS nodeUuid, communityId
 						 ORDER BY communityId`,
-						{ name: graphName }
+						{ name: graphName },
 					);
 
 					// Clean up
@@ -294,17 +281,17 @@ export const createContextGraphRouter = () => {
 					session.run(
 						`MATCH (n) UNWIND labels(n) AS label
 						 RETURN label, count(*) AS count
-						 ORDER BY count DESC`
+						 ORDER BY count DESC`,
 					),
 					session.run(
 						`MATCH ()-[r]->()
 						 RETURN type(r) AS type, count(*) AS count
-						 ORDER BY count DESC`
+						 ORDER BY count DESC`,
 					),
 					session.run(
 						`MATCH (n)
 						 OPTIONAL MATCH ()-[r]->()
-						 RETURN count(DISTINCT n) AS nodeCount, count(DISTINCT r) AS edgeCount`
+						 RETURN count(DISTINCT n) AS nodeCount, count(DISTINCT r) AS edgeCount`,
 					),
 				]);
 

@@ -1,5 +1,5 @@
-import { Spinner } from "@valence/ui/spinner";
 import { createFileRoute, Navigate } from "@tanstack/react-router";
+import { Spinner } from "@valence/ui/spinner";
 import { useEffect, useRef, useState } from "react";
 import { env } from "renderer/env.renderer";
 import { authClient } from "renderer/lib/auth-client";
@@ -17,19 +17,16 @@ function SignInPage() {
 	const [error, setError] = useState<string | null>(null);
 	const autoCreateAttempted = useRef(false);
 
-	// Dev bypass: skip sign-in entirely
-	if (env.SKIP_ENV_VALIDATION) {
-		return <Navigate to="/workspace" replace />;
-	}
-
-	// If already signed in, redirect to workspace
-	if (session?.user) {
-		return <Navigate to="/workspace" replace />;
-	}
-
 	// Auto-create local user on first launch
 	useEffect(() => {
-		if (isPending || session?.user || autoCreateAttempted.current) return;
+		// Skip if dev bypass, already signed in, or already attempted
+		if (
+			env.SKIP_ENV_VALIDATION ||
+			isPending ||
+			session?.user ||
+			autoCreateAttempted.current
+		)
+			return;
 		autoCreateAttempted.current = true;
 
 		async function autoSetup() {
@@ -67,6 +64,16 @@ function SignInPage() {
 
 		void autoSetup();
 	}, [isPending, session?.user]);
+
+	// Dev bypass: skip sign-in entirely
+	if (env.SKIP_ENV_VALIDATION) {
+		return <Navigate to="/workspace" replace />;
+	}
+
+	// If already signed in, redirect to workspace
+	if (session?.user) {
+		return <Navigate to="/workspace" replace />;
+	}
 
 	return (
 		<div className="flex flex-col h-full w-full bg-background">
