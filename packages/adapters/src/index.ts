@@ -22,3 +22,10 @@ export {
 	ClaudeCodeLogAdapter,
 	type ClaudeCodeLogAdapterOptions,
 } from "./claude-code-logs";
+
+export {
+	ClaudeCodeHookAdapter,
+	type ClaudeCodeHookAdapterOptions,
+	HookEventServer,
+	type HookEventServerOptions,
+} from "./claude-code-hooks";

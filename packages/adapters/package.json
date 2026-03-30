@@ -19,6 +19,10 @@
 		"./claude-code-logs": {
 			"types": "./src/claude-code-logs/index.ts",
 			"default": "./src/claude-code-logs/index.ts"
+		},
+		"./claude-code-hooks": {
+			"types": "./src/claude-code-hooks/index.ts",
+			"default": "./src/claude-code-hooks/index.ts"
 		}
 	},
 	"dependencies": {
