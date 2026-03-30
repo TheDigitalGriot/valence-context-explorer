@@ -1,4 +1,0 @@
-@import "tailwindcss";
-
-@import "@valence/ui/globals.css";
-@source "../../../../packages/ui/src/**/*.{ts,tsx}";
