@@ -15,9 +15,14 @@
 		"./shared": {
 			"types": "./src/shared/index.ts",
 			"default": "./src/shared/index.ts"
+		},
+		"./claude-code-logs": {
+			"types": "./src/claude-code-logs/index.ts",
+			"default": "./src/claude-code-logs/index.ts"
 		}
 	},
 	"dependencies": {
+		"@valence/observability": "workspace:*",
 		"zod": "^4.3.5"
 	},
 	"devDependencies": {

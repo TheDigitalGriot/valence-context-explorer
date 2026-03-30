@@ -465,6 +465,7 @@
       "name": "@valence/adapters",
       "version": "0.1.0",
       "dependencies": {
+        "@valence/observability": "workspace:*",
         "zod": "^4.3.5",
       },
       "devDependencies": {

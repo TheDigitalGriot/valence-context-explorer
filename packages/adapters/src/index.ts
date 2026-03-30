@@ -16,3 +16,9 @@ export type {
 } from "./shared";
 
 export { normalizedEventSchema, normalizedTraceSchema } from "./shared";
+
+// Concrete adapters
+export {
+	ClaudeCodeLogAdapter,
+	type ClaudeCodeLogAdapterOptions,
+} from "./claude-code-logs";
