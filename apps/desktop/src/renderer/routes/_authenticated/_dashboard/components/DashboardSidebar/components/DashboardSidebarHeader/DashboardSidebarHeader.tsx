@@ -1,6 +1,7 @@
 import { Tooltip, TooltipContent, TooltipTrigger } from "@valence/ui/tooltip";
 import { cn } from "@valence/ui/utils";
-import { useMatchRoute, useNavigate } from "@tanstack/react-router";
+import { Link, useMatchRoute, useNavigate } from "@tanstack/react-router";
+import { Network, Radio, DollarSign, FileText, Workflow } from "lucide-react";
 import { LuLayers, LuPlus } from "react-icons/lu";
 import {
 	STROKE_WIDTH,
@@ -105,6 +106,29 @@ export function DashboardSidebarHeader({
 					{shortcutText}
 				</span>
 			</button>
+
+			<div className="border-t border-border px-3 py-2">
+				<p className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+					Observability
+				</p>
+				<nav className="space-y-0.5">
+					<Link to="/_authenticated/_dashboard/context-graph" className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground [&.active]:bg-muted [&.active]:text-foreground">
+						<Network className="h-3.5 w-3.5" /> Context Graph
+					</Link>
+					<Link to="/_authenticated/_dashboard/live" className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground [&.active]:bg-muted [&.active]:text-foreground">
+						<Radio className="h-3.5 w-3.5" /> Live Dashboard
+					</Link>
+					<Link to="/_authenticated/_dashboard/cost" className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground [&.active]:bg-muted [&.active]:text-foreground">
+						<DollarSign className="h-3.5 w-3.5" /> Cost Analytics
+					</Link>
+					<Link to="/_authenticated/_dashboard/prompts" className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground [&.active]:bg-muted [&.active]:text-foreground">
+						<FileText className="h-3.5 w-3.5" /> Prompts
+					</Link>
+					<Link to="/_authenticated/_dashboard/workflows" className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground [&.active]:bg-muted [&.active]:text-foreground">
+						<Workflow className="h-3.5 w-3.5" /> Workflows
+					</Link>
+				</nav>
+			</div>
 		</div>
 	);
 }
