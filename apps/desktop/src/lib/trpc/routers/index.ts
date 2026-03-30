@@ -4,6 +4,7 @@ import { createAnalyticsRouter } from "./analytics";
 import { createAuthRouter } from "./auth";
 import { createAutoUpdateRouter } from "./auto-update";
 import { createContextGraphRouter } from "./context-graph";
+import { createLiveDashboardRouter } from "./live-dashboard";
 import { createBrowserRouter } from "./browser/browser";
 import { createBrowserHistoryRouter } from "./browser-history";
 import { createCacheRouter } from "./cache";
@@ -61,6 +62,7 @@ export const createAppRouter = (getWindow: () => BrowserWindow | null) => {
 		hostServiceManager: createHostServiceManagerRouter(),
 		traces: createTracesRouter(),
 		contextGraph: createContextGraphRouter(),
+		liveDashboard: createLiveDashboardRouter(),
 	});
 };
 
