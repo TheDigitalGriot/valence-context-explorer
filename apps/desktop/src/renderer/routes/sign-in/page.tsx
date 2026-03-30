@@ -1,35 +1,25 @@
-import { type AuthProvider, COMPANY } from "@valence/shared/constants";
-import { Button } from "@valence/ui/button";
 import { Spinner } from "@valence/ui/spinner";
 import { createFileRoute, Navigate } from "@tanstack/react-router";
-import { FaGithub } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
+import { useEffect, useRef, useState } from "react";
 import { env } from "renderer/env.renderer";
-import { track } from "renderer/lib/analytics";
-import { electronTrpc } from "renderer/lib/electron-trpc";
-import { ValenceLogo } from "./components/ValenceLogo";
-import { useSessionRecovery } from "./hooks/useSessionRecovery";
+import { authClient } from "renderer/lib/auth-client";
+import { ValenceLogo } from "./components/SupersetLogo";
 
 export const Route = createFileRoute("/sign-in/")({
 	component: SignInPage,
 });
 
+const LOCAL_EMAIL = "local@valence.local";
+const LOCAL_PASSWORD = "valence-local-desktop-2026";
+
 function SignInPage() {
-	const signInMutation = electronTrpc.auth.signIn.useMutation();
-	const { hasLocalToken, isPending, session } = useSessionRecovery();
+	const { data: session, isPending } = authClient.useSession();
+	const [error, setError] = useState<string | null>(null);
+	const autoCreateAttempted = useRef(false);
 
 	// Dev bypass: skip sign-in entirely
 	if (env.SKIP_ENV_VALIDATION) {
 		return <Navigate to="/workspace" replace />;
-	}
-
-	// Show loading while session is being fetched
-	if (isPending) {
-		return (
-			<div className="flex h-screen w-screen items-center justify-center bg-background">
-				<Spinner className="size-8" />
-			</div>
-		);
 	}
 
 	// If already signed in, redirect to workspace
@@ -37,10 +27,46 @@ function SignInPage() {
 		return <Navigate to="/workspace" replace />;
 	}
 
-	const signIn = (provider: AuthProvider) => {
-		track("auth_started", { provider });
-		signInMutation.mutate({ provider });
-	};
+	// Auto-create local user on first launch
+	useEffect(() => {
+		if (isPending || session?.user || autoCreateAttempted.current) return;
+		autoCreateAttempted.current = true;
+
+		async function autoSetup() {
+			try {
+				// Try sign-in first (user may already exist)
+				const signInResult = await authClient.signIn.email({
+					email: LOCAL_EMAIL,
+					password: LOCAL_PASSWORD,
+				});
+
+				if (signInResult.data?.session) {
+					return; // Session will update via useSession
+				}
+
+				// If sign-in failed, create the user
+				const signUpResult = await authClient.signUp.email({
+					email: LOCAL_EMAIL,
+					password: LOCAL_PASSWORD,
+					name: "Local User",
+				});
+
+				if (signUpResult.error) {
+					console.error("[auto-setup] Sign-up failed:", signUpResult.error);
+					setError(
+						"Failed to set up local account. Please check the API server is running.",
+					);
+				}
+			} catch (err) {
+				console.error("[auto-setup] Auto-create failed:", err);
+				setError(
+					"Failed to connect to the Valence API. Make sure the server is running.",
+				);
+			}
+		}
+
+		void autoSetup();
+	}, [isPending, session?.user]);
 
 	return (
 		<div className="flex flex-col h-full w-full bg-background">
@@ -54,59 +80,18 @@ function SignInPage() {
 
 					<div className="text-center mb-8">
 						<h1 className="text-xl font-semibold text-foreground mb-2">
-							Welcome to Valence
+							Setting up Valence...
 						</h1>
-						<p className="text-sm text-muted-foreground">
-							{hasLocalToken
-								? "Restoring your session"
-								: "Sign in to get started"}
-						</p>
+						{error ? (
+							<p className="text-sm text-destructive">{error}</p>
+						) : (
+							<p className="text-sm text-muted-foreground">
+								Preparing your local workspace
+							</p>
+						)}
 					</div>
 
-					<div className="flex flex-col gap-3 w-full max-w-xs">
-						<Button
-							variant="outline"
-							size="lg"
-							onClick={() => signIn("github")}
-							className="w-full gap-3"
-							disabled={signInMutation.isPending}
-						>
-							<FaGithub className="size-5" />
-							Continue with GitHub
-						</Button>
-
-						<Button
-							variant="outline"
-							size="lg"
-							onClick={() => signIn("google")}
-							className="w-full gap-3"
-							disabled={signInMutation.isPending}
-						>
-							<FcGoogle className="size-5" />
-							Continue with Google
-						</Button>
-					</div>
-
-					<p className="mt-8 text-xs text-muted-foreground/70 text-center max-w-xs">
-						By signing in, you agree to our{" "}
-						<a
-							href={COMPANY.TERMS_URL}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="underline hover:text-muted-foreground transition-colors"
-						>
-							Terms of Service
-						</a>{" "}
-						and{" "}
-						<a
-							href={COMPANY.PRIVACY_URL}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="underline hover:text-muted-foreground transition-colors"
-						>
-							Privacy Policy
-						</a>
-					</p>
+					{!error && <Spinner className="size-8" />}
 				</div>
 			</div>
 		</div>

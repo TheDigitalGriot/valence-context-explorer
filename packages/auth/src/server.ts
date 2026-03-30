@@ -72,15 +72,9 @@ export const auth = betterAuth({
 			generateId: false,
 		},
 	},
-	socialProviders: {
-		github: {
-			clientId: env.GH_CLIENT_ID,
-			clientSecret: env.GH_CLIENT_SECRET,
-		},
-		google: {
-			clientId: env.GOOGLE_CLIENT_ID,
-			clientSecret: env.GOOGLE_CLIENT_SECRET,
-		},
+	emailAndPassword: {
+		enabled: true,
+		autoSignIn: true,
 	},
 	databaseHooks: {
 		user: {

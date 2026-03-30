@@ -7,10 +7,6 @@ config({ path: path.resolve(process.cwd(), "../../../.env"), quiet: true });
 
 export const env = createEnv({
 	server: {
-		GH_CLIENT_ID: z.string(),
-		GH_CLIENT_SECRET: z.string(),
-		GOOGLE_CLIENT_ID: z.string(),
-		GOOGLE_CLIENT_SECRET: z.string(),
 		BETTER_AUTH_SECRET: z.string(),
 	},
 	clientPrefix: "NEXT_PUBLIC_",
