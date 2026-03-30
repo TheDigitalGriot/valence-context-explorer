@@ -31,6 +31,14 @@
 		"./utils": {
 			"types": "./src/utils/index.ts",
 			"default": "./src/utils/index.ts"
+		},
+		"./neo4j": {
+			"types": "./src/neo4j.ts",
+			"default": "./src/neo4j.ts"
+		},
+		"./clickhouse": {
+			"types": "./src/clickhouse.ts",
+			"default": "./src/clickhouse.ts"
 		}
 	},
 	"scripts": {
@@ -41,7 +49,9 @@
 		"typecheck": "tsc --noEmit --emitDeclarationOnly false"
 	},
 	"dependencies": {
+		"@clickhouse/client": "^1.18.2",
 		"@neondatabase/serverless": "1.0.2",
+		"neo4j-driver": "^5.28.3",
 		"@t3-oss/env-core": "^0.13.8",
 		"dotenv": "^17.3.1",
 		"drizzle-orm": "0.45.1",
