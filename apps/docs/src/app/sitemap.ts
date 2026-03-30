@@ -1,4 +1,4 @@
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@valence/shared/constants";
 import type { MetadataRoute } from "next";
 import { source } from "@/lib/source";
 

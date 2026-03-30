@@ -1,7 +1,7 @@
 import {
 	usePromptInputAttachments,
 	usePromptInputController,
-} from "@superset/ui/ai-elements/prompt-input";
+} from "@valence/ui/ai-elements/prompt-input";
 import type React from "react";
 import { useAppHotkey } from "renderer/stores/hotkeys";
 

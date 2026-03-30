@@ -1,4 +1,4 @@
-import { Kbd, KbdGroup } from "@superset/ui/kbd";
+import { Kbd, KbdGroup } from "@valence/ui/kbd";
 import { useCallback } from "react";
 import { LuSearch } from "react-icons/lu";
 import { getHotkeyKeys, useHotkeyDisplay } from "renderer/stores/hotkeys";

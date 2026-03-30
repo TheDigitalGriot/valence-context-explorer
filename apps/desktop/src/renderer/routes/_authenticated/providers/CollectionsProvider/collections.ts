@@ -19,8 +19,8 @@ import type {
 	SelectV2UsersDevices,
 	SelectV2Workspace,
 	SelectWorkspace,
-} from "@superset/db/schema";
-import type { AppRouter } from "@superset/trpc";
+} from "@valence/db/schema";
+import type { AppRouter } from "@valence/trpc";
 import { electricCollectionOptions } from "@tanstack/electric-db-collection";
 import type {
 	Collection,

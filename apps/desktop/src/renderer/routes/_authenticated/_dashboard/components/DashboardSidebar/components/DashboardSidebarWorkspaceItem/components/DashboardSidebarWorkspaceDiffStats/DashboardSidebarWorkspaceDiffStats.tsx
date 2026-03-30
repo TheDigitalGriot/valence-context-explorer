@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@valence/ui/utils";
 
 interface DashboardSidebarWorkspaceDiffStatsProps {
 	additions: number;

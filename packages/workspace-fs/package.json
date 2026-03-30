@@ -1,5 +1,5 @@
 {
-	"name": "@superset/workspace-fs",
+	"name": "@valence/workspace-fs",
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
@@ -35,7 +35,7 @@
 		"fuse.js": "^7.1.0"
 	},
 	"devDependencies": {
-		"@superset/typescript": "workspace:*",
+		"@valence/typescript": "workspace:*",
 		"@types/node": "^24.9.1",
 		"typescript": "^5.9.3"
 	}

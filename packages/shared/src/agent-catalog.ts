@@ -11,7 +11,7 @@ import {
 	DEFAULT_TERMINAL_TASK_PROMPT_TEMPLATE,
 } from "./agent-prompt-template";
 
-export const BUILTIN_AGENT_IDS = [...AGENT_TYPES, "superset-chat"] as const;
+export const BUILTIN_AGENT_IDS = [...AGENT_TYPES, "valence-chat"] as const;
 
 export type BuiltinAgentId = (typeof BUILTIN_AGENT_IDS)[number];
 export type AgentDefinitionId = BuiltinAgentId | `custom:${string}`;
@@ -45,7 +45,7 @@ export type AgentDefinition = TerminalAgentDefinition | ChatAgentDefinition;
 
 export const BUILTIN_AGENT_LABELS: Record<BuiltinAgentId, string> = {
 	...AGENT_LABELS,
-	"superset-chat": "Superset Chat",
+	"valence-chat": "Valence Chat",
 };
 
 function createBuiltinTerminalAgentDefinition(
@@ -70,12 +70,12 @@ function createBuiltinTerminalAgentDefinition(
 export const BUILTIN_AGENT_DEFINITIONS: AgentDefinition[] = [
 	...AGENT_TYPES.map((id) => createBuiltinTerminalAgentDefinition(id)),
 	{
-		id: "superset-chat",
+		id: "valence-chat",
 		source: "builtin",
 		kind: "chat",
-		defaultLabel: BUILTIN_AGENT_LABELS["superset-chat"],
+		defaultLabel: BUILTIN_AGENT_LABELS["valence-chat"],
 		defaultDescription:
-			"Superset's built-in workspace chat for project-aware help and task launches.",
+			"Valence's built-in workspace chat for project-aware help and task launches.",
 		defaultTaskPromptTemplate: DEFAULT_CHAT_TASK_PROMPT_TEMPLATE,
 		defaultEnabled: true,
 	},

@@ -49,7 +49,7 @@ const config: NextConfig = {
 
 	async redirects() {
 		const docsUrl =
-			process.env.NEXT_PUBLIC_DOCS_URL || "https://docs.superset.sh";
+			process.env.NEXT_PUBLIC_DOCS_URL || "https://docs.valence.sh";
 		return [
 			{
 				source: "/about",
@@ -93,7 +93,7 @@ const config: NextConfig = {
 };
 
 export default withSentryConfig(config, {
-	org: "superset-sh",
+	org: "valence-sh",
 	project: "marketing",
 	silent: !process.env.CI,
 	authToken: process.env.SENTRY_AUTH_TOKEN,

@@ -10,30 +10,30 @@ describe("oauth metadata helpers", () => {
 	it("prefers forwarded origin headers", () => {
 		const request = new Request("http://internal/api/agent/mcp", {
 			headers: {
-				"x-forwarded-host": "api.superset.sh",
+				"x-forwarded-host": "api.valence.sh",
 				"x-forwarded-proto": "https",
 			},
 		});
 
-		expect(getRequestOrigin(request)).toBe("https://api.superset.sh");
+		expect(getRequestOrigin(request)).toBe("https://api.valence.sh");
 	});
 
 	it("uses the first forwarded host and proto values when proxies append lists", () => {
 		const request = new Request("http://internal/api/agent/mcp", {
 			headers: {
-				"x-forwarded-host": "api.superset.sh, internal.example",
+				"x-forwarded-host": "api.valence.sh, internal.example",
 				"x-forwarded-proto": "https, http",
 			},
 		});
 
-		expect(getRequestOrigin(request)).toBe("https://api.superset.sh");
+		expect(getRequestOrigin(request)).toBe("https://api.valence.sh");
 	});
 
 	it("builds a path-specific protected resource metadata URL", () => {
-		const request = new Request("https://api.superset.sh/api/agent/mcp");
+		const request = new Request("https://api.valence.sh/api/agent/mcp");
 
 		expect(getOAuthProtectedResourceMetadataUrl(request)).toBe(
-			"https://api.superset.sh/.well-known/oauth-protected-resource/api/agent/mcp",
+			"https://api.valence.sh/.well-known/oauth-protected-resource/api/agent/mcp",
 		);
 	});
 
@@ -44,18 +44,18 @@ describe("oauth metadata helpers", () => {
 	});
 
 	it("builds protected resource metadata with optional fields", () => {
-		const request = new Request("https://api.superset.sh/anything");
+		const request = new Request("https://api.valence.sh/anything");
 
 		expect(
 			buildProtectedResourceMetadata(request, "/api/agent/mcp", {
-				authorizationServerUrl: "https://api.superset.sh",
-				resourceName: "Superset MCP Server",
+				authorizationServerUrl: "https://api.valence.sh",
+				resourceName: "Valence MCP Server",
 				scopesSupported: ["profile", "email"],
 			}),
 		).toEqual({
-			resource: "https://api.superset.sh/api/agent/mcp",
-			authorization_servers: ["https://api.superset.sh"],
-			resource_name: "Superset MCP Server",
+			resource: "https://api.valence.sh/api/agent/mcp",
+			authorization_servers: ["https://api.valence.sh"],
+			resource_name: "Valence MCP Server",
 			scopes_supported: ["profile", "email"],
 		});
 	});

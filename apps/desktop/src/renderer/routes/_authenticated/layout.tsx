@@ -1,6 +1,6 @@
-import { FEATURE_FLAGS } from "@superset/shared/constants";
-import { Button } from "@superset/ui/button";
-import { Spinner } from "@superset/ui/spinner";
+import { FEATURE_FLAGS } from "@valence/shared/constants";
+import { Button } from "@valence/ui/button";
+import { Spinner } from "@valence/ui/spinner";
 import {
 	createFileRoute,
 	Navigate,

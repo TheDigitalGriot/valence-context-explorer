@@ -1,8 +1,8 @@
 import type {
 	AgentLaunchRequest,
 	AgentLaunchResult,
-} from "@superset/shared/agent-launch";
-import { normalizeAgentLaunchRequest } from "@superset/shared/agent-launch";
+} from "@valence/shared/agent-launch";
+import { normalizeAgentLaunchRequest } from "@valence/shared/agent-launch";
 import { posthog } from "renderer/lib/posthog";
 import { useWorkspaceInitStore } from "renderer/stores/workspace-init";
 import { launchChatAdapter } from "./adapters/chat-adapter";

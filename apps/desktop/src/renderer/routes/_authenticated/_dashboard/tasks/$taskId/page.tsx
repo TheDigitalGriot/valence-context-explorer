@@ -2,9 +2,9 @@ import type {
 	SelectTask,
 	SelectTaskStatus,
 	SelectUser,
-} from "@superset/db/schema";
-import { ScrollArea } from "@superset/ui/scroll-area";
-import { Separator } from "@superset/ui/separator";
+} from "@valence/db/schema";
+import { ScrollArea } from "@valence/ui/scroll-area";
+import { Separator } from "@valence/ui/separator";
 import { eq, or } from "@tanstack/db";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useQuery } from "@tanstack/react-query";

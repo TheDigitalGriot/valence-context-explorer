@@ -1,5 +1,5 @@
-import type { AppRouter } from "@superset/host-service";
-import { workspaceTrpc } from "@superset/workspace-client";
+import type { AppRouter } from "@valence/host-service";
+import { workspaceTrpc } from "@valence/workspace-client";
 import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 import { useEffect, useMemo, useRef, useState } from "react";
 

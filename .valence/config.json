@@ -1,0 +1,5 @@
+{
+	"setup": ["./.valence/setup.sh"],
+	"teardown": ["./.valence/teardown.sh"],
+	"run": ["bun dev"]
+}

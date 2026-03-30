@@ -289,13 +289,13 @@ describe("env", () => {
 
 			it("should include shell wrapper control vars", () => {
 				const env = {
-					ZDOTDIR: "/Users/test/.superset-dev/zsh",
-					BASH_ENV: "/Users/test/.superset-dev/bash/rcfile",
+					ZDOTDIR: "/Users/test/.valence-dev/zsh",
+					BASH_ENV: "/Users/test/.valence-dev/bash/rcfile",
 					PATH: "/usr/bin",
 				};
 				const result = buildSafeEnv(env);
-				expect(result.ZDOTDIR).toBe("/Users/test/.superset-dev/zsh");
-				expect(result.BASH_ENV).toBe("/Users/test/.superset-dev/bash/rcfile");
+				expect(result.ZDOTDIR).toBe("/Users/test/.valence-dev/zsh");
+				expect(result.BASH_ENV).toBe("/Users/test/.valence-dev/bash/rcfile");
 			});
 
 			it("should include proxy vars (both cases)", () => {
@@ -464,18 +464,18 @@ describe("env", () => {
 			});
 		});
 
-		describe("includes SUPERSET_* prefix vars", () => {
-			it("should include SUPERSET_* vars (our metadata)", () => {
+		describe("includes VALENCE_* prefix vars", () => {
+			it("should include VALENCE_* vars (our metadata)", () => {
 				const env = {
-					SUPERSET_PANE_ID: "pane-1",
-					SUPERSET_TAB_ID: "tab-1",
-					SUPERSET_WORKSPACE_ID: "ws-1",
+					VALENCE_PANE_ID: "pane-1",
+					VALENCE_TAB_ID: "tab-1",
+					VALENCE_WORKSPACE_ID: "ws-1",
 					PATH: "/usr/bin",
 				};
 				const result = buildSafeEnv(env);
-				expect(result.SUPERSET_PANE_ID).toBe("pane-1");
-				expect(result.SUPERSET_TAB_ID).toBe("tab-1");
-				expect(result.SUPERSET_WORKSPACE_ID).toBe("ws-1");
+				expect(result.VALENCE_PANE_ID).toBe("pane-1");
+				expect(result.VALENCE_TAB_ID).toBe("tab-1");
+				expect(result.VALENCE_WORKSPACE_ID).toBe("ws-1");
 			});
 		});
 
@@ -536,15 +536,15 @@ describe("env", () => {
 				expect(result.PATHEXT).toBe(".COM;.EXE;.BAT;.CMD");
 			});
 
-			it("should include Superset_* prefix vars case-insensitively on Windows", () => {
+			it("should include Valence_* prefix vars case-insensitively on Windows", () => {
 				const env = {
-					Superset_Pane_Id: "pane-1",
-					SUPERSET_TAB_ID: "tab-1",
+					Valence_Pane_Id: "pane-1",
+					VALENCE_TAB_ID: "tab-1",
 					PATH: "/usr/bin",
 				};
 				const result = buildSafeEnv(env, { platform: "win32" });
-				expect(result.Superset_Pane_Id).toBe("pane-1");
-				expect(result.SUPERSET_TAB_ID).toBe("tab-1");
+				expect(result.Valence_Pane_Id).toBe("pane-1");
+				expect(result.VALENCE_TAB_ID).toBe("tab-1");
 			});
 
 			it("should preserve original key casing in output", () => {
@@ -592,7 +592,7 @@ describe("env", () => {
 			"DATABASE_URL",
 			"CLERK_SECRET_KEY",
 			"SSL_CERT_FILE",
-			"SUPERSET_HOME_DIR",
+			"VALENCE_HOME_DIR",
 		];
 
 		beforeEach(() => {
@@ -658,9 +658,9 @@ describe("env", () => {
 		});
 
 		describe("terminal metadata", () => {
-			it("should set TERM_PROGRAM to Superset", () => {
+			it("should set TERM_PROGRAM to Valence", () => {
 				const result = buildTerminalEnv(baseParams);
-				expect(result.TERM_PROGRAM).toBe("Superset");
+				expect(result.TERM_PROGRAM).toBe("Valence");
 			});
 
 			it("should set COLORTERM to truecolor", () => {
@@ -668,12 +668,12 @@ describe("env", () => {
 				expect(result.COLORTERM).toBe("truecolor");
 			});
 
-			it("should set Superset-specific env vars", () => {
+			it("should set Valence-specific env vars", () => {
 				const result = buildTerminalEnv(baseParams);
 
-				expect(result.SUPERSET_PANE_ID).toBe("pane-1");
-				expect(result.SUPERSET_TAB_ID).toBe("tab-1");
-				expect(result.SUPERSET_WORKSPACE_ID).toBe("ws-1");
+				expect(result.VALENCE_PANE_ID).toBe("pane-1");
+				expect(result.VALENCE_TAB_ID).toBe("tab-1");
+				expect(result.VALENCE_WORKSPACE_ID).toBe("ws-1");
 			});
 
 			it("should handle optional workspace params", () => {
@@ -684,17 +684,17 @@ describe("env", () => {
 					rootPath: "/root/path",
 				});
 
-				expect(result.SUPERSET_WORKSPACE_NAME).toBe("my-workspace");
-				expect(result.SUPERSET_WORKSPACE_PATH).toBe("/path/to/workspace");
-				expect(result.SUPERSET_ROOT_PATH).toBe("/root/path");
+				expect(result.VALENCE_WORKSPACE_NAME).toBe("my-workspace");
+				expect(result.VALENCE_WORKSPACE_PATH).toBe("/path/to/workspace");
+				expect(result.VALENCE_ROOT_PATH).toBe("/root/path");
 			});
 
 			it("should default optional params to empty string", () => {
 				const result = buildTerminalEnv(baseParams);
 
-				expect(result.SUPERSET_WORKSPACE_NAME).toBe("");
-				expect(result.SUPERSET_WORKSPACE_PATH).toBe("");
-				expect(result.SUPERSET_ROOT_PATH).toBe("");
+				expect(result.VALENCE_WORKSPACE_NAME).toBe("");
+				expect(result.VALENCE_WORKSPACE_PATH).toBe("");
+				expect(result.VALENCE_ROOT_PATH).toBe("");
 			});
 
 			it("should set LANG to a UTF-8 locale", () => {
@@ -702,29 +702,29 @@ describe("env", () => {
 				expect(result.LANG).toContain("UTF-8");
 			});
 
-			it("should include SUPERSET_PORT", () => {
+			it("should include VALENCE_PORT", () => {
 				const result = buildTerminalEnv(baseParams);
-				expect(result.SUPERSET_PORT).toBeDefined();
-				expect(typeof result.SUPERSET_PORT).toBe("string");
+				expect(result.VALENCE_PORT).toBeDefined();
+				expect(typeof result.VALENCE_PORT).toBe("string");
 			});
 
-			it("should preserve SUPERSET_HOME_DIR for app-launched hooks", () => {
-				process.env.SUPERSET_HOME_DIR = "/tmp/superset-home";
+			it("should preserve VALENCE_HOME_DIR for app-launched hooks", () => {
+				process.env.VALENCE_HOME_DIR = "/tmp/valence-home";
 				const result = buildTerminalEnv(baseParams);
-				expect(result.SUPERSET_HOME_DIR).toBe("/tmp/superset-home");
+				expect(result.VALENCE_HOME_DIR).toBe("/tmp/valence-home");
 			});
 		});
 
-		it("should include SUPERSET_ENV for dev/prod separation", () => {
+		it("should include VALENCE_ENV for dev/prod separation", () => {
 			const result = buildTerminalEnv(baseParams);
-			expect(result.SUPERSET_ENV).toBeDefined();
-			expect(["development", "production"]).toContain(result.SUPERSET_ENV);
+			expect(result.VALENCE_ENV).toBeDefined();
+			expect(["development", "production"]).toContain(result.VALENCE_ENV);
 		});
 
-		it("should include SUPERSET_HOOK_VERSION for protocol versioning", () => {
+		it("should include VALENCE_HOOK_VERSION for protocol versioning", () => {
 			const result = buildTerminalEnv(baseParams);
-			expect(result.SUPERSET_HOOK_VERSION).toBeDefined();
-			expect(result.SUPERSET_HOOK_VERSION).toBe("2");
+			expect(result.VALENCE_HOOK_VERSION).toBeDefined();
+			expect(result.VALENCE_HOOK_VERSION).toBe("2");
 		});
 
 		describe("SSL_CERT_FILE fallback on macOS", () => {

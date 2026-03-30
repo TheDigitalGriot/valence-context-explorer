@@ -83,7 +83,7 @@ export function OrganizationSwitcherSheet({
 														color: theme.mutedForeground,
 													}}
 												>
-													superset.sh/{organization.slug}
+													valence.sh/{organization.slug}
 												</Text>
 											) : null}
 										</View>

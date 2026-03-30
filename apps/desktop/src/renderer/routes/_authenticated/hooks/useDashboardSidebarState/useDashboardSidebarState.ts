@@ -1,4 +1,4 @@
-import { createPaneWorkspaceState } from "@superset/pane-layout";
+import { createPaneWorkspaceState } from "@valence/pane-layout";
 import { useCallback } from "react";
 import { useCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider";
 import type { AppCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider/collections";

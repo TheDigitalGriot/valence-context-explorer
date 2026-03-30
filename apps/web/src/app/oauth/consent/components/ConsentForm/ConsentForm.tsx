@@ -1,14 +1,14 @@
 "use client";
 
-import { authClient } from "@superset/auth/client";
-import { Button } from "@superset/ui/button";
+import { authClient } from "@valence/auth/client";
+import { Button } from "@valence/ui/button";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
+} from "@valence/ui/select";
 import { useState } from "react";
 import {
 	LuBuilding2,
@@ -123,7 +123,7 @@ export function ConsentForm({
 				</h1>
 				<p className="text-muted-foreground text-sm">
 					<span className="font-medium text-foreground">{displayName}</span> is
-					requesting access to your Superset account
+					requesting access to your Valence account
 				</p>
 			</div>
 
@@ -225,7 +225,7 @@ export function ConsentForm({
 function getClientDisplayName(clientId: string): string {
 	const knownClients: Record<string, string> = {
 		"claude-code": "Claude Code",
-		"superset-desktop": "Superset Desktop",
+		"valence-desktop": "Valence Desktop",
 	};
 	if (knownClients[clientId]) {
 		return knownClients[clientId];

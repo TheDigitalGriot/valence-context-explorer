@@ -1,4 +1,4 @@
-import { Button } from "@superset/ui/button";
+import { Button } from "@valence/ui/button";
 import {
 	Command,
 	CommandEmpty,
@@ -6,8 +6,8 @@ import {
 	CommandInput,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
+} from "@valence/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@valence/ui/popover";
 import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
 import { useMemo, useState } from "react";
 import { parsePrimaryFamily } from "../../font-utils";

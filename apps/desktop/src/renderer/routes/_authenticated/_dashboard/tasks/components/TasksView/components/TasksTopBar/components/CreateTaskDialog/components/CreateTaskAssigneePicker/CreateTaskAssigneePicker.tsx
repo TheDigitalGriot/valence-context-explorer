@@ -1,5 +1,5 @@
-import type { SelectUser } from "@superset/db/schema";
-import { Avatar } from "@superset/ui/atoms/Avatar";
+import type { SelectUser } from "@valence/db/schema";
+import { Avatar } from "@valence/ui/atoms/Avatar";
 import {
 	Command,
 	CommandEmpty,
@@ -7,8 +7,8 @@ import {
 	CommandInput,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
+} from "@valence/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@valence/ui/popover";
 import { useMemo, useState } from "react";
 import { HiCheck, HiChevronDown, HiOutlineUserCircle } from "react-icons/hi2";
 

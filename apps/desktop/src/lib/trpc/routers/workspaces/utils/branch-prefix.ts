@@ -1,5 +1,5 @@
-import type { projects } from "@superset/local-db";
-import { settings } from "@superset/local-db";
+import type { projects } from "@valence/local-db";
+import { settings } from "@valence/local-db";
 import { localDb } from "main/lib/local-db";
 import { getBranchPrefix, sanitizeAuthorPrefix } from "./git";
 

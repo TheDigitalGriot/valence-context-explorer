@@ -1,6 +1,6 @@
-import type { UseChatDisplayReturn } from "@superset/chat/client";
-import { Message, MessageContent } from "@superset/ui/ai-elements/message";
-import { Button } from "@superset/ui/button";
+import type { UseChatDisplayReturn } from "@valence/chat/client";
+import { Message, MessageContent } from "@valence/ui/ai-elements/message";
+import { Button } from "@valence/ui/button";
 import { useEffect, useRef, useState } from "react";
 
 type ApprovalDecision = "approve" | "decline" | "always_allow_category";

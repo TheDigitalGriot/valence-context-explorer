@@ -4,7 +4,7 @@ import {
 	ConversationEmptyState,
 	ConversationLoadingState,
 	ConversationScrollButton,
-} from "@superset/ui/ai-elements/conversation";
+} from "@valence/ui/ai-elements/conversation";
 import { useMemo, useRef } from "react";
 import { HiMiniChatBubbleLeftRight } from "react-icons/hi2";
 import type {

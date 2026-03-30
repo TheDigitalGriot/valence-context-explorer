@@ -1,6 +1,6 @@
 import { AppWindowIcon } from "lucide-react";
 import type { ToolPart } from "../../../../utils/tool-helpers";
-import { SupersetToolCall } from "../SupersetToolCall";
+import { ValenceToolCall } from "../ValenceToolCall";
 
 interface GetAppContextToolCallProps {
 	part: ToolPart;
@@ -8,7 +8,7 @@ interface GetAppContextToolCallProps {
 
 export function GetAppContextToolCall({ part }: GetAppContextToolCallProps) {
 	return (
-		<SupersetToolCall
+		<ValenceToolCall
 			part={part}
 			toolName="Get app context"
 			icon={AppWindowIcon}

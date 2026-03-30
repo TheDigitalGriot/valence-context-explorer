@@ -1,4 +1,4 @@
-import type { GitHubStatus, PullRequestComment } from "@superset/local-db";
+import type { GitHubStatus, PullRequestComment } from "@valence/local-db";
 import {
 	type CachedResourceReadOptions,
 	type CacheState,

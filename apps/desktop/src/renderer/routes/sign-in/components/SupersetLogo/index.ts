@@ -1,1 +1,1 @@
-export { SupersetLogo } from "./SupersetLogo";
+export { ValenceLogo } from "./ValenceLogo";

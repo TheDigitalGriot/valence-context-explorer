@@ -1,7 +1,7 @@
-import { BashTool } from "@superset/ui/ai-elements/bash-tool";
-import { FileDiffTool } from "@superset/ui/ai-elements/file-diff-tool";
-import { WebFetchTool } from "@superset/ui/ai-elements/web-fetch-tool";
-import { WebSearchTool } from "@superset/ui/ai-elements/web-search-tool";
+import { BashTool } from "@valence/ui/ai-elements/bash-tool";
+import { FileDiffTool } from "@valence/ui/ai-elements/file-diff-tool";
+import { WebFetchTool } from "@valence/ui/ai-elements/web-fetch-tool";
+import { WebSearchTool } from "@valence/ui/ai-elements/web-search-tool";
 import { getToolName } from "ai";
 import { FileIcon, FolderIcon } from "lucide-react";
 import { useCallback, useMemo } from "react";
@@ -37,7 +37,7 @@ import { ListTasksToolCall } from "./components/ListTasksToolCall";
 import { ListWorkspacesToolCall } from "./components/ListWorkspacesToolCall";
 import { StartAgentSessionToolCall } from "./components/StartAgentSessionToolCall";
 import { SubagentToolCall } from "./components/SubagentToolCall";
-import { SupersetToolCall } from "./components/SupersetToolCall";
+import { ValenceToolCall } from "./components/ValenceToolCall";
 import { SwitchWorkspaceToolCall } from "./components/SwitchWorkspaceToolCall";
 import { UpdateTaskToolCall } from "./components/UpdateTaskToolCall";
 import { UpdateWorkspaceToolCall } from "./components/UpdateWorkspaceToolCall";
@@ -488,7 +488,7 @@ export function ToolCallBlock({
 		);
 	}
 
-	// --- Superset MCP tools ---
+	// --- Valence MCP tools ---
 	if (toolName === "create_task") {
 		return <CreateTaskToolCall part={part} />;
 	}
@@ -574,7 +574,7 @@ export function ToolCallBlock({
 	// --- Destructive workspace tools ---
 	if (toolName === "mastra_workspace_mkdir") {
 		return (
-			<SupersetToolCall
+			<ValenceToolCall
 				part={part}
 				toolName="Create directory"
 				icon={FolderIcon}
@@ -584,24 +584,24 @@ export function ToolCallBlock({
 
 	if (toolName === "mastra_workspace_delete") {
 		return (
-			<SupersetToolCall part={part} toolName="Delete path" icon={FileIcon} />
+			<ValenceToolCall part={part} toolName="Delete path" icon={FileIcon} />
 		);
 	}
 
 	if (toolName === "request_sandbox_access") {
-		return <SupersetToolCall part={part} toolName="Request sandbox access" />;
+		return <ValenceToolCall part={part} toolName="Request sandbox access" />;
 	}
 
 	if (toolName === "task_write") {
-		return <SupersetToolCall part={part} toolName="Write task list" />;
+		return <ValenceToolCall part={part} toolName="Write task list" />;
 	}
 
 	if (toolName === "task_check") {
-		return <SupersetToolCall part={part} toolName="Update task status" />;
+		return <ValenceToolCall part={part} toolName="Update task status" />;
 	}
 
 	if (toolName === "submit_plan") {
-		return <SupersetToolCall part={part} toolName="Submit plan" />;
+		return <ValenceToolCall part={part} toolName="Submit plan" />;
 	}
 
 	if (toolName === "subagent") {

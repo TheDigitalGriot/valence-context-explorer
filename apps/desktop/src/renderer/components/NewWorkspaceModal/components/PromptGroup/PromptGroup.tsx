@@ -1,4 +1,4 @@
-import type { AgentLaunchRequest } from "@superset/shared/agent-launch";
+import type { AgentLaunchRequest } from "@valence/shared/agent-launch";
 import {
 	PromptInput,
 	PromptInputAttachment,
@@ -10,8 +10,8 @@ import {
 	PromptInputTools,
 	usePromptInputAttachments,
 	useProviderAttachments,
-} from "@superset/ui/ai-elements/prompt-input";
-import { Button } from "@superset/ui/button";
+} from "@valence/ui/ai-elements/prompt-input";
+import { Button } from "@valence/ui/button";
 import {
 	Command,
 	CommandEmpty,
@@ -20,12 +20,12 @@ import {
 	CommandItem,
 	CommandList,
 	CommandSeparator,
-} from "@superset/ui/command";
-import { Input } from "@superset/ui/input";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { toast } from "@superset/ui/sonner";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+} from "@valence/ui/command";
+import { Input } from "@valence/ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "@valence/ui/popover";
+import { toast } from "@valence/ui/sonner";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@valence/ui/tooltip";
+import { cn } from "@valence/ui/utils";
 import { useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import {

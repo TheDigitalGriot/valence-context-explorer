@@ -22,7 +22,7 @@ import {
 	keymap,
 	lineNumbers,
 } from "@codemirror/view";
-import { cn } from "@superset/ui/utils";
+import { cn } from "@valence/ui/utils";
 import { type MutableRefObject, useEffect, useRef } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import type { CodeEditorAdapter } from "renderer/screens/main/components/WorkspaceView/ContentView/components";

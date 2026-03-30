@@ -1,5 +1,5 @@
-import { ThemePreviewCard } from "@superset/ui/theme-preview-card";
-import { cn } from "@superset/ui/utils";
+import { ThemePreviewCard } from "@valence/ui/theme-preview-card";
+import { cn } from "@valence/ui/utils";
 import { HiCheck } from "react-icons/hi2";
 import { getTerminalColors, type Theme } from "shared/themes";
 

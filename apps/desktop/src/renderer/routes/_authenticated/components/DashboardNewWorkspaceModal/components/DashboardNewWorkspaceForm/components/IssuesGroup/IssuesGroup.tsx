@@ -1,7 +1,7 @@
-import { Avatar } from "@superset/ui/atoms/Avatar";
-import { Button } from "@superset/ui/button";
-import { CommandEmpty, CommandGroup, CommandItem } from "@superset/ui/command";
-import { toast } from "@superset/ui/sonner";
+import { Avatar } from "@valence/ui/atoms/Avatar";
+import { Button } from "@valence/ui/button";
+import { CommandEmpty, CommandGroup, CommandItem } from "@valence/ui/command";
+import { toast } from "@valence/ui/sonner";
 import { eq, isNull } from "@tanstack/db";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useNavigate } from "@tanstack/react-router";

@@ -1,4 +1,4 @@
-app = "superset-electric"
+app = "valence-electric"
 primary_region = "iad"
 
 [build]

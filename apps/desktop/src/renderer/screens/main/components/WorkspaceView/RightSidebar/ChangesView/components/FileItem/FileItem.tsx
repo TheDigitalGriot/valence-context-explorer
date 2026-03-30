@@ -1,13 +1,13 @@
-import type { ExternalApp } from "@superset/local-db";
+import type { ExternalApp } from "@valence/local-db";
 import {
 	ContextMenu,
 	ContextMenuContent,
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+} from "@valence/ui/context-menu";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@valence/ui/tooltip";
+import { cn } from "@valence/ui/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
 	VscAdd,

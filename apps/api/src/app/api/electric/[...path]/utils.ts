@@ -1,4 +1,4 @@
-import { db } from "@superset/db/client";
+import { db } from "@valence/db/client";
 import {
 	agentCommands,
 	chatSessions,
@@ -20,7 +20,7 @@ import {
 	v2UsersDevices,
 	v2Workspaces,
 	workspaces,
-} from "@superset/db/schema";
+} from "@valence/db/schema";
 import { eq, inArray, sql } from "drizzle-orm";
 import type { PgColumn, PgTable } from "drizzle-orm/pg-core";
 import { QueryBuilder } from "drizzle-orm/pg-core";

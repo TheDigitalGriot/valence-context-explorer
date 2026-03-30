@@ -4,14 +4,14 @@ import {
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
+} from "@valence/ui/context-menu";
 import {
 	HoverCard,
 	HoverCardContent,
 	HoverCardTrigger,
-} from "@superset/ui/hover-card";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+} from "@valence/ui/hover-card";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@valence/ui/tooltip";
+import { cn } from "@valence/ui/utils";
 import { type RefObject, useMemo, useState } from "react";
 import { LuCopy, LuX } from "react-icons/lu";
 import { createContextMenuDeleteDialogCoordinator } from "renderer/react-query/workspaces/useWorkspaceDeleteHandler";

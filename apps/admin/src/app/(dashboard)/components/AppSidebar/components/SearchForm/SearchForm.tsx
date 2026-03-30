@@ -1,11 +1,11 @@
 "use client";
 
-import { Label } from "@superset/ui/label";
+import { Label } from "@valence/ui/label";
 import {
 	SidebarGroup,
 	SidebarGroupContent,
 	SidebarInput,
-} from "@superset/ui/sidebar";
+} from "@valence/ui/sidebar";
 import { LuSearch } from "react-icons/lu";
 
 export function SearchForm({ ...props }: React.ComponentProps<"form">) {

@@ -17,7 +17,7 @@ import { z } from "zod";
 process.env.NODE_ENV = "test";
 process.env.SKIP_ENV_VALIDATION = "1";
 
-const testTmpDir = join(tmpdir(), "superset-test");
+const testTmpDir = join(tmpdir(), "valence-test");
 
 // =============================================================================
 // Browser Global Mocks (required for renderer code that touches DOM)
@@ -147,7 +147,7 @@ mock.module("main/lib/analytics", () => ({
 }));
 
 // =============================================================================
-// @superset/local-db Schema Mock (drizzle-orm/sqlite-core not available in Bun tests)
+// @valence/local-db Schema Mock (drizzle-orm/sqlite-core not available in Bun tests)
 // =============================================================================
 
 const mockTable = (name: string) => ({ id: `${name}_id` });
@@ -203,8 +203,8 @@ const localDbMock = () => ({
 
 // Mock both the package name and the resolved source path to handle
 // bun's workspace package resolution in different versions.
-mock.module("@superset/local-db", localDbMock);
-mock.module("@superset/local-db/schema", localDbMock);
+mock.module("@valence/local-db", localDbMock);
+mock.module("@valence/local-db/schema", localDbMock);
 
 // =============================================================================
 // Local DB Mock (better-sqlite3 not supported in Bun tests)

@@ -1,13 +1,13 @@
-import { chatServiceTrpc } from "@superset/chat/client";
-import { Button } from "@superset/ui/button";
+import { chatServiceTrpc } from "@valence/chat/client";
+import { Button } from "@valence/ui/button";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
-import { Input } from "@superset/ui/input";
-import { toast } from "@superset/ui/sonner";
-import { Textarea } from "@superset/ui/textarea";
+} from "@valence/ui/collapsible";
+import { Input } from "@valence/ui/input";
+import { toast } from "@valence/ui/sonner";
+import { Textarea } from "@valence/ui/textarea";
 import { useEffect, useMemo, useState } from "react";
 import { HiChevronDown } from "react-icons/hi2";
 import { AnthropicOAuthDialog } from "renderer/components/Chat/ChatInterface/components/ModelPicker/components/AnthropicOAuthDialog";

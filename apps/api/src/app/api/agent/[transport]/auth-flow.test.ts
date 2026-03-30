@@ -10,7 +10,7 @@ import {
 } from "./auth-flow";
 
 function createRequest(headers?: HeadersInit): Request {
-	return new Request("https://api.superset.sh/api/agent/mcp", {
+	return new Request("https://api.valence.sh/api/agent/mcp", {
 		method: "POST",
 		headers,
 	});
@@ -35,7 +35,7 @@ function createDeps(overrides?: Partial<McpRequestDeps>): McpRequestDeps & {
 	);
 
 	return {
-		apiUrl: "https://api.superset.sh",
+		apiUrl: "https://api.valence.sh",
 		authApi: {
 			getSession: sessionSpy,
 			verifyApiKey: apiKeySpy,
@@ -132,7 +132,7 @@ describe("MCP auth flow", () => {
 			azp: "client-1",
 		})) as McpRequestDeps["verifyAccessToken"];
 		const deps = createDeps({
-			apiUrl: "https://api.superset.sh/",
+			apiUrl: "https://api.valence.sh/",
 			verifyAccessToken,
 		});
 
@@ -160,10 +160,10 @@ describe("MCP auth flow", () => {
 				}
 			).mock.calls[0]?.[1],
 		).toEqual({
-			jwksUrl: "https://api.superset.sh/api/auth/jwks",
+			jwksUrl: "https://api.valence.sh/api/auth/jwks",
 			verifyOptions: {
-				issuer: "https://api.superset.sh",
-				audience: ["https://api.superset.sh", "https://api.superset.sh/"],
+				issuer: "https://api.valence.sh",
+				audience: ["https://api.valence.sh", "https://api.valence.sh/"],
 			},
 		});
 	});
@@ -259,7 +259,7 @@ describe("MCP auth flow", () => {
 
 		expect(response.status).toBe(401);
 		expect(response.headers.get("WWW-Authenticate")).toBe(
-			'Bearer resource_metadata="https://api.superset.sh/.well-known/oauth-protected-resource/api/agent/mcp"',
+			'Bearer resource_metadata="https://api.valence.sh/.well-known/oauth-protected-resource/api/agent/mcp"',
 		);
 	});
 

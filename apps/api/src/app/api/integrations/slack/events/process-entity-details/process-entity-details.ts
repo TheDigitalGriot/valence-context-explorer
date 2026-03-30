@@ -1,6 +1,6 @@
 import type { SlackEvent } from "@slack/types";
-import { db } from "@superset/db/client";
-import { integrationConnections, tasks } from "@superset/db/schema";
+import { db } from "@valence/db/client";
+import { integrationConnections, tasks } from "@valence/db/schema";
 import { and, eq } from "drizzle-orm";
 import { createSlackClient } from "../utils/slack-client";
 import {

@@ -10,7 +10,7 @@ import { HOOKS_DIR } from "./paths";
 
 export const COPILOT_HOOK_SCRIPT_NAME = "copilot-hook.sh";
 
-const COPILOT_HOOK_SIGNATURE = "# Superset copilot hook";
+const COPILOT_HOOK_SIGNATURE = "# Valence copilot hook";
 const COPILOT_HOOK_VERSION = "v1";
 export const COPILOT_HOOK_MARKER = `${COPILOT_HOOK_SIGNATURE} ${COPILOT_HOOK_VERSION}`;
 
@@ -83,10 +83,10 @@ export function buildCopilotWrapperExecLine(): string {
 	const escapedJson = hooksJson.replace(/'/g, "'\\''");
 
 	return `# Copilot CLI only supports project-level hooks (.github/hooks/*.json in CWD).
-# Auto-inject Superset notification hooks when running inside a Superset terminal.
-if [ -n "$SUPERSET_TAB_ID" ] && [ -f "${hookScriptPath}" ]; then
+# Auto-inject Valence notification hooks when running inside a Valence terminal.
+if [ -n "$VALENCE_TAB_ID" ] && [ -f "${hookScriptPath}" ]; then
   COPILOT_HOOKS_DIR=".github/hooks"
-  COPILOT_HOOK_FILE="$COPILOT_HOOKS_DIR/superset-notify.json"
+  COPILOT_HOOK_FILE="$COPILOT_HOOKS_DIR/valence-notify.json"
 
   # Always refresh our dedicated hook file so stale absolute hook paths from
   # older installs/workspaces cannot silently break notifications.
@@ -94,8 +94,8 @@ if [ -n "$SUPERSET_TAB_ID" ] && [ -f "${hookScriptPath}" ]; then
   printf '%s\\n' '${escapedJson}' > "$COPILOT_HOOK_FILE" 2>/dev/null
 
   if [ -d ".git/info" ]; then
-    grep -qF ".github/hooks/superset-notify.json" ".git/info/exclude" 2>/dev/null || \\
-      printf '%s\\n' ".github/hooks/superset-notify.json" >> ".git/info/exclude" 2>/dev/null
+    grep -qF ".github/hooks/valence-notify.json" ".git/info/exclude" 2>/dev/null || \\
+      printf '%s\\n' ".github/hooks/valence-notify.json" >> ".git/info/exclude" 2>/dev/null
   fi
 fi
 

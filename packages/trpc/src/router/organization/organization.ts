@@ -1,14 +1,14 @@
-import { stripeClient } from "@superset/auth/stripe";
-import { db } from "@superset/db/client";
-import { members, organizations } from "@superset/db/schema";
+import { stripeClient } from "@valence/auth/stripe";
+import { db } from "@valence/db/client";
+import { members, organizations } from "@valence/db/schema";
 import {
 	sessions as authSessions,
 	invitations,
 	verifications,
-} from "@superset/db/schema/auth";
-import { seedDefaultStatuses } from "@superset/db/seed-default-statuses";
-import { findOrgMembership } from "@superset/db/utils";
-import { canRemoveMember, type OrganizationRole } from "@superset/shared/auth";
+} from "@valence/db/schema/auth";
+import { seedDefaultStatuses } from "@valence/db/seed-default-statuses";
+import { findOrgMembership } from "@valence/db/utils";
+import { canRemoveMember, type OrganizationRole } from "@valence/shared/auth";
 import { TRPCError, type TRPCRouterRecord } from "@trpc/server";
 import { and, eq, ne, sql } from "drizzle-orm";
 import { z } from "zod";

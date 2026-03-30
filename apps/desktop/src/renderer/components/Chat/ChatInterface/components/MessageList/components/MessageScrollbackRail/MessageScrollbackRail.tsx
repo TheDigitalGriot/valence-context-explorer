@@ -1,10 +1,10 @@
-import { useConversationContext } from "@superset/ui/ai-elements/conversation";
+import { useConversationContext } from "@valence/ui/ai-elements/conversation";
 import {
 	HoverCard,
 	HoverCardContent,
 	HoverCardTrigger,
-} from "@superset/ui/hover-card";
-import { cn } from "@superset/ui/utils";
+} from "@valence/ui/hover-card";
+import { cn } from "@valence/ui/utils";
 import type { UIMessage } from "ai";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 

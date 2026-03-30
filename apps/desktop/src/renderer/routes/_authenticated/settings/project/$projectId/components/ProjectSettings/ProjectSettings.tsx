@@ -1,4 +1,4 @@
-import type { BranchPrefixMode } from "@superset/local-db";
+import type { BranchPrefixMode } from "@valence/local-db";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -9,20 +9,20 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	AlertDialogTrigger,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
+} from "@valence/ui/alert-dialog";
+import { Button } from "@valence/ui/button";
+import { Input } from "@valence/ui/input";
+import { Label } from "@valence/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
-import { toast } from "@superset/ui/sonner";
-import { Switch } from "@superset/ui/switch";
-import { cn } from "@superset/ui/utils";
+} from "@valence/ui/select";
+import { toast } from "@valence/ui/sonner";
+import { Switch } from "@valence/ui/switch";
+import { cn } from "@valence/ui/utils";
 import { useNavigate } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -508,7 +508,7 @@ export function ProjectSettings({
 														This will import {externalWorktrees.length} external
 														worktree
 														{externalWorktrees.length === 1 ? "" : "s"} into
-														Superset as workspaces. Each worktree on disk will
+														Valence as workspaces. Each worktree on disk will
 														be tracked and appear in your sidebar. No files will
 														be modified.
 													</AlertDialogDescription>

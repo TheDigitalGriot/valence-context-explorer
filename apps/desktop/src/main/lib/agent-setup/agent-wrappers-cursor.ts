@@ -5,7 +5,7 @@ import { env } from "shared/env.shared";
 import {
 	buildWrapperScript,
 	createWrapper,
-	isSupersetManagedHookCommand,
+	isValenceManagedHookCommand,
 	reconcileManagedEntries,
 	writeFileIfChanged,
 } from "./agent-wrappers-common";
@@ -13,7 +13,7 @@ import { HOOKS_DIR } from "./paths";
 
 export const CURSOR_HOOK_SCRIPT_NAME = "cursor-hook.sh";
 
-const CURSOR_HOOK_SIGNATURE = "# Superset cursor hook";
+const CURSOR_HOOK_SIGNATURE = "# Valence cursor hook";
 const CURSOR_HOOK_VERSION = "v1";
 export const CURSOR_HOOK_MARKER = `${CURSOR_HOOK_SIGNATURE} ${CURSOR_HOOK_VERSION}`;
 
@@ -92,7 +92,7 @@ export function getCursorHooksJsonContent(hookScriptPath: string): string {
 			desired: [ourEntry],
 			isManaged: (entry: CursorHookEntry) =>
 				entry.command?.includes(hookScriptPath) ||
-				isSupersetManagedHookCommand(entry.command, CURSOR_HOOK_SCRIPT_NAME),
+				isValenceManagedHookCommand(entry.command, CURSOR_HOOK_SCRIPT_NAME),
 			isEquivalent: (entry: CursorHookEntry, desiredEntry: CursorHookEntry) =>
 				entry.command === desiredEntry.command,
 		});

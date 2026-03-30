@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/lib/utils";
+import { cn } from "@valence/ui/lib/utils";
 
 interface PaneSplitHandleProps {
 	orientation: "horizontal" | "vertical";

@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@superset/ui/button";
+import { Button } from "@valence/ui/button";
 import {
 	Dialog,
 	DialogContent,
@@ -7,16 +7,16 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
+} from "@valence/ui/dialog";
 import {
 	Form,
 	FormControl,
 	FormField,
 	FormLabel,
 	FormMessage,
-} from "@superset/ui/form";
-import { Input } from "@superset/ui/input";
-import { toast } from "@superset/ui/sonner";
+} from "@valence/ui/form";
+import { Input } from "@valence/ui/input";
+import { toast } from "@valence/ui/sonner";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { apiTrpcClient } from "renderer/lib/api-trpc-client";

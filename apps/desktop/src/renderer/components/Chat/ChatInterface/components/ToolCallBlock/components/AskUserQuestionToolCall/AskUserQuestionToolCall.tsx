@@ -1,9 +1,9 @@
-import { MessageResponse } from "@superset/ui/ai-elements/message";
-import { UserQuestionTool } from "@superset/ui/ai-elements/user-question-tool";
+import { MessageResponse } from "@valence/ui/ai-elements/message";
+import { UserQuestionTool } from "@valence/ui/ai-elements/user-question-tool";
 import { MessageCircleQuestionIcon } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import type { ToolPart } from "../../../../utils/tool-helpers";
-import { SupersetToolCall } from "../SupersetToolCall";
+import { ValenceToolCall } from "../ValenceToolCall";
 
 interface QuestionToolOption {
 	label: string;
@@ -222,7 +222,7 @@ export function AskUserQuestionToolCall({
 
 	if (!hasQuestions) {
 		return (
-			<SupersetToolCall
+			<ValenceToolCall
 				part={part}
 				toolName="Question"
 				icon={MessageCircleQuestionIcon}
@@ -234,7 +234,7 @@ export function AskUserQuestionToolCall({
 		return (
 			<div className="space-y-2">
 				{messageBlock}
-				<SupersetToolCall
+				<ValenceToolCall
 					part={part}
 					toolName="Question"
 					icon={MessageCircleQuestionIcon}
@@ -247,7 +247,7 @@ export function AskUserQuestionToolCall({
 		return (
 			<div className="space-y-2">
 				{messageBlock}
-				<SupersetToolCall
+				<ValenceToolCall
 					part={part}
 					toolName="Question"
 					icon={MessageCircleQuestionIcon}

@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it, mock } from "bun:test";
-import type { SmallModelProvider } from "@superset/chat/server/desktop";
+import type { SmallModelProvider } from "@valence/chat/server/desktop";
 
 const getDefaultSmallModelProvidersMock = mock((): SmallModelProvider[] => []);
 
-mock.module("@superset/chat/server/desktop", () => ({
+mock.module("@valence/chat/server/desktop", () => ({
 	getDefaultSmallModelProviders: getDefaultSmallModelProvidersMock,
 	generateTitleFromMessage: mock(async () => null),
 	generateTitleFromMessageWithStreamingModel: mock(async () => null),

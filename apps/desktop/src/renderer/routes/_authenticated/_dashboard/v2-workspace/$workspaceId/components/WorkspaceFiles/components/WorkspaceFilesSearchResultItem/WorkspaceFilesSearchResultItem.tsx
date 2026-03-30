@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@valence/ui/utils";
 import { SEARCH_RESULT_ROW_HEIGHT } from "renderer/screens/main/components/WorkspaceView/RightSidebar/FilesView/constants";
 import { FileIcon } from "renderer/screens/main/components/WorkspaceView/RightSidebar/FilesView/utils";
 

@@ -1,11 +1,11 @@
-import { Button } from "@superset/ui/button";
+import { Button } from "@valence/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
+} from "@valence/ui/dropdown-menu";
 import { useState } from "react";
 import {
 	HiEllipsisHorizontal,

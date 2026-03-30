@@ -1,4 +1,4 @@
-import { projects, workspaces, worktrees } from "@superset/local-db";
+import { projects, workspaces, worktrees } from "@valence/local-db";
 import { and, eq, isNull, not } from "drizzle-orm";
 import { track } from "main/lib/analytics";
 import { localDb } from "main/lib/local-db";
@@ -37,7 +37,7 @@ import {
 	worktreeExists,
 } from "../utils/git";
 import { resolveWorktreePath } from "../utils/resolve-worktree-path";
-import { copySupersetConfigToWorktree, loadSetupConfig } from "../utils/setup";
+import { copyValenceConfigToWorktree, loadSetupConfig } from "../utils/setup";
 import {
 	createWorkspaceFromExternalWorktree,
 	createWorkspaceFromWorktree,
@@ -196,7 +196,7 @@ async function handleNewWorktree({
 			branch: localBranchName,
 			baseBranch: compareBaseBranch,
 			gitStatus: null,
-			createdBySuperset: true,
+			createdByValence: true,
 		})
 		.returning()
 		.get();
@@ -472,7 +472,7 @@ export const createCreateProcedures = () => {
 						branch,
 						baseBranch: compareBaseBranch,
 						gitStatus: null,
-						createdBySuperset: true,
+						createdByValence: true,
 					})
 					.returning()
 					.get();
@@ -896,7 +896,7 @@ export const createCreateProcedures = () => {
 								behind: 0,
 								lastRefreshed: Date.now(),
 							},
-							createdBySuperset: false, // External worktree
+							createdByValence: false, // External worktree
 						})
 						.returning()
 						.get();
@@ -921,7 +921,7 @@ export const createCreateProcedures = () => {
 						isExplicit: false,
 					});
 
-					copySupersetConfigToWorktree(project.mainRepoPath, ext.path);
+					copyValenceConfigToWorktree(project.mainRepoPath, ext.path);
 					imported++;
 				}
 

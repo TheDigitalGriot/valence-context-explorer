@@ -1,6 +1,6 @@
-import { ToggleGroup, ToggleGroupItem } from "@superset/ui/toggle-group";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+import { ToggleGroup, ToggleGroupItem } from "@valence/ui/toggle-group";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@valence/ui/tooltip";
+import { cn } from "@valence/ui/utils";
 
 import {
 	TbFold,

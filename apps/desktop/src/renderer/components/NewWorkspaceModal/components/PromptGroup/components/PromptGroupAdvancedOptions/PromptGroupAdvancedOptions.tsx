@@ -1,20 +1,20 @@
-import { Button } from "@superset/ui/button";
+import { Button } from "@valence/ui/button";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
+} from "@valence/ui/collapsible";
 import {
 	Command,
 	CommandEmpty,
 	CommandInput,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { Switch } from "@superset/ui/switch";
+} from "@valence/ui/command";
+import { Input } from "@valence/ui/input";
+import { Label } from "@valence/ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "@valence/ui/popover";
+import { Switch } from "@valence/ui/switch";
 import { GoGitBranch } from "react-icons/go";
 import {
 	HiCheck,

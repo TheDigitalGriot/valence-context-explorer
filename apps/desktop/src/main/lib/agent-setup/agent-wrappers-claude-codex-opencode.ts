@@ -4,15 +4,15 @@ import path from "node:path";
 import {
 	buildWrapperScript,
 	createWrapper,
-	isSupersetManagedHookCommand,
+	isValenceManagedHookCommand,
 	writeFileIfChanged,
 } from "./agent-wrappers-common";
 import { getNotifyScriptPath, NOTIFY_SCRIPT_NAME } from "./notify-hook";
 import { OPENCODE_CONFIG_DIR, OPENCODE_PLUGIN_DIR } from "./paths";
 
-export const OPENCODE_PLUGIN_FILE = "superset-notify.js";
+export const OPENCODE_PLUGIN_FILE = "valence-notify.js";
 
-const OPENCODE_PLUGIN_SIGNATURE = "// Superset opencode plugin";
+const OPENCODE_PLUGIN_SIGNATURE = "// Valence opencode plugin";
 const OPENCODE_PLUGIN_VERSION = "v8";
 export const OPENCODE_PLUGIN_MARKER = `${OPENCODE_PLUGIN_SIGNATURE} ${OPENCODE_PLUGIN_VERSION}`;
 
@@ -28,7 +28,7 @@ const CODEX_WRAPPER_EXEC_TEMPLATE_PATH = path.join(
 );
 
 /**
- * Returns the environment-scoped OpenCode plugin path under Superset home.
+ * Returns the environment-scoped OpenCode plugin path under Valence home.
  */
 export function getOpenCodePluginPath(): string {
 	return path.join(OPENCODE_PLUGIN_DIR, OPENCODE_PLUGIN_FILE);
@@ -66,7 +66,7 @@ interface ClaudeSettingsJson {
 }
 
 const CLAUDE_DYNAMIC_NOTIFY_RELATIVE_PATH = `hooks/${NOTIFY_SCRIPT_NAME}`;
-const CLAUDE_DYNAMIC_NOTIFY_PATH_MARKER = `$SUPERSET_HOME_DIR/${CLAUDE_DYNAMIC_NOTIFY_RELATIVE_PATH}`;
+const CLAUDE_DYNAMIC_NOTIFY_PATH_MARKER = `$VALENCE_HOME_DIR/${CLAUDE_DYNAMIC_NOTIFY_RELATIVE_PATH}`;
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
 	return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -74,11 +74,11 @@ function isPlainObject(value: unknown): value is Record<string, unknown> {
 
 /**
  * Returns the shell command written into Claude's global hook config.
- * The notify path is resolved at runtime from SUPERSET_HOME_DIR so one
+ * The notify path is resolved at runtime from VALENCE_HOME_DIR so one
  * shared ~/.claude/settings.json works for both dev and prod installs.
  */
 export function getClaudeManagedHookCommand(): string {
-	return `[ -n "$SUPERSET_HOME_DIR" ] && [ -x "$SUPERSET_HOME_DIR/${CLAUDE_DYNAMIC_NOTIFY_RELATIVE_PATH}" ] && "$SUPERSET_HOME_DIR/${CLAUDE_DYNAMIC_NOTIFY_RELATIVE_PATH}" || true`;
+	return `[ -n "$VALENCE_HOME_DIR" ] && [ -x "$VALENCE_HOME_DIR/${CLAUDE_DYNAMIC_NOTIFY_RELATIVE_PATH}" ] && "$VALENCE_HOME_DIR/${CLAUDE_DYNAMIC_NOTIFY_RELATIVE_PATH}" || true`;
 }
 
 function isManagedClaudeHookCommand(
@@ -88,7 +88,7 @@ function isManagedClaudeHookCommand(
 	return (
 		command?.includes(notifyScriptPath) ||
 		command?.includes(CLAUDE_DYNAMIC_NOTIFY_PATH_MARKER) ||
-		isSupersetManagedHookCommand(command, NOTIFY_SCRIPT_NAME)
+		isValenceManagedHookCommand(command, NOTIFY_SCRIPT_NAME)
 	);
 }
 
@@ -235,7 +235,7 @@ export function getClaudeGlobalSettingsJsonContent(
 }
 
 /**
- * Writes Superset hook definitions directly into ~/.claude/settings.json.
+ * Writes Valence hook definitions directly into ~/.claude/settings.json.
  * This ensures hooks work regardless of whether the binary wrapper is in PATH,
  * matching the approach used for Cursor, Gemini, Droid, and Mastra.
  */
@@ -264,19 +264,19 @@ export function getOpenCodePluginContent(notifyPath: string): string {
 }
 
 /**
- * Creates the Claude wrapper that forwards SUPERSET_* env vars into the agent.
+ * Creates the Claude wrapper that forwards VALENCE_* env vars into the agent.
  */
 export function createClaudeWrapper(): void {
 	// Hooks are now written directly to ~/.claude/settings.json via
 	// createClaudeSettingsJson(), so the wrapper is a plain pass-through.
-	// We still create the wrapper so SUPERSET_* env vars flow through
-	// and the notify script can identify the Superset terminal context.
+	// We still create the wrapper so VALENCE_* env vars flow through
+	// and the notify script can identify the Valence terminal context.
 	const script = buildWrapperScript("claude", `exec "$REAL_BIN" "$@"`);
 	createWrapper("claude", script);
 }
 
 /**
- * Creates the Codex wrapper that injects Superset's notify/session-log logic.
+ * Creates the Codex wrapper that injects Valence's notify/session-log logic.
  */
 export function createCodexWrapper(): void {
 	const notifyPath = getNotifyScriptPath();
@@ -339,9 +339,9 @@ export function getCodexGlobalHooksJsonPath(): string {
  * Codex hooks.json uses the same nested structure as Claude/Droid:
  *   { hooks: { EventName: [{ matcher?, hooks: [{ type, command }] }] } }
  *
- * Superset intentionally keeps this native Codex hook registration narrow.
+ * Valence intentionally keeps this native Codex hook registration narrow.
  * The primary integration path is still the wrapper + notify/session-log
- * watcher, which works inside Superset-managed terminal sessions and covers
+ * watcher, which works inside Valence-managed terminal sessions and covers
  * richer lifecycle events like per-turn Start and PermissionRequest.
  *
  * This hooks.json merge is only a fallback for cases where the wrapper is
@@ -398,12 +398,12 @@ export function getCodexGlobalHooksJsonContent(
 }
 
 /**
- * Writes Superset hook definitions directly into ~/.codex/hooks.json.
+ * Writes Valence hook definitions directly into ~/.codex/hooks.json.
  * This provides a fallback notification path that works even when the
  * binary wrapper is not in PATH (e.g. user runs codex from outside
- * a Superset terminal).
+ * a Valence terminal).
  *
- * The wrapper remains the primary integration path for Superset-managed
+ * The wrapper remains the primary integration path for Valence-managed
  * terminals because it can synthesize richer lifecycle events from Codex's
  * notify callback and session log (task_started, approval_request,
  * exec_command_begin) without mutating project-local CODEX_HOME state.

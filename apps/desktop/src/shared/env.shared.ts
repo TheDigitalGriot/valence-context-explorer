@@ -21,7 +21,7 @@ const envSchema = z.object({
 	DESKTOP_NOTIFICATIONS_PORT: z.coerce.number().default(51741),
 	ELECTRIC_PORT: z.coerce.number().default(5133),
 	// Workspace name for instance isolation
-	SUPERSET_WORKSPACE_NAME: z.string().default("superset"),
+	VALENCE_WORKSPACE_NAME: z.string().default("valence"),
 });
 
 /**
@@ -36,12 +36,12 @@ export const env = envSchema.parse({
 	DESKTOP_VITE_PORT: process.env.DESKTOP_VITE_PORT,
 	DESKTOP_NOTIFICATIONS_PORT: process.env.DESKTOP_NOTIFICATIONS_PORT,
 	ELECTRIC_PORT: process.env.ELECTRIC_PORT,
-	SUPERSET_WORKSPACE_NAME: process.env.SUPERSET_WORKSPACE_NAME,
+	VALENCE_WORKSPACE_NAME: process.env.VALENCE_WORKSPACE_NAME,
 });
 
 export function getWorkspaceName(): string | undefined {
-	const name = env.SUPERSET_WORKSPACE_NAME;
-	if (name === "superset") return undefined;
+	const name = env.VALENCE_WORKSPACE_NAME;
+	if (name === "valence") return undefined;
 	return name
 		.toLowerCase()
 		.replace(/[^a-z0-9-]/g, "-")

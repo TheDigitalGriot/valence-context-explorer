@@ -1,7 +1,7 @@
-import { Button } from "@superset/ui/button";
-import { Input } from "@superset/ui/input";
-import { Tabs, TabsList, TabsTrigger } from "@superset/ui/tabs";
-import { cn } from "@superset/ui/utils";
+import { Button } from "@valence/ui/button";
+import { Input } from "@valence/ui/input";
+import { Tabs, TabsList, TabsTrigger } from "@valence/ui/tabs";
+import { cn } from "@valence/ui/utils";
 import { useRef, useState } from "react";
 import {
 	HiOutlineMagnifyingGlass,

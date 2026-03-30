@@ -4,7 +4,7 @@ import {
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
+} from "@valence/ui/context-menu";
 import {
 	LuFolderOpen,
 	LuFolderPlus,

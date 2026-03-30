@@ -1,4 +1,4 @@
-import { Command, CommandInput, CommandList } from "@superset/ui/command";
+import { Command, CommandInput, CommandList } from "@valence/ui/command";
 import type { WorkspaceHostTarget } from "renderer/lib/v2-workspace-host";
 import type { DashboardNewWorkspaceTab } from "../../../../DashboardNewWorkspaceDraftContext";
 import { BranchesGroup } from "../BranchesGroup";

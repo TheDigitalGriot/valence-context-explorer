@@ -13,7 +13,7 @@ import {
 	JwtApiAuthProvider,
 	LocalGitCredentialProvider,
 	PskHostAuthProvider,
-} from "@superset/host-service";
+} from "@valence/host-service";
 
 const authToken = process.env.AUTH_TOKEN;
 const cloudApiUrl = process.env.CLOUD_API_URL;

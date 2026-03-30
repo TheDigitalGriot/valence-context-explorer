@@ -1,5 +1,5 @@
-import { MessageResponse } from "@superset/ui/ai-elements/message";
-import { Switch } from "@superset/ui/switch";
+import { MessageResponse } from "@valence/ui/ai-elements/message";
+import { Switch } from "@valence/ui/switch";
 
 interface MarkdownToggleContentProps {
 	toggleId: string;

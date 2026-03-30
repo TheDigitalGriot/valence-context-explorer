@@ -1,9 +1,9 @@
-import { db } from "@superset/db/client";
+import { db } from "@valence/db/client";
 import {
 	githubInstallations,
 	githubPullRequests,
 	githubRepositories,
-} from "@superset/db/schema";
+} from "@valence/db/schema";
 import { Receiver } from "@upstash/qstash";
 import { subDays } from "date-fns";
 import { eq } from "drizzle-orm";

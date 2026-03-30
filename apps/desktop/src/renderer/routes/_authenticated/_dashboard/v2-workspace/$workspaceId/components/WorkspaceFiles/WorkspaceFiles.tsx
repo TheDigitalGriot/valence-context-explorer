@@ -3,7 +3,7 @@ import {
 	useWorkspaceFsEventBridge,
 	useWorkspaceFsEvents,
 	workspaceTrpc,
-} from "@superset/workspace-client";
+} from "@valence/workspace-client";
 import { useCallback, useMemo, useState } from "react";
 import {
 	ROW_HEIGHT,

@@ -56,7 +56,7 @@ describe("buildPromptAgentLaunchRequest", () => {
 		const request = buildPromptAgentLaunchRequest({
 			workspaceId: "workspace-1",
 			source: "new-workspace",
-			selectedAgent: "superset-chat",
+			selectedAgent: "valence-chat",
 			prompt: "hello",
 			initialFiles: [
 				{
@@ -71,7 +71,7 @@ describe("buildPromptAgentLaunchRequest", () => {
 
 		expect(request).toMatchObject({
 			kind: "chat",
-			agentType: "superset-chat",
+			agentType: "valence-chat",
 			chat: {
 				initialPrompt: "hello",
 				initialFiles: [
@@ -101,14 +101,14 @@ describe("buildTaskAgentLaunchRequest", () => {
 		expect(request).toBeNull();
 	});
 
-	test("uses the chat template configured for superset chat", () => {
+	test("uses the chat template configured for valence chat", () => {
 		const configsById = indexResolvedAgentConfigs(
 			resolveAgentConfigs({
 				overrideEnvelope: {
 					version: 1,
 					presets: [
 						{
-							id: "superset-chat",
+							id: "valence-chat",
 							taskPromptTemplate: "Chat {{title}} / {{slug}}",
 						},
 					],
@@ -118,7 +118,7 @@ describe("buildTaskAgentLaunchRequest", () => {
 		const request = buildTaskAgentLaunchRequest({
 			workspaceId: "workspace-1",
 			source: "open-in-workspace",
-			selectedAgent: "superset-chat",
+			selectedAgent: "valence-chat",
 			task: TASK,
 			autoRun: true,
 			configsById,

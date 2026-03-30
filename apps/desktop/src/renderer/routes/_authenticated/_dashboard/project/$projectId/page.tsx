@@ -1,22 +1,22 @@
-import { Button } from "@superset/ui/button";
-import { Checkbox } from "@superset/ui/checkbox";
+import { Button } from "@valence/ui/button";
+import { Checkbox } from "@valence/ui/checkbox";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
+} from "@valence/ui/collapsible";
 import {
 	Command,
 	CommandEmpty,
 	CommandInput,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { toast } from "@superset/ui/sonner";
-import { Textarea } from "@superset/ui/textarea";
+} from "@valence/ui/command";
+import { Input } from "@valence/ui/input";
+import { Label } from "@valence/ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "@valence/ui/popover";
+import { toast } from "@valence/ui/sonner";
+import { Textarea } from "@valence/ui/textarea";
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -328,7 +328,7 @@ function ProjectPage() {
 										These commands run automatically when a workspace is
 										created.{" "}
 										<a
-											href="https://docs.superset.sh/setup-teardown-scripts"
+											href="https://docs.valence.sh/setup-teardown-scripts"
 											target="_blank"
 											rel="noopener noreferrer"
 											className="group inline-flex items-center gap-0.5 underline underline-offset-2 hover:text-foreground transition-colors"
@@ -615,13 +615,13 @@ function ProjectPage() {
 													<div className="flex flex-wrap items-center gap-1.5 border-t px-1 pt-2 text-[11px] text-muted-foreground">
 														<span className="mr-1">Variables</span>
 														<span className="rounded bg-muted px-1.5 py-0.5 font-mono">
-															$SUPERSET_ROOT_PATH
+															$VALENCE_ROOT_PATH
 														</span>
 														<span className="rounded bg-muted px-1.5 py-0.5 font-mono">
-															$SUPERSET_WORKSPACE_PATH
+															$VALENCE_WORKSPACE_PATH
 														</span>
 														<span className="rounded bg-muted px-1.5 py-0.5 font-mono">
-															$SUPERSET_WORKSPACE_NAME
+															$VALENCE_WORKSPACE_NAME
 														</span>
 													</div>
 												</div>

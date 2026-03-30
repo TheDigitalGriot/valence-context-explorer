@@ -138,4 +138,4 @@ export class PtySubprocessFrameDecoder {
  * Uses the private-use OSC 777 code to avoid conflicts with VS Code
  * (OSC 133), iTerm2 (OSC 1337), or Warp (OSC 9001).
  */
-export const SHELL_READY_MARKER = "\x1b]777;superset-shell-ready\x07";
+export const SHELL_READY_MARKER = "\x1b]777;valence-shell-ready\x07";

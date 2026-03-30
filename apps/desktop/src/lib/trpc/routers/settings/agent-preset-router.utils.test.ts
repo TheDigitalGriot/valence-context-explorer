@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { getBuiltinAgentDefinition } from "@superset/shared/agent-catalog";
+import { getBuiltinAgentDefinition } from "@valence/shared/agent-catalog";
 import { TRPCError } from "@trpc/server";
 import {
 	normalizeAgentPresetPatch,
@@ -43,7 +43,7 @@ describe("normalizeAgentPresetPatch", () => {
 
 	test("normalizes empty chat model to null", () => {
 		const patch = normalizeAgentPresetPatch({
-			definition: getBuiltinAgentDefinition("superset-chat"),
+			definition: getBuiltinAgentDefinition("valence-chat"),
 			patch: {
 				model: "   ",
 			},
@@ -57,7 +57,7 @@ describe("normalizeAgentPresetPatch", () => {
 	test("rejects unknown task template variables", () => {
 		expect(() =>
 			normalizeAgentPresetPatch({
-				definition: getBuiltinAgentDefinition("superset-chat"),
+				definition: getBuiltinAgentDefinition("valence-chat"),
 				patch: {
 					taskPromptTemplate: "Hello {{unknown}}",
 				},
@@ -68,7 +68,7 @@ describe("normalizeAgentPresetPatch", () => {
 	test("rejects patches that do not apply to the agent kind", () => {
 		expect(() =>
 			normalizeAgentPresetPatch({
-				definition: getBuiltinAgentDefinition("superset-chat"),
+				definition: getBuiltinAgentDefinition("valence-chat"),
 				patch: {
 					command: "codex",
 				},

@@ -1,6 +1,6 @@
 "use client";
 
-import { ModelSelectorLogo } from "@superset/ui/ai-elements/model-selector";
+import { ModelSelectorLogo } from "@valence/ui/ai-elements/model-selector";
 import { ChevronDown } from "lucide-react";
 import { type MockModel, mockModels } from "../../../../mock-data";
 import { ResponsiveDropdown } from "../../../ResponsiveDropdown";

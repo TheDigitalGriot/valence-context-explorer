@@ -6,8 +6,8 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@superset/ui/card";
-import { Skeleton } from "@superset/ui/skeleton";
+} from "@valence/ui/card";
+import { Skeleton } from "@valence/ui/skeleton";
 
 interface WeekData {
 	count: number;

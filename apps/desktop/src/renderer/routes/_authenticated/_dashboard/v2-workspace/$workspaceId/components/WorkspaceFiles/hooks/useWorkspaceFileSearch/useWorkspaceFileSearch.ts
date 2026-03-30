@@ -1,4 +1,4 @@
-import { workspaceTrpc } from "@superset/workspace-client";
+import { workspaceTrpc } from "@valence/workspace-client";
 import { useDebouncedValue } from "renderer/hooks/useDebouncedValue";
 import { SEARCH_RESULT_LIMIT } from "renderer/screens/main/components/WorkspaceView/RightSidebar/FilesView/constants";
 

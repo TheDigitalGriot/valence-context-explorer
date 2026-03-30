@@ -1,7 +1,7 @@
 import type Anthropic from "@anthropic-ai/sdk";
 import type { Client } from "@modelcontextprotocol/sdk/client/index.js";
-import type { McpContext } from "@superset/mcp/auth";
-import { createInMemoryMcpClient } from "@superset/mcp/in-memory";
+import type { McpContext } from "@valence/mcp/auth";
+import { createInMemoryMcpClient } from "@valence/mcp/in-memory";
 import { posthog } from "@/lib/analytics";
 
 interface McpTool {
@@ -11,7 +11,7 @@ interface McpTool {
 }
 
 // Uses InMemoryTransport — no HTTP, no forgeable headers.
-export async function createSupersetMcpClient({
+export async function createValenceMcpClient({
 	organizationId,
 	userId,
 }: {

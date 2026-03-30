@@ -1,4 +1,4 @@
-import type { FsEntry, FsEntryKind } from "@superset/workspace-fs/host";
+import type { FsEntry, FsEntryKind } from "@valence/workspace-fs/host";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { workspaceTrpc } from "../../workspace-trpc";
 import { useWorkspaceFsEvents } from "../useWorkspaceFsEvents";

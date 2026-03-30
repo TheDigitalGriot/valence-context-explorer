@@ -7,12 +7,12 @@ import {
 	ContextMenuSubContent,
 	ContextMenuSubTrigger,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
+} from "@valence/ui/context-menu";
 import {
 	HoverCard,
 	HoverCardContent,
 	HoverCardTrigger,
-} from "@superset/ui/hover-card";
+} from "@valence/ui/hover-card";
 import { useMemo, useRef, useState } from "react";
 import {
 	LuArrowRightLeft,

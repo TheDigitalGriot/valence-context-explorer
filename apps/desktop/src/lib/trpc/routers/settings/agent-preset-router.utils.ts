@@ -1,4 +1,4 @@
-import type { AgentDefinition } from "@superset/shared/agent-catalog";
+import type { AgentDefinition } from "@valence/shared/agent-catalog";
 import { TRPCError } from "@trpc/server";
 import type { AgentPresetPatch } from "shared/utils/agent-settings";
 import { validateTaskPromptTemplate } from "shared/utils/agent-settings";

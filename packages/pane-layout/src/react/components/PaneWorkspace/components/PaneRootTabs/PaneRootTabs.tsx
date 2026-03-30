@@ -1,11 +1,11 @@
-import { Button } from "@superset/ui/button";
+import { Button } from "@valence/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { cn } from "@superset/ui/lib/utils";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@valence/ui/dropdown-menu";
+import { cn } from "@valence/ui/lib/utils";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@valence/ui/tooltip";
 import { PlusIcon } from "lucide-react";
 import {
 	type ReactNode,

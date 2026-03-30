@@ -1,6 +1,6 @@
 "use client";
 
-import { getInitials } from "@superset/shared/names";
+import { getInitials } from "@valence/shared/names";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -10,23 +10,23 @@ import {
 	AlertDialogFooter,
 	AlertDialogHeader,
 	AlertDialogTitle,
-} from "@superset/ui/alert-dialog";
-import { Avatar, AvatarFallback, AvatarImage } from "@superset/ui/avatar";
-import { Button } from "@superset/ui/button";
+} from "@valence/ui/alert-dialog";
+import { Avatar, AvatarFallback, AvatarImage } from "@valence/ui/avatar";
+import { Button } from "@valence/ui/button";
 import {
 	Card,
 	CardContent,
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@superset/ui/card";
+} from "@valence/ui/card";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { toast } from "@superset/ui/sonner";
+} from "@valence/ui/dropdown-menu";
+import { toast } from "@valence/ui/sonner";
 import {
 	Table,
 	TableBody,
@@ -34,7 +34,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@superset/ui/table";
+} from "@valence/ui/table";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { formatDistanceToNow } from "date-fns";
 import { useState } from "react";

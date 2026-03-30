@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/lib/utils";
+import { cn } from "@valence/ui/lib/utils";
 import type { AppMetrics, UsageValues } from "../../types";
 import { formatCpu, formatMemory } from "../../utils/formatters";
 import {
@@ -47,7 +47,7 @@ export function AppResourceSection({
 							appClasses.labelClass,
 						)}
 					>
-						Superset App
+						Valence App
 					</span>
 					<UsageSeverityBadge severity={appSeverity} />
 				</div>

@@ -1,14 +1,14 @@
-import { Button } from "@superset/ui/button";
+import { Button } from "@valence/ui/button";
 import {
 	ContextMenu,
 	ContextMenuContent,
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
-import { Input } from "@superset/ui/input";
-import { cn } from "@superset/ui/lib/utils";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@valence/ui/context-menu";
+import { Input } from "@valence/ui/input";
+import { cn } from "@valence/ui/lib/utils";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@valence/ui/tooltip";
 import { PlusIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 import type { StoreApi } from "zustand/vanilla";

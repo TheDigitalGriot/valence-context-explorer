@@ -2,7 +2,7 @@
 
 import { oauthProviderClient } from "@better-auth/oauth-provider/client";
 import { stripeClient } from "@better-auth/stripe/client";
-import type { auth } from "@superset/auth/server";
+import type { auth } from "@valence/auth/server";
 import {
 	apiKeyClient,
 	customSessionClient,

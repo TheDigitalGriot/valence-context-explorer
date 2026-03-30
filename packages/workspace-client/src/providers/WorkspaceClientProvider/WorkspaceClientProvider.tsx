@@ -1,6 +1,6 @@
-import type { WorkspaceFilesystemServerMessage } from "@superset/host-service/filesystem";
-import { buildWorkspaceFilesystemEventsPath } from "@superset/host-service/filesystem";
-import type { FsWatchEvent } from "@superset/workspace-fs/host";
+import type { WorkspaceFilesystemServerMessage } from "@valence/host-service/filesystem";
+import { buildWorkspaceFilesystemEventsPath } from "@valence/host-service/filesystem";
+import type { FsWatchEvent } from "@valence/workspace-fs/host";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { createContext, type ReactNode, useContext } from "react";

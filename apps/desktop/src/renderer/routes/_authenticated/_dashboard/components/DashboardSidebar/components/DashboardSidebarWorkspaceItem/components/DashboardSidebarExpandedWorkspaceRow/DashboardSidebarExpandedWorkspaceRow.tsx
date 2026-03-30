@@ -1,5 +1,5 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@valence/ui/tooltip";
+import { cn } from "@valence/ui/utils";
 import { type ComponentPropsWithoutRef, forwardRef, useMemo } from "react";
 import { HiMiniXMark } from "react-icons/hi2";
 import { HotkeyTooltipContent } from "renderer/components/HotkeyTooltipContent";

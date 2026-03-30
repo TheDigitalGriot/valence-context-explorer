@@ -1,8 +1,8 @@
 import { createHmac } from "node:crypto";
-import { auth } from "@superset/auth/server";
-import { db } from "@superset/db/client";
-import { integrationConnections, usersSlackUsers } from "@superset/db/schema";
-import { findOrgMembership } from "@superset/db/utils";
+import { auth } from "@valence/auth/server";
+import { db } from "@valence/db/client";
+import { integrationConnections, usersSlackUsers } from "@valence/db/schema";
+import { findOrgMembership } from "@valence/db/utils";
 import { and, eq } from "drizzle-orm";
 import { headers } from "next/headers";
 import { env } from "@/env";
@@ -57,7 +57,7 @@ export async function GET(request: Request) {
 
 	if (!connection) {
 		return new Response(
-			"Slack workspace not connected to any Superset organization.",
+			"Slack workspace not connected to any Valence organization.",
 			{ status: 404 },
 		);
 	}

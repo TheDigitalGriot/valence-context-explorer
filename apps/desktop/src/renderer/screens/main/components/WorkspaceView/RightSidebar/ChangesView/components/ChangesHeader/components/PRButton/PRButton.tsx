@@ -1,13 +1,13 @@
-import type { GitHubStatus } from "@superset/local-db";
+import type { GitHubStatus } from "@valence/local-db";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuLabel,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { toast } from "@superset/ui/sonner";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@valence/ui/dropdown-menu";
+import { toast } from "@valence/ui/sonner";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@valence/ui/tooltip";
 import {
 	VscChevronDown,
 	VscGitMerge,

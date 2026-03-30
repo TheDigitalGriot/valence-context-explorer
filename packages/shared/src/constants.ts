@@ -4,36 +4,36 @@ export type AuthProvider = (typeof AUTH_PROVIDERS)[number];
 
 // Deep link protocol schemes (used for desktop OAuth callbacks)
 export const PROTOCOL_SCHEMES = {
-	DEV: "superset-dev",
-	PROD: "superset",
+	DEV: "valence-dev",
+	PROD: "valence",
 } as const;
 
 // Company
 export const COMPANY = {
-	NAME: "Superset",
-	DOMAIN: "superset.sh",
-	EMAIL_DOMAIN: "@superset.sh",
-	GITHUB_URL: "https://github.com/superset-sh/superset",
-	DOCS_URL: process.env.NEXT_PUBLIC_DOCS_URL || "https://docs.superset.sh",
-	MARKETING_URL: process.env.NEXT_PUBLIC_MARKETING_URL || "https://superset.sh",
-	TERMS_URL: `${process.env.NEXT_PUBLIC_MARKETING_URL || "https://superset.sh"}/terms`,
+	NAME: "Valence",
+	DOMAIN: "valence.sh",
+	EMAIL_DOMAIN: "@valence.sh",
+	GITHUB_URL: "https://github.com/valence-sh/valence",
+	DOCS_URL: process.env.NEXT_PUBLIC_DOCS_URL || "https://docs.valence.sh",
+	MARKETING_URL: process.env.NEXT_PUBLIC_MARKETING_URL || "https://valence.sh",
+	TERMS_URL: `${process.env.NEXT_PUBLIC_MARKETING_URL || "https://valence.sh"}/terms`,
 	PRIVACY_URL:
-		(process.env.NEXT_PUBLIC_MARKETING_URL || "https://superset.sh") +
+		(process.env.NEXT_PUBLIC_MARKETING_URL || "https://valence.sh") +
 		"/privacy",
 	CHANGELOG_URL:
-		(process.env.NEXT_PUBLIC_MARKETING_URL || "https://superset.sh") +
+		(process.env.NEXT_PUBLIC_MARKETING_URL || "https://valence.sh") +
 		"/changelog",
-	X_URL: "https://x.com/superset_sh",
-	MAIL_TO: "mailto:founders@superset.sh",
-	REPORT_ISSUE_URL: "https://github.com/superset-sh/superset/issues/new",
+	X_URL: "https://x.com/valence_sh",
+	MAIL_TO: "mailto:founders@valence.sh",
+	REPORT_ISSUE_URL: "https://github.com/valence-sh/valence/issues/new",
 	DISCORD_URL: "https://discord.gg/cZeD9WYcV7",
 } as const;
 
 // Theme
-export const THEME_STORAGE_KEY = "superset-theme";
+export const THEME_STORAGE_KEY = "valence-theme";
 
 // Download URLs
-export const DOWNLOAD_URL_MAC_ARM64 = `${COMPANY.GITHUB_URL}/releases/latest/download/Superset-arm64.dmg`;
+export const DOWNLOAD_URL_MAC_ARM64 = `${COMPANY.GITHUB_URL}/releases/latest/download/Valence-arm64.dmg`;
 
 // Auth token configuration
 export const TOKEN_CONFIG = {
@@ -46,7 +46,7 @@ export const TOKEN_CONFIG = {
 } as const;
 
 // PostHog
-export const POSTHOG_COOKIE_NAME = "superset";
+export const POSTHOG_COOKIE_NAME = "valence";
 
 export const FEATURE_FLAGS = {
 	/** Gates access to experimental Electric SQL tasks feature. */

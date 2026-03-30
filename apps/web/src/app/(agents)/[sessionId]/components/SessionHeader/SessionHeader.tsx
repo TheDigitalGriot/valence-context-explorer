@@ -1,7 +1,7 @@
 "use client";
 
-import { Badge } from "@superset/ui/badge";
-import { Button } from "@superset/ui/button";
+import { Badge } from "@valence/ui/badge";
+import { Button } from "@valence/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import type { MockSession } from "../../../mock-data";

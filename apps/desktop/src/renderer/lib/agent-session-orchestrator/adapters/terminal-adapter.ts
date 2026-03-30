@@ -1,4 +1,4 @@
-import type { AgentLaunchRequest } from "@superset/shared/agent-launch";
+import type { AgentLaunchRequest } from "@valence/shared/agent-launch";
 import { launchCommandInPane } from "renderer/lib/terminal/launch-command";
 import type { AgentSessionLaunchContext, LaunchResultPayload } from "../types";
 
@@ -27,17 +27,17 @@ async function writeTaskPromptFile(
 		throw new Error(`Workspace path not found: ${workspaceId}`);
 	}
 
-	const supersetDirectory = joinAbsolutePath(
+	const valenceDirectory = joinAbsolutePath(
 		workspace.worktreePath,
-		".superset",
+		".valence",
 	);
 	await electronTrpcClient.filesystem.createDirectory.mutate({
 		workspaceId,
-		absolutePath: supersetDirectory,
+		absolutePath: valenceDirectory,
 	});
 	await electronTrpcClient.filesystem.writeFile.mutate({
 		workspaceId,
-		absolutePath: joinAbsolutePath(supersetDirectory, baseName),
+		absolutePath: joinAbsolutePath(valenceDirectory, baseName),
 		content,
 		encoding: "utf-8",
 	});
@@ -109,7 +109,7 @@ async function writeAttachmentFiles(
 
 	const attachmentsDirectory = joinAbsolutePath(
 		workspace.worktreePath,
-		".superset/attachments",
+		".valence/attachments",
 	);
 	await electronTrpcClient.filesystem.createDirectory.mutate({
 		workspaceId,
@@ -173,7 +173,7 @@ async function writeAttachmentFiles(
 		});
 
 		// Return relative path from workspace root
-		writtenPaths.push(`.superset/attachments/${fileName}`);
+		writtenPaths.push(`.valence/attachments/${fileName}`);
 	}
 
 	return writtenPaths;

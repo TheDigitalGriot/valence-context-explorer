@@ -1,4 +1,4 @@
-import { Button } from "@superset/ui/button";
+import { Button } from "@valence/ui/button";
 import { XIcon } from "lucide-react";
 import {
 	PRIcon,

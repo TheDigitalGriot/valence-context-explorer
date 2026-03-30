@@ -1,6 +1,6 @@
-import type { UseChatDisplayReturn } from "@superset/chat/client";
-import { Message, MessageContent } from "@superset/ui/ai-elements/message";
-import { ShimmerLabel } from "@superset/ui/ai-elements/shimmer-label";
+import type { UseChatDisplayReturn } from "@valence/chat/client";
+import { Message, MessageContent } from "@valence/ui/ai-elements/message";
+import { ShimmerLabel } from "@valence/ui/ai-elements/shimmer-label";
 import { FileSearchIcon } from "lucide-react";
 import { type ReactNode, useCallback } from "react";
 import { StreamingMessageText } from "renderer/components/Chat/ChatInterface/components/MessagePartsRenderer/components/StreamingMessageText";

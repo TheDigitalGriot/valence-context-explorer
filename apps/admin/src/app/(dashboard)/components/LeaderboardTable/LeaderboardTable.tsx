@@ -1,15 +1,15 @@
 "use client";
 
-import { getInitials } from "@superset/shared/names";
-import { Avatar, AvatarFallback, AvatarImage } from "@superset/ui/avatar";
+import { getInitials } from "@valence/shared/names";
+import { Avatar, AvatarFallback, AvatarImage } from "@valence/ui/avatar";
 import {
 	Card,
 	CardContent,
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@superset/ui/card";
-import { Skeleton } from "@superset/ui/skeleton";
+} from "@valence/ui/card";
+import { Skeleton } from "@valence/ui/skeleton";
 import {
 	Table,
 	TableBody,
@@ -17,7 +17,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@superset/ui/table";
+} from "@valence/ui/table";
 import type { ReactNode } from "react";
 
 interface LeaderboardEntry {

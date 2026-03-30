@@ -1,5 +1,5 @@
-import { db } from "@superset/db/client";
-import { chatSessions } from "@superset/db/schema";
+import { db } from "@valence/db/client";
+import { chatSessions } from "@valence/db/schema";
 import { and, eq, isNull } from "drizzle-orm";
 import { getDurableStream, requireAuth } from "../lib";
 

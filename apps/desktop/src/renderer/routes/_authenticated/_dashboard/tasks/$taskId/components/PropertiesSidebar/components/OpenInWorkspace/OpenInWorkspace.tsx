@@ -1,14 +1,14 @@
-import type { AgentLaunchRequest } from "@superset/shared/agent-launch";
-import { Button } from "@superset/ui/button";
+import type { AgentLaunchRequest } from "@valence/shared/agent-launch";
+import { Button } from "@valence/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { Label } from "@superset/ui/label";
-import { toast } from "@superset/ui/sonner";
-import { Switch } from "@superset/ui/switch";
+} from "@valence/ui/dropdown-menu";
+import { Label } from "@valence/ui/label";
+import { toast } from "@valence/ui/sonner";
+import { Switch } from "@valence/ui/switch";
 import { useMemo } from "react";
 import { HiArrowRight, HiChevronDown } from "react-icons/hi2";
 import { AgentSelect } from "renderer/components/AgentSelect";

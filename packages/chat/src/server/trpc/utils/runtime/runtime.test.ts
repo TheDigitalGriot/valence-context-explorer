@@ -121,7 +121,7 @@ function createRuntimeForTitleTest(options?: {
 }
 
 describe("runtime error propagation", () => {
-	it("restores Superset session id after Mastra thread events", () => {
+	it("restores Valence session id after Mastra thread events", () => {
 		const { runtime, emit } = createRuntimeForTest();
 		const setSessionId = {
 			calls: [] as string[],

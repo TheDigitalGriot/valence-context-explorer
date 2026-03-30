@@ -8,14 +8,14 @@ import {
 describe("pull-request-url", () => {
 	test("normalizes GitHub remote URLs", () => {
 		expect(
-			normalizeGitHubRepoUrl("https://github.com/superset-sh/superset.git"),
-		).toBe("https://github.com/superset-sh/superset");
-		expect(normalizeGitHubRepoUrl("git@github.com:Kitenite/superset.git")).toBe(
-			"https://github.com/Kitenite/superset",
+			normalizeGitHubRepoUrl("https://github.com/valence-sh/valence.git"),
+		).toBe("https://github.com/valence-sh/valence");
+		expect(normalizeGitHubRepoUrl("git@github.com:Kitenite/valence.git")).toBe(
+			"https://github.com/Kitenite/valence",
 		);
 		expect(
-			normalizeGitHubRepoUrl("ssh://git@github.com/Kitenite/superset.git"),
-		).toBe("https://github.com/Kitenite/superset");
+			normalizeGitHubRepoUrl("ssh://git@github.com/Kitenite/valence.git"),
+		).toBe("https://github.com/Kitenite/valence");
 	});
 
 	test("parses upstream refs with slashes in branch names", () => {
@@ -28,13 +28,13 @@ describe("pull-request-url", () => {
 	test("builds compare URLs for fork branches", () => {
 		expect(
 			buildPullRequestCompareUrl({
-				baseRepoUrl: "https://github.com/superset-sh/superset.git",
+				baseRepoUrl: "https://github.com/valence-sh/valence.git",
 				baseBranch: "main",
 				headRepoOwner: "Kitenite",
 				headBranch: "kitenite/halved-position",
 			}),
 		).toBe(
-			"https://github.com/superset-sh/superset/compare/main...Kitenite:kitenite/halved-position?expand=1",
+			"https://github.com/valence-sh/valence/compare/main...Kitenite:kitenite/halved-position?expand=1",
 		);
 	});
 });

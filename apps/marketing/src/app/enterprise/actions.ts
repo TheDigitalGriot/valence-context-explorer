@@ -1,6 +1,6 @@
 "use server";
 
-import { EnterpriseInquiryEmail } from "@superset/email/emails/enterprise-inquiry";
+import { EnterpriseInquiryEmail } from "@valence/email/emails/enterprise-inquiry";
 import { Resend } from "resend";
 import { env } from "@/env";
 
@@ -72,8 +72,8 @@ export async function submitEnterpriseInquiry(data: EnterpriseFormData) {
 
 	try {
 		const { error } = await resend.emails.send({
-			from: "Superset <noreply@superset.sh>",
-			to: "founders@superset.sh",
+			from: "Valence <noreply@valence.sh>",
+			to: "founders@valence.sh",
 			replyTo: sanitizedEmail,
 			subject: `Enterprise inquiry from ${sanitizedName} (${sanitizedCompany})`,
 			react: EnterpriseInquiryEmail({

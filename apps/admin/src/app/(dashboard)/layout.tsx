@@ -1,5 +1,5 @@
-import { auth } from "@superset/auth/server";
-import { COMPANY } from "@superset/shared/constants";
+import { auth } from "@valence/auth/server";
+import { COMPANY } from "@valence/shared/constants";
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -7,13 +7,13 @@ import {
 	BreadcrumbList,
 	BreadcrumbPage,
 	BreadcrumbSeparator,
-} from "@superset/ui/breadcrumb";
-import { Separator } from "@superset/ui/separator";
+} from "@valence/ui/breadcrumb";
+import { Separator } from "@valence/ui/separator";
 import {
 	SidebarInset,
 	SidebarProvider,
 	SidebarTrigger,
-} from "@superset/ui/sidebar";
+} from "@valence/ui/sidebar";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -56,7 +56,7 @@ export default async function DashboardLayout({
 					<Breadcrumb>
 						<BreadcrumbList>
 							<BreadcrumbItem className="hidden md:block">
-								<BreadcrumbLink href="/">Superset</BreadcrumbLink>
+								<BreadcrumbLink href="/">Valence</BreadcrumbLink>
 							</BreadcrumbItem>
 							<BreadcrumbSeparator className="hidden md:block" />
 							<BreadcrumbItem>

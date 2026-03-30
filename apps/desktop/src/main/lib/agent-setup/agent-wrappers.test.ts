@@ -12,12 +12,12 @@ import path from "node:path";
 
 const TEST_ROOT = path.join(
 	realOs.tmpdir(),
-	`superset-agent-wrappers-${process.pid}-${Date.now()}`,
+	`valence-agent-wrappers-${process.pid}-${Date.now()}`,
 );
-const TEST_BIN_DIR = path.join(TEST_ROOT, "superset", "bin");
-const TEST_HOOKS_DIR = path.join(TEST_ROOT, "superset", "hooks");
-const TEST_ZSH_DIR = path.join(TEST_ROOT, "superset", "zsh");
-const TEST_BASH_DIR = path.join(TEST_ROOT, "superset", "bash");
+const TEST_BIN_DIR = path.join(TEST_ROOT, "valence", "bin");
+const TEST_HOOKS_DIR = path.join(TEST_ROOT, "valence", "hooks");
+const TEST_ZSH_DIR = path.join(TEST_ROOT, "valence", "zsh");
+const TEST_BASH_DIR = path.join(TEST_ROOT, "valence", "bash");
 const TEST_OPENCODE_CONFIG_DIR = path.join(TEST_HOOKS_DIR, "opencode");
 const TEST_OPENCODE_PLUGIN_DIR = path.join(TEST_OPENCODE_CONFIG_DIR, "plugin");
 let mockedHomeDir = path.join(TEST_ROOT, "home");
@@ -31,7 +31,7 @@ mock.module("shared/env.shared", () => ({
 
 mock.module("./notify-hook", () => ({
 	NOTIFY_SCRIPT_NAME: "notify.sh",
-	NOTIFY_SCRIPT_MARKER: "# Superset agent notification hook",
+	NOTIFY_SCRIPT_MARKER: "# Valence agent notification hook",
 	getNotifyScriptPath: () => path.join(TEST_HOOKS_DIR, "notify.sh"),
 	getNotifyScriptContent: () => "#!/bin/bash\nexit 0\n",
 	createNotifyScript: () => {},
@@ -83,35 +83,35 @@ describe("reconcileManagedEntries", () => {
 		const result = reconcileManagedEntries({
 			current: [
 				"/usr/local/bin/custom-hook Start",
-				"/tmp/.superset-old/hooks/notify.sh Start",
+				"/tmp/.valence-old/hooks/notify.sh Start",
 			],
-			desired: ["/tmp/.superset-new/hooks/notify.sh Start"],
-			isManaged: (entry: string) => entry.includes("/.superset-"),
+			desired: ["/tmp/.valence-new/hooks/notify.sh Start"],
+			isManaged: (entry: string) => entry.includes("/.valence-"),
 			isEquivalent: (entry: string, desired: string) => entry === desired,
 		});
 
 		expect(result.entries).toEqual([
 			"/usr/local/bin/custom-hook Start",
-			"/tmp/.superset-new/hooks/notify.sh Start",
+			"/tmp/.valence-new/hooks/notify.sh Start",
 		]);
 		expect(result.replacedManagedEntries).toEqual([
-			"/tmp/.superset-old/hooks/notify.sh Start",
+			"/tmp/.valence-old/hooks/notify.sh Start",
 		]);
 	});
 
 	it("reconciles edited managed entries even when a managed hook already exists", () => {
 		const result = reconcileManagedEntries({
-			current: ["/tmp/.superset-current/hooks/notify.sh Start --debug"],
-			desired: ["/tmp/.superset-current/hooks/notify.sh Start"],
-			isManaged: (entry: string) => entry.includes("/.superset-"),
+			current: ["/tmp/.valence-current/hooks/notify.sh Start --debug"],
+			desired: ["/tmp/.valence-current/hooks/notify.sh Start"],
+			isManaged: (entry: string) => entry.includes("/.valence-"),
 			isEquivalent: (entry: string, desired: string) => entry === desired,
 		});
 
 		expect(result.entries).toEqual([
-			"/tmp/.superset-current/hooks/notify.sh Start",
+			"/tmp/.valence-current/hooks/notify.sh Start",
 		]);
 		expect(result.replacedManagedEntries).toEqual([
-			"/tmp/.superset-current/hooks/notify.sh Start --debug",
+			"/tmp/.valence-current/hooks/notify.sh Start --debug",
 		]);
 	});
 });
@@ -127,10 +127,10 @@ describe("agent-wrappers copilot", () => {
 		rmSync(TEST_ROOT, { recursive: true, force: true });
 	});
 
-	it("rewrites stale superset-notify.json with current hook path", () => {
+	it("rewrites stale valence-notify.json with current hook path", () => {
 		const projectDir = path.join(TEST_ROOT, "project");
 		const hooksDir = path.join(projectDir, ".github", "hooks");
-		const hookFile = path.join(hooksDir, "superset-notify.json");
+		const hookFile = path.join(hooksDir, "valence-notify.json");
 		const gitInfoDir = path.join(projectDir, ".git", "info");
 		const realBinDir = path.join(TEST_ROOT, "real-bin");
 		const realCopilot = path.join(realBinDir, "copilot");
@@ -142,7 +142,7 @@ describe("agent-wrappers copilot", () => {
 		mkdirSync(realBinDir, { recursive: true });
 
 		writeFileSync(hookScriptPath, "#!/bin/bash\nexit 0\n", { mode: 0o755 });
-		writeFileSync(hookFile, '{"superset":"old","bash":"/tmp/old-hook.sh"}');
+		writeFileSync(hookFile, '{"valence":"old","bash":"/tmp/old-hook.sh"}');
 
 		writeFileSync(realCopilot, "#!/bin/bash\necho real-copilot\n", {
 			mode: 0o755,
@@ -161,7 +161,7 @@ describe("agent-wrappers copilot", () => {
 			env: {
 				...process.env,
 				PATH: `${TEST_BIN_DIR}:${realBinDir}:${process.env.PATH || ""}`,
-				SUPERSET_TAB_ID: "tab-1",
+				VALENCE_TAB_ID: "tab-1",
 			},
 			encoding: "utf-8",
 		});
@@ -179,28 +179,28 @@ describe("agent-wrappers copilot", () => {
 
 		expect(wrapper).toContain("export CODEX_TUI_RECORD_SESSION=1");
 		expect(wrapper).toContain('"msg":{"type":"task_started"');
-		expect(wrapper).toContain('_superset_last_turn_id=""');
-		expect(wrapper).toContain('_superset_last_approval_id=""');
-		expect(wrapper).toContain('_superset_last_exec_call_id=""');
-		expect(wrapper).toContain("_superset_approval_fallback_seq=0");
-		expect(wrapper).toContain("_superset_emit_event()");
-		expect(wrapper).toContain("_superset_turn_id=$(printf");
-		expect(wrapper).toContain("_superset_approval_id=$(printf");
-		expect(wrapper).toContain("_superset_exec_call_id=$(printf");
+		expect(wrapper).toContain('_valence_last_turn_id=""');
+		expect(wrapper).toContain('_valence_last_approval_id=""');
+		expect(wrapper).toContain('_valence_last_exec_call_id=""');
+		expect(wrapper).toContain("_valence_approval_fallback_seq=0");
+		expect(wrapper).toContain("_valence_emit_event()");
+		expect(wrapper).toContain("_valence_turn_id=$(printf");
+		expect(wrapper).toContain("_valence_approval_id=$(printf");
+		expect(wrapper).toContain("_valence_exec_call_id=$(printf");
 		expect(wrapper).toContain('awk -F\'"turn_id":"\'');
 		expect(wrapper).toContain('"msg":{"type":"exec_command_begin"');
 		expect(wrapper).toContain('_approval_request"');
 		expect(wrapper).toContain(
-			`approval_request_\${_superset_approval_fallback_seq}`,
+			`approval_request_\${_valence_approval_fallback_seq}`,
 		);
 		expect(wrapper).toContain('awk -F\'"approval_id":"\'');
-		expect(wrapper).toContain('_superset_emit_event "Start"');
-		expect(wrapper).toContain('_superset_emit_event "PermissionRequest"');
+		expect(wrapper).toContain('_valence_emit_event "Start"');
+		expect(wrapper).toContain('_valence_emit_event "PermissionRequest"');
 		expect(wrapper).toContain(
 			`"$REAL_BIN" --enable codex_hooks -c 'notify=["bash","${path.join(TEST_HOOKS_DIR, "notify.sh")}"]' "$@"`,
 		);
-		expect(wrapper).toContain("SUPERSET_CODEX_START_WATCHER_PID");
-		expect(wrapper).toContain('kill "$SUPERSET_CODEX_START_WATCHER_PID"');
+		expect(wrapper).toContain("VALENCE_CODEX_START_WATCHER_PID");
+		expect(wrapper).toContain('kill "$VALENCE_CODEX_START_WATCHER_PID"');
 
 		const execLine = buildCodexWrapperExecLine(
 			path.join(TEST_HOOKS_DIR, "notify.sh"),
@@ -232,7 +232,7 @@ exit 0
 			env: {
 				...process.env,
 				PATH: `${TEST_BIN_DIR}:${realBinDir}:${process.env.PATH || ""}`,
-				SUPERSET_TAB_ID: "tab-1",
+				VALENCE_TAB_ID: "tab-1",
 			},
 			encoding: "utf-8",
 		});
@@ -255,7 +255,7 @@ exit 0
 		const wrapperPath = path.join(TEST_BIN_DIR, "mastracode");
 		const wrapper = readFileSync(wrapperPath, "utf-8");
 
-		expect(wrapper).toContain("# Superset wrapper for mastracode");
+		expect(wrapper).toContain("# Valence wrapper for mastracode");
 		expect(wrapper).toContain('REAL_BIN="$(find_real_binary "mastracode")"');
 		expect(wrapper).toContain('exec "$REAL_BIN" "$@"');
 	});
@@ -266,15 +266,15 @@ exit 0
 		const wrapperPath = path.join(TEST_BIN_DIR, "droid");
 		const wrapper = readFileSync(wrapperPath, "utf-8");
 
-		expect(wrapper).toContain("# Superset wrapper for droid");
+		expect(wrapper).toContain("# Valence wrapper for droid");
 		expect(wrapper).toContain('REAL_BIN="$(find_real_binary "droid")"');
 		expect(wrapper).toContain('exec "$REAL_BIN" "$@"');
 	});
 
-	it("replaces stale Cursor hook commands from old superset paths", () => {
+	it("replaces stale Cursor hook commands from old valence paths", () => {
 		const cursorHooksPath = path.join(mockedHomeDir, ".cursor", "hooks.json");
-		const staleHookPath = "/tmp/.superset-old/hooks/cursor-hook.sh";
-		const currentHookPath = "/tmp/.superset-new/hooks/cursor-hook.sh";
+		const staleHookPath = "/tmp/.valence-old/hooks/cursor-hook.sh";
+		const currentHookPath = "/tmp/.valence-new/hooks/cursor-hook.sh";
 
 		mkdirSync(path.dirname(cursorHooksPath), { recursive: true });
 		writeFileSync(
@@ -322,14 +322,14 @@ exit 0
 		expect(JSON.parse(content2)).toEqual(JSON.parse(content));
 	});
 
-	it("replaces stale Gemini hook commands from old superset paths", () => {
+	it("replaces stale Gemini hook commands from old valence paths", () => {
 		const geminiSettingsPath = path.join(
 			mockedHomeDir,
 			".gemini",
 			"settings.json",
 		);
-		const staleHookPath = "/tmp/.superset-old/hooks/gemini-hook.sh";
-		const currentHookPath = "/tmp/.superset-new/hooks/gemini-hook.sh";
+		const staleHookPath = "/tmp/.valence-old/hooks/gemini-hook.sh";
+		const currentHookPath = "/tmp/.valence-new/hooks/gemini-hook.sh";
 
 		mkdirSync(path.dirname(geminiSettingsPath), { recursive: true });
 		writeFileSync(
@@ -429,14 +429,14 @@ exit 0
 		expect(JSON.parse(content2)).toEqual(JSON.parse(content));
 	});
 
-	it("replaces stale Mastra hook commands from old superset paths", () => {
+	it("replaces stale Mastra hook commands from old valence paths", () => {
 		const mastraHooksPath = path.join(
 			mockedHomeDir,
 			".mastracode",
 			"hooks.json",
 		);
-		const staleHookPath = "/tmp/.superset-old/hooks/notify.sh";
-		const currentHookPath = "/tmp/.superset-new/hooks/notify.sh";
+		const staleHookPath = "/tmp/.valence-old/hooks/notify.sh";
+		const currentHookPath = "/tmp/.valence-new/hooks/notify.sh";
 
 		mkdirSync(path.dirname(mastraHooksPath), { recursive: true });
 		writeFileSync(
@@ -490,14 +490,14 @@ exit 0
 		expect(JSON.parse(content2)).toEqual(JSON.parse(content));
 	});
 
-	it("replaces stale Droid hook commands from old superset paths", () => {
+	it("replaces stale Droid hook commands from old valence paths", () => {
 		const droidSettingsPath = path.join(
 			mockedHomeDir,
 			".factory",
 			"settings.json",
 		);
-		const staleHookPath = "/tmp/.superset-old/hooks/notify.sh";
-		const currentHookPath = "/tmp/.superset-new/hooks/notify.sh";
+		const staleHookPath = "/tmp/.valence-old/hooks/notify.sh";
+		const currentHookPath = "/tmp/.valence-new/hooks/notify.sh";
 
 		mkdirSync(path.dirname(droidSettingsPath), { recursive: true });
 		writeFileSync(
@@ -604,7 +604,7 @@ exit 0
 		writeFileSync(droidSettingsPath, invalidJson);
 
 		expect(
-			getDroidSettingsJsonContent("/tmp/.superset-new/hooks/notify.sh"),
+			getDroidSettingsJsonContent("/tmp/.valence-new/hooks/notify.sh"),
 		).toBeNull();
 
 		createDroidSettingsJson();
@@ -623,7 +623,7 @@ exit 0
 		writeFileSync(droidSettingsPath, JSON.stringify("not-an-object"));
 
 		expect(
-			getDroidSettingsJsonContent("/tmp/.superset-new/hooks/notify.sh"),
+			getDroidSettingsJsonContent("/tmp/.valence-new/hooks/notify.sh"),
 		).toBeNull();
 	});
 });
@@ -640,7 +640,7 @@ describe("agent-wrappers claude settings.json", () => {
 	});
 
 	it("creates Claude settings.json with hooks when no file exists", () => {
-		const notifyPath = "/tmp/.superset/hooks/notify.sh";
+		const notifyPath = "/tmp/.valence/hooks/notify.sh";
 		const content = getClaudeGlobalSettingsJsonContent(notifyPath);
 		expect(content).not.toBeNull();
 		if (content === null) throw new Error("Expected content");
@@ -703,7 +703,7 @@ describe("agent-wrappers claude settings.json", () => {
 			),
 		);
 
-		const notifyPath = "/tmp/.superset/hooks/notify.sh";
+		const notifyPath = "/tmp/.valence/hooks/notify.sh";
 		const content = getClaudeGlobalSettingsJsonContent(notifyPath);
 		expect(content).not.toBeNull();
 		if (content === null) throw new Error("Expected content");
@@ -736,14 +736,14 @@ describe("agent-wrappers claude settings.json", () => {
 		).toBe(true);
 	});
 
-	it("replaces stale Claude hook commands from old superset paths", () => {
+	it("replaces stale Claude hook commands from old valence paths", () => {
 		const claudeSettingsPath = path.join(
 			mockedHomeDir,
 			".claude",
 			"settings.json",
 		);
-		const staleHookPath = "/tmp/.superset-old/hooks/notify.sh";
-		const currentHookPath = "/tmp/.superset-new/hooks/notify.sh";
+		const staleHookPath = "/tmp/.valence-old/hooks/notify.sh";
+		const currentHookPath = "/tmp/.valence-new/hooks/notify.sh";
 
 		mkdirSync(path.dirname(claudeSettingsPath), { recursive: true });
 		writeFileSync(
@@ -840,7 +840,7 @@ describe("agent-wrappers claude settings.json", () => {
 		writeFileSync(claudeSettingsPath, invalidJson);
 
 		expect(
-			getClaudeGlobalSettingsJsonContent("/tmp/.superset/hooks/notify.sh"),
+			getClaudeGlobalSettingsJsonContent("/tmp/.valence/hooks/notify.sh"),
 		).toBeNull();
 
 		createClaudeSettingsJson();
@@ -860,7 +860,7 @@ describe("agent-wrappers claude settings.json", () => {
 		writeFileSync(claudeSettingsPath, JSON.stringify("not-an-object"));
 
 		expect(
-			getClaudeGlobalSettingsJsonContent("/tmp/.superset/hooks/notify.sh"),
+			getClaudeGlobalSettingsJsonContent("/tmp/.valence/hooks/notify.sh"),
 		).toBeNull();
 	});
 });
@@ -877,7 +877,7 @@ describe("agent-wrappers codex hooks.json", () => {
 	});
 
 	it("creates Codex hooks.json with SessionStart and Stop when no file exists", () => {
-		const notifyPath = "/tmp/.superset/hooks/notify.sh";
+		const notifyPath = "/tmp/.valence/hooks/notify.sh";
 		const content = getCodexGlobalHooksJsonContent(notifyPath);
 		expect(content).not.toBeNull();
 		if (content === null) throw new Error("Expected content");
@@ -923,7 +923,7 @@ describe("agent-wrappers codex hooks.json", () => {
 			),
 		);
 
-		const notifyPath = "/tmp/.superset/hooks/notify.sh";
+		const notifyPath = "/tmp/.valence/hooks/notify.sh";
 		const content = getCodexGlobalHooksJsonContent(notifyPath);
 		expect(content).not.toBeNull();
 		if (content === null) throw new Error("Expected content");
@@ -961,7 +961,7 @@ describe("agent-wrappers codex hooks.json", () => {
 	});
 
 	it("does not add UserPromptSubmit to the Codex fallback hooks.json merge", () => {
-		const notifyPath = "/tmp/.superset/hooks/notify.sh";
+		const notifyPath = "/tmp/.valence/hooks/notify.sh";
 		const content = getCodexGlobalHooksJsonContent(notifyPath);
 		expect(content).not.toBeNull();
 		if (content === null) throw new Error("Expected content");
@@ -979,10 +979,10 @@ describe("agent-wrappers codex hooks.json", () => {
 		expect(parsed.hooks.UserPromptSubmit).toBeUndefined();
 	});
 
-	it("replaces stale Codex hook commands from old superset paths", () => {
+	it("replaces stale Codex hook commands from old valence paths", () => {
 		const codexHooksPath = path.join(mockedHomeDir, ".codex", "hooks.json");
-		const staleHookPath = "/tmp/.superset-old/hooks/notify.sh";
-		const currentHookPath = "/tmp/.superset-new/hooks/notify.sh";
+		const staleHookPath = "/tmp/.valence-old/hooks/notify.sh";
+		const currentHookPath = "/tmp/.valence-new/hooks/notify.sh";
 
 		mkdirSync(path.dirname(codexHooksPath), { recursive: true });
 		writeFileSync(
@@ -1063,7 +1063,7 @@ describe("agent-wrappers codex hooks.json", () => {
 		writeFileSync(codexHooksPath, invalidJson);
 
 		expect(
-			getCodexGlobalHooksJsonContent("/tmp/.superset/hooks/notify.sh"),
+			getCodexGlobalHooksJsonContent("/tmp/.valence/hooks/notify.sh"),
 		).toBeNull();
 
 		createCodexHooksJson();
@@ -1078,7 +1078,7 @@ describe("agent-wrappers codex hooks.json", () => {
 		writeFileSync(codexHooksPath, JSON.stringify("not-an-object"));
 
 		expect(
-			getCodexGlobalHooksJsonContent("/tmp/.superset/hooks/notify.sh"),
+			getCodexGlobalHooksJsonContent("/tmp/.valence/hooks/notify.sh"),
 		).toBeNull();
 	});
 });

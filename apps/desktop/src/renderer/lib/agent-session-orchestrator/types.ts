@@ -1,9 +1,9 @@
-import type { TerminalPreset } from "@superset/local-db";
+import type { TerminalPreset } from "@valence/local-db";
 import type {
 	AgentLaunchRequest,
 	AgentLaunchResult,
 	AgentLaunchSource,
-} from "@superset/shared/agent-launch";
+} from "@valence/shared/agent-launch";
 import type { ChatLaunchConfig } from "shared/tabs-types";
 
 export interface AgentLaunchPane {

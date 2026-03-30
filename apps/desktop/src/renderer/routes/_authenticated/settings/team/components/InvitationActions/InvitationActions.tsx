@@ -1,12 +1,12 @@
-import type { SelectInvitation } from "@superset/db/schema";
-import { Button } from "@superset/ui/button";
+import type { SelectInvitation } from "@valence/db/schema";
+import { Button } from "@valence/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { toast } from "@superset/ui/sonner";
+} from "@valence/ui/dropdown-menu";
+import { toast } from "@valence/ui/sonner";
 import { useState } from "react";
 import { HiEllipsisVertical, HiOutlineXMark } from "react-icons/hi2";
 import { authClient } from "renderer/lib/auth-client";

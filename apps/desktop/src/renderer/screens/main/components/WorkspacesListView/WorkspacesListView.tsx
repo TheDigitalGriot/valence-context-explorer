@@ -1,7 +1,7 @@
-import { Button } from "@superset/ui/button";
-import { Input } from "@superset/ui/input";
-import { toast } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
+import { Button } from "@valence/ui/button";
+import { Input } from "@valence/ui/input";
+import { toast } from "@valence/ui/sonner";
+import { cn } from "@valence/ui/utils";
 import { useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { LuSearch, LuX } from "react-icons/lu";

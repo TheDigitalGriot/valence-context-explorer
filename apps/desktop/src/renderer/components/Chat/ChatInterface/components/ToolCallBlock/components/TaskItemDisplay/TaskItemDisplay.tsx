@@ -1,6 +1,6 @@
-import { TaskItem } from "@superset/ui/ai-elements/task";
-import { Badge } from "@superset/ui/badge";
-import { cn } from "@superset/ui/lib/utils";
+import { TaskItem } from "@valence/ui/ai-elements/task";
+import { Badge } from "@valence/ui/badge";
+import { cn } from "@valence/ui/lib/utils";
 
 interface TaskItemDisplayDetail {
 	label: string;

@@ -1,5 +1,5 @@
-import { db } from "@superset/db/client";
-import { users } from "@superset/db/schema";
+import { db } from "@valence/db/client";
+import { users } from "@valence/db/schema";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { desc, eq } from "drizzle-orm";
 import { z } from "zod";

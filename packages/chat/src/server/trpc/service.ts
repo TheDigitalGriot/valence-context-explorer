@@ -1,4 +1,4 @@
-import type { AppRouter } from "@superset/trpc";
+import type { AppRouter } from "@valence/trpc";
 import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import { initTRPC } from "@trpc/server";
 import { createAuthStorage, createMastraCode } from "mastracode";
@@ -18,7 +18,7 @@ import {
 	subscribeToSessionEvents,
 	syncRuntimeHookSessionId,
 } from "./utils/runtime";
-import { getSupersetMcpTools } from "./utils/runtime/superset-mcp";
+import { getValenceMcpTools } from "./utils/runtime/valence-mcp";
 import {
 	approvalRespondInput,
 	displayStateInput,
@@ -110,7 +110,7 @@ export class ChatRuntimeService {
 
 		const creationPromise = (async () => {
 			try {
-				const extraTools = await getSupersetMcpTools(
+				const extraTools = await getValenceMcpTools(
 					() => Promise.resolve(this.opts.headers()),
 					this.opts.apiUrl,
 				);

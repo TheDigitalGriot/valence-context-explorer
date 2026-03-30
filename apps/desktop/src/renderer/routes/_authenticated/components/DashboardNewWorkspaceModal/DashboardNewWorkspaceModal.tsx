@@ -4,7 +4,7 @@ import {
 	DialogDescription,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
+} from "@valence/ui/dialog";
 import {
 	useCloseNewWorkspaceModal,
 	useNewWorkspaceModalOpen,

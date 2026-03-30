@@ -1,12 +1,12 @@
-import { Button } from "@superset/ui/button";
-import { Input } from "@superset/ui/input";
+import { Button } from "@valence/ui/button";
+import { Input } from "@valence/ui/input";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
+} from "@valence/ui/select";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
 	HiArrowsUpDown,

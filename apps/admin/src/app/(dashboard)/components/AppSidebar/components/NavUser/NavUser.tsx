@@ -1,8 +1,8 @@
 "use client";
 
-import { authClient } from "@superset/auth/client";
-import type { RouterOutputs } from "@superset/trpc";
-import { Avatar, AvatarFallback, AvatarImage } from "@superset/ui/avatar";
+import { authClient } from "@valence/auth/client";
+import type { RouterOutputs } from "@valence/trpc";
+import { Avatar, AvatarFallback, AvatarImage } from "@valence/ui/avatar";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -11,13 +11,13 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
+} from "@valence/ui/dropdown-menu";
 import {
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
 	useSidebar,
-} from "@superset/ui/sidebar";
+} from "@valence/ui/sidebar";
 import {
 	LuBadgeCheck,
 	LuBell,

@@ -1,5 +1,5 @@
-import { Button } from "@superset/ui/button";
-import { CardFooter } from "@superset/ui/card";
+import { Button } from "@valence/ui/button";
+import { CardFooter } from "@valence/ui/card";
 
 interface AgentCardActionsProps {
 	isResetting: boolean;

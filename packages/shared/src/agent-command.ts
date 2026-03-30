@@ -157,7 +157,7 @@ export function buildAgentPromptCommand({
 	randomId: string;
 	agent?: AgentType;
 }): string {
-	let delimiter = `SUPERSET_PROMPT_${randomId.replaceAll("-", "")}`;
+	let delimiter = `VALENCE_PROMPT_${randomId.replaceAll("-", "")}`;
 	while (prompt.includes(delimiter)) {
 		delimiter = `${delimiter}_X`;
 	}

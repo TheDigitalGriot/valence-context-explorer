@@ -1,13 +1,13 @@
-import type { FileOpenMode } from "@superset/local-db";
-import { Label } from "@superset/ui/label";
+import type { FileOpenMode } from "@valence/local-db";
+import { Label } from "@valence/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
-import { Switch } from "@superset/ui/switch";
+} from "@valence/ui/select";
+import { Switch } from "@valence/ui/switch";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import {
 	isItemVisible,
@@ -269,7 +269,7 @@ export function BehaviorSettings({ visibleItems }: BehaviorSettingsProps) {
 								Send anonymous usage data
 							</Label>
 							<p className="text-xs text-muted-foreground">
-								Help improve Superset by sending anonymous usage data
+								Help improve Valence by sending anonymous usage data
 							</p>
 						</div>
 						<Switch

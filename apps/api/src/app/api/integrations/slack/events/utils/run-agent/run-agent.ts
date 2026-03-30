@@ -6,7 +6,7 @@ import { DEFAULT_SLACK_MODEL } from "../../../constants";
 import type { AgentAction } from "../slack-blocks";
 import type { SlackImageAsset } from "../slack-image-assets";
 import {
-	createSupersetMcpClient,
+	createValenceMcpClient,
 	mcpToolToAnthropicTool,
 	parseToolName,
 } from "./mcp-clients";
@@ -274,7 +274,7 @@ const TOOL_PROGRESS_STATUS: Record<string, string> = {
 };
 
 // Tools excluded from Slack agent context
-const DENIED_SUPERSET_TOOLS = new Set([
+const DENIED_VALENCE_TOOLS = new Set([
 	"switch_workspace",
 	"get_app_context",
 	"list_members",
@@ -337,10 +337,10 @@ async function handleGetChannelHistory({
 	return JSON.stringify({ messages });
 }
 
-const SYSTEM_PROMPT = `You are a helpful assistant in Slack for Superset, a task management application.
+const SYSTEM_PROMPT = `You are a helpful assistant in Slack for Valence, a task management application.
 
 You can:
-- Create, update, search, and manage tasks using superset_* tools
+- Create, update, search, and manage tasks using valence_* tools
 - Read recent channel messages using slack_get_channel_history
 - Search the web for current information using web_search
 - Help users understand conversations and create actionable items from discussions
@@ -465,39 +465,39 @@ export async function runSlackAgent(
 	const anthropic = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
 	const actions: AgentAction[] = [];
 
-	let supersetMcp: Client | null = null;
-	let cleanupSuperset: (() => Promise<void>) | null = null;
+	let valenceMcp: Client | null = null;
+	let cleanupValence: (() => Promise<void>) | null = null;
 
 	try {
-		const [threadContext, supersetMcpResult] = await Promise.all([
+		const [threadContext, valenceMcpResult] = await Promise.all([
 			fetchThreadContext({
 				token: params.slackToken,
 				channelId: params.channelId,
 				threadTs: params.threadTs,
 			}),
-			createSupersetMcpClient({
+			createValenceMcpClient({
 				organizationId: params.organizationId,
 				userId: params.userId,
 			}),
 		]);
 
-		supersetMcp = supersetMcpResult.client;
-		cleanupSuperset = supersetMcpResult.cleanup;
+		valenceMcp = valenceMcpResult.client;
+		cleanupValence = valenceMcpResult.cleanup;
 
-		const [supersetToolsResult, agentContext] = await Promise.all([
-			supersetMcp.listTools(),
+		const [valenceToolsResult, agentContext] = await Promise.all([
+			valenceMcp.listTools(),
 			fetchAgentContext({
-				mcpClient: supersetMcp,
+				mcpClient: valenceMcp,
 				userId: params.userId,
 			}),
 		]);
 
-		const supersetTools = supersetToolsResult.tools
-			.filter((t) => !DENIED_SUPERSET_TOOLS.has(t.name))
-			.map((t) => mcpToolToAnthropicTool(t, "superset"));
+		const valenceTools = valenceToolsResult.tools
+			.filter((t) => !DENIED_VALENCE_TOOLS.has(t.name))
+			.map((t) => mcpToolToAnthropicTool(t, "valence"));
 
 		const tools: Anthropic.Messages.ToolUnion[] = [
-			...supersetTools,
+			...valenceTools,
 			SLACK_GET_CHANNEL_HISTORY_TOOL,
 			{
 				type: "web_search_20250305" as const,
@@ -597,7 +597,7 @@ ${agentContext}`;
 					} else {
 						const { prefix, toolName } = parseToolName(toolUse.name);
 
-						if (prefix !== "superset" || !supersetMcp) {
+						if (prefix !== "valence" || !valenceMcp) {
 							toolResults.push({
 								type: "tool_result",
 								tool_use_id: toolUse.id,
@@ -609,7 +609,7 @@ ${agentContext}`;
 							continue;
 						}
 
-						const result = await supersetMcp.callTool({
+						const result = await valenceMcp.callTool({
 							name: toolName,
 							arguments: toolUse.input as Record<string, unknown>,
 						});
@@ -674,9 +674,9 @@ ${agentContext}`;
 			actions,
 		};
 	} finally {
-		if (cleanupSuperset) {
+		if (cleanupValence) {
 			try {
-				await cleanupSuperset();
+				await cleanupValence();
 			} catch {}
 		}
 	}

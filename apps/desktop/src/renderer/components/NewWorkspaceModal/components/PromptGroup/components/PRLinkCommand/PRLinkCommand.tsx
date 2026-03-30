@@ -5,8 +5,8 @@ import {
 	CommandInput,
 	CommandItem,
 	CommandList,
-} from "@superset/ui/command";
-import { Popover, PopoverAnchor, PopoverContent } from "@superset/ui/popover";
+} from "@valence/ui/command";
+import { Popover, PopoverAnchor, PopoverContent } from "@valence/ui/popover";
 import type React from "react";
 import type { RefObject } from "react";
 import { useMemo, useState } from "react";

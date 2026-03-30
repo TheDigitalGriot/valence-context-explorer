@@ -1,13 +1,13 @@
-import { Button } from "@superset/ui/button";
+import { Button } from "@valence/ui/button";
 import {
 	ContextMenu,
 	ContextMenuContent,
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
-import { cn } from "@superset/ui/lib/utils";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@valence/ui/context-menu";
+import { cn } from "@valence/ui/lib/utils";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@valence/ui/tooltip";
 import { PencilIcon, XIcon } from "lucide-react";
 import { type ReactNode, useState } from "react";
 import type { StoreApi } from "zustand/vanilla";

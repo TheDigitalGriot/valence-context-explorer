@@ -1,4 +1,4 @@
-import { createPane, type PaneState } from "@superset/pane-layout";
+import { createPane, type PaneState } from "@valence/pane-layout";
 
 export interface FilePaneData {
 	filePath: string;

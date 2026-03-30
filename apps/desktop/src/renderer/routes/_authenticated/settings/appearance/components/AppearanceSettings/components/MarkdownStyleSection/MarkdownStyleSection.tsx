@@ -4,7 +4,7 @@ import {
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
+} from "@valence/ui/select";
 import {
 	type MarkdownStyle,
 	useMarkdownStyle,

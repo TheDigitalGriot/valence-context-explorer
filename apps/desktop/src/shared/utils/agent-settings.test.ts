@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { getBuiltinAgentDefinition } from "@superset/shared/agent-catalog";
+import { getBuiltinAgentDefinition } from "@valence/shared/agent-catalog";
 import {
 	createOverrideEnvelopeWithPatch,
 	resolveAgentConfigs,
@@ -19,7 +19,7 @@ describe("resolveAgentConfigs", () => {
 						enabled: false,
 					},
 					{
-						id: "superset-chat",
+						id: "valence-chat",
 						taskPromptTemplate: "Chat {{slug}}",
 					},
 				],
@@ -27,7 +27,7 @@ describe("resolveAgentConfigs", () => {
 		});
 
 		const claude = presets.find((preset) => preset.id === "claude");
-		const chat = presets.find((preset) => preset.id === "superset-chat");
+		const chat = presets.find((preset) => preset.id === "valence-chat");
 
 		expect(claude).toMatchObject({
 			id: "claude",
@@ -42,7 +42,7 @@ describe("resolveAgentConfigs", () => {
 		);
 
 		expect(chat).toMatchObject({
-			id: "superset-chat",
+			id: "valence-chat",
 			kind: "chat",
 			taskPromptTemplate: "Chat {{slug}}",
 		});

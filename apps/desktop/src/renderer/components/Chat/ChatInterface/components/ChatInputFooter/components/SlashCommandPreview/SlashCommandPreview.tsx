@@ -1,5 +1,5 @@
-import { chatServiceTrpc } from "@superset/chat/client";
-import { usePromptInputController } from "@superset/ui/ai-elements/prompt-input";
+import { chatServiceTrpc } from "@valence/chat/client";
+import { usePromptInputController } from "@valence/ui/ai-elements/prompt-input";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { SlashCommandParamField } from "./components/SlashCommandParamField";
 import {

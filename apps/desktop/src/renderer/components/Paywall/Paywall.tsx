@@ -1,5 +1,5 @@
-import { Button } from "@superset/ui/button";
-import { Dialog, DialogContent } from "@superset/ui/dialog";
+import { Button } from "@valence/ui/button";
+import { Dialog, DialogContent } from "@valence/ui/dialog";
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { track } from "renderer/lib/analytics";
@@ -139,7 +139,7 @@ export const Paywall = () => {
 					<Button variant="outline" onClick={() => handleOpenChange(false)}>
 						Cancel
 					</Button>
-					<Button onClick={handleUpgrade}>Get Superset Pro</Button>
+					<Button onClick={handleUpgrade}>Get Valence Pro</Button>
 				</div>
 			</DialogContent>
 		</Dialog>

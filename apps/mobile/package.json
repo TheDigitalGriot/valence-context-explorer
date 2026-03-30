@@ -1,5 +1,5 @@
 {
-	"name": "@superset/mobile",
+	"name": "@valence/mobile",
 	"version": "1.0.0",
 	"main": "expo-router/entry",
 	"scripts": {
@@ -42,8 +42,8 @@
 		"@rn-primitives/toggle": "^1.2.0",
 		"@rn-primitives/toggle-group": "^1.2.0",
 		"@rn-primitives/tooltip": "^1.2.0",
-		"@superset/db": "workspace:*",
-		"@superset/trpc": "workspace:*",
+		"@valence/db": "workspace:*",
+		"@valence/trpc": "workspace:*",
 		"@tanstack/db": "0.5.33",
 		"@tanstack/electric-db-collection": "0.2.41",
 		"@tanstack/react-db": "0.1.77",

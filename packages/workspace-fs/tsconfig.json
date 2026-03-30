@@ -1,5 +1,5 @@
 {
-	"extends": "@superset/typescript/internal-package.json",
+	"extends": "@valence/typescript/internal-package.json",
 	"include": ["src"],
 	"exclude": ["node_modules", "dist"]
 }

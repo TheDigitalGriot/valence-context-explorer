@@ -5,12 +5,12 @@ import {
 	AlertDialogFooter,
 	AlertDialogHeader,
 	AlertDialogTitle,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
-import { Checkbox } from "@superset/ui/checkbox";
-import { Label } from "@superset/ui/label";
-import { toast } from "@superset/ui/sonner";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@valence/ui/alert-dialog";
+import { Button } from "@valence/ui/button";
+import { Checkbox } from "@valence/ui/checkbox";
+import { Label } from "@valence/ui/label";
+import { toast } from "@valence/ui/sonner";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@valence/ui/tooltip";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import {

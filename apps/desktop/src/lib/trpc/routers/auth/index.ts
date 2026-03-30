@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
 import fs from "node:fs/promises";
-import { AUTH_PROVIDERS } from "@superset/shared/constants";
+import { AUTH_PROVIDERS } from "@valence/shared/constants";
 import { observable } from "@trpc/server/observable";
 import { shell } from "electron";
 import { env } from "main/env.main";

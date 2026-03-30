@@ -3,7 +3,7 @@ import { randomUUID } from "node:crypto";
 import { mkdir, rename } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { promisify } from "node:util";
-import type { BranchPrefixMode } from "@superset/local-db";
+import type { BranchPrefixMode } from "@valence/local-db";
 import friendlyWords from "friendly-words";
 import {
 	sanitizeAuthorPrefix,
@@ -734,7 +734,7 @@ export async function removeWorktree(
 		// then `git worktree prune` to clean metadata, then delete in background.
 		const tempPath = join(
 			dirname(worktreePath),
-			`.superset-delete-${randomUUID()}`,
+			`.valence-delete-${randomUUID()}`,
 		);
 		await rename(worktreePath, tempPath);
 

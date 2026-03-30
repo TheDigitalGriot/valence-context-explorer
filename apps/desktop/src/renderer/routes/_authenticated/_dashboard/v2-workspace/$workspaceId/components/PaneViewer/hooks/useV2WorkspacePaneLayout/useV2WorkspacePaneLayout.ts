@@ -2,7 +2,7 @@ import {
 	createPaneWorkspaceState,
 	createPaneWorkspaceStore,
 	type PaneWorkspaceState,
-} from "@superset/pane-layout";
+} from "@valence/pane-layout";
 import { eq } from "@tanstack/db";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useEffect, useMemo, useRef, useState } from "react";

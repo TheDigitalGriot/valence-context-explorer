@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it, mock } from "bun:test";
-import type { SelectMember } from "@superset/db/schema/auth";
+import type { SelectMember } from "@valence/db/schema/auth";
 import type { ResolveSessionOrganizationDeps } from "./resolve-session-organization-state";
 
-mock.module("@superset/db/client", () => ({
+mock.module("@valence/db/client", () => ({
 	db: {
 		query: {
 			members: {

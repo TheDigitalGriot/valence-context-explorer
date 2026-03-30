@@ -1,12 +1,12 @@
-import type { TerminalLinkBehavior } from "@superset/local-db";
-import { Label } from "@superset/ui/label";
+import type { TerminalLinkBehavior } from "@valence/local-db";
+import { Label } from "@valence/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
+} from "@valence/ui/select";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 
 export function LinkBehaviorSetting() {

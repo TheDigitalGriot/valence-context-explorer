@@ -1,5 +1,5 @@
-import { Button } from "@superset/ui/button";
-import { toast } from "@superset/ui/sonner";
+import { Button } from "@valence/ui/button";
+import { toast } from "@valence/ui/sonner";
 import { useLiveQuery } from "@tanstack/react-db";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
@@ -139,7 +139,7 @@ export function BillingOverview({ visibleItems }: BillingOverviewProps) {
 						<p className="text-xs text-muted-foreground mt-0.5">
 							For questions about billing,{" "}
 							<a
-								href="mailto:founders@superset.sh"
+								href="mailto:founders@valence.sh"
 								className="text-primary hover:underline"
 							>
 								contact us

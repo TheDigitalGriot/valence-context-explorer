@@ -1,4 +1,4 @@
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@valence/shared/constants";
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -306,13 +306,13 @@ export async function generateMetadata({
 
 	return {
 		title: `${person.name} — ${person.role}`,
-		description: person.bio ?? `${person.name}, ${person.role} at Superset`,
+		description: person.bio ?? `${person.name}, ${person.role} at Valence`,
 		alternates: {
 			canonical: url,
 		},
 		openGraph: {
-			title: `${person.name} — ${person.role} at Superset`,
-			description: person.bio ?? `${person.name}, ${person.role} at Superset`,
+			title: `${person.name} — ${person.role} at Valence`,
+			description: person.bio ?? `${person.name}, ${person.role} at Valence`,
 			type: "profile",
 			url,
 			siteName: COMPANY.NAME,
@@ -322,8 +322,8 @@ export async function generateMetadata({
 		},
 		twitter: {
 			card: "summary",
-			title: `${person.name} — ${person.role} at Superset`,
-			description: person.bio ?? `${person.name}, ${person.role} at Superset`,
+			title: `${person.name} — ${person.role} at Valence`,
+			description: person.bio ?? `${person.name}, ${person.role} at Valence`,
 			...(person.avatar && {
 				images: [`${COMPANY.MARKETING_URL}${person.avatar}`],
 			}),

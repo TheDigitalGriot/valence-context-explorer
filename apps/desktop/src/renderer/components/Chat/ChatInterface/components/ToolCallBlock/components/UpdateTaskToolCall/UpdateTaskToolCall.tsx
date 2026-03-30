@@ -7,7 +7,7 @@ import {
 	toRecord,
 	toStringArray,
 } from "../../utils/taskToolCallHelpers";
-import { SupersetToolCall } from "../SupersetToolCall";
+import { ValenceToolCall } from "../ValenceToolCall";
 import { TaskItemDisplay } from "../TaskItemDisplay";
 
 interface UpdateTaskToolCallProps {
@@ -45,7 +45,7 @@ export function UpdateTaskToolCall({ part }: UpdateTaskToolCallProps) {
 	}
 
 	return (
-		<SupersetToolCall
+		<ValenceToolCall
 			part={part}
 			toolName="Update task"
 			icon={FilePenIcon}

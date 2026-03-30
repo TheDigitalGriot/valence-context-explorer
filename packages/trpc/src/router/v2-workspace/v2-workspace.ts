@@ -1,5 +1,5 @@
-import { dbWs } from "@superset/db/client";
-import { v2Devices, v2Projects, v2Workspaces } from "@superset/db/schema";
+import { dbWs } from "@valence/db/client";
+import { v2Devices, v2Projects, v2Workspaces } from "@valence/db/schema";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";

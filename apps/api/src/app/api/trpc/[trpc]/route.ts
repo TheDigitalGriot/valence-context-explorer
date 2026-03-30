@@ -1,4 +1,4 @@
-import { appRouter } from "@superset/trpc";
+import { appRouter } from "@valence/trpc";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { createContext } from "@/trpc/context";
 

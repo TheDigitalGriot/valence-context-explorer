@@ -35,25 +35,25 @@ image: /changelog/IMAGE_PLACEHOLDER.png
 
 {/* TODO: Replace header image with actual screenshot */}
 
-## Major Feature Name <PRBadge url="https://github.com/superset-sh/superset/pull/NUMBER" />
+## Major Feature Name <PRBadge url="https://github.com/valence-sh/valence/pull/NUMBER" />
 
 One or two sentences describing what users can now do. Keep it brief and scannable.
 
 - Key capability one
 - Key capability two
 
-## Another Major Feature <PRBadge url="https://github.com/superset-sh/superset/pull/NUMBER" />
+## Another Major Feature <PRBadge url="https://github.com/valence-sh/valence/pull/NUMBER" />
 
 Brief description of the feature and its benefit to users.
 
 ## Improvements
 
-- **Improvement name** - Brief description <PRBadge url="https://github.com/superset-sh/superset/pull/NUMBER" />
-- **Another improvement** - Brief description <PRBadge url="https://github.com/superset-sh/superset/pull/NUMBER" />
+- **Improvement name** - Brief description <PRBadge url="https://github.com/valence-sh/valence/pull/NUMBER" />
+- **Another improvement** - Brief description <PRBadge url="https://github.com/valence-sh/valence/pull/NUMBER" />
 
 ---
 
-**Bug fixes:** Fixed issue with X <PRBadge url="https://github.com/superset-sh/superset/pull/NUMBER" />, resolved Y problem <PRBadge url="https://github.com/superset-sh/superset/pull/NUMBER" />
+**Bug fixes:** Fixed issue with X <PRBadge url="https://github.com/valence-sh/valence/pull/NUMBER" />, resolved Y problem <PRBadge url="https://github.com/valence-sh/valence/pull/NUMBER" />
 ```
 
 6. **Important formatting rules**

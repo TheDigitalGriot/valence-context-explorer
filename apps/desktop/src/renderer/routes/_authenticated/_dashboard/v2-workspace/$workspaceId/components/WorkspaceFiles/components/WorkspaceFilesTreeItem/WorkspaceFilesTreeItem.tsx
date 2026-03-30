@@ -1,5 +1,5 @@
-import { cn } from "@superset/ui/utils";
-import type { FileTreeNode } from "@superset/workspace-client";
+import { cn } from "@valence/ui/utils";
+import type { FileTreeNode } from "@valence/workspace-client";
 import { LuChevronDown, LuChevronRight } from "react-icons/lu";
 import { FileIcon } from "renderer/screens/main/components/WorkspaceView/RightSidebar/FilesView/utils";
 

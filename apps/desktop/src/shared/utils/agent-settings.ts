@@ -5,22 +5,22 @@ import {
 	type AgentPresetOverrideEnvelope,
 	agentCustomDefinitionSchema,
 	agentPresetOverrideEnvelopeSchema,
-} from "@superset/local-db";
+} from "@valence/local-db";
 import {
 	type AgentDefinition,
 	type AgentDefinitionId,
 	BUILTIN_AGENT_DEFINITIONS,
 	isTerminalAgentDefinition,
 	type TerminalAgentDefinition,
-} from "@superset/shared/agent-catalog";
-import type { TaskInput } from "@superset/shared/agent-command";
+} from "@valence/shared/agent-catalog";
+import type { TaskInput } from "@valence/shared/agent-command";
 import {
 	DEFAULT_CHAT_TASK_PROMPT_TEMPLATE,
 	DEFAULT_TERMINAL_TASK_PROMPT_TEMPLATE,
 	getSupportedTaskPromptVariables,
 	renderTaskPromptTemplate,
 	validateTaskPromptTemplate,
-} from "@superset/shared/agent-prompt-template";
+} from "@valence/shared/agent-prompt-template";
 
 const TERMINAL_OVERRIDE_FIELDS = [
 	"enabled",
@@ -317,7 +317,7 @@ export function buildPromptCommandFromAgentConfig({
 	const promptCommand = config.promptCommand.trim() || config.command.trim();
 	if (!promptCommand) return null;
 
-	let delimiter = `SUPERSET_PROMPT_${randomId.replaceAll("-", "")}`;
+	let delimiter = `VALENCE_PROMPT_${randomId.replaceAll("-", "")}`;
 	while (prompt.includes(delimiter)) {
 		delimiter = `${delimiter}_X`;
 	}
@@ -479,4 +479,4 @@ export function resetAgentPresetOverride({
 export function resetAllAgentPresetOverrides(): AgentPresetOverrideEnvelope {
 	return EMPTY_AGENT_PRESET_OVERRIDE_ENVELOPE;
 }
-export type { AgentDefinitionId } from "@superset/shared/agent-catalog";
+export type { AgentDefinitionId } from "@valence/shared/agent-catalog";

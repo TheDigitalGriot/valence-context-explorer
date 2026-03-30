@@ -1,5 +1,5 @@
-import { Toaster } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
+import { Toaster } from "@valence/ui/sonner";
+import { cn } from "@valence/ui/utils";
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Inter } from "next/font/google";
 
@@ -20,7 +20,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-	title: "Superset",
+	title: "Valence",
 	description: "Run 10+ parallel coding agents on your machine",
 	icons: {
 		icon: [

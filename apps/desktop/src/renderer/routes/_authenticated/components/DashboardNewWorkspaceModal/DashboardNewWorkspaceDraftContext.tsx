@@ -1,4 +1,4 @@
-import { toast } from "@superset/ui/sonner";
+import { toast } from "@valence/ui/sonner";
 import {
 	createContext,
 	type PropsWithChildren,

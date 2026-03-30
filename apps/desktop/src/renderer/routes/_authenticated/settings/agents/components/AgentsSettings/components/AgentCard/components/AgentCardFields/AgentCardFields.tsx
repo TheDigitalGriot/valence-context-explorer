@@ -1,6 +1,6 @@
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
-import { Textarea } from "@superset/ui/textarea";
+import { Input } from "@valence/ui/input";
+import { Label } from "@valence/ui/label";
+import { Textarea } from "@valence/ui/textarea";
 import type { ResolvedAgentConfig } from "shared/utils/agent-settings";
 import type { AgentEditableField } from "../../agent-card.types";
 

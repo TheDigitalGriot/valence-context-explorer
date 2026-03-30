@@ -1,5 +1,5 @@
-import { Message, MessageContent } from "@superset/ui/ai-elements/message";
-import { Button } from "@superset/ui/button";
+import { Message, MessageContent } from "@valence/ui/ai-elements/message";
+import { Button } from "@valence/ui/button";
 import { useEffect, useRef, useState } from "react";
 import type { UseChatDisplayReturn } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/components/WorkspaceChat/hooks/useWorkspaceChatDisplay";
 

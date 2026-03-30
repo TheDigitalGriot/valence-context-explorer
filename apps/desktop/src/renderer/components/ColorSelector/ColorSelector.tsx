@@ -1,5 +1,5 @@
-import { ContextMenuItem } from "@superset/ui/context-menu";
-import { cn } from "@superset/ui/utils";
+import { ContextMenuItem } from "@valence/ui/context-menu";
+import { cn } from "@valence/ui/utils";
 import { HiCheck } from "react-icons/hi2";
 import {
 	PROJECT_COLOR_DEFAULT,

@@ -1,16 +1,16 @@
-import type { AgentLaunchRequest } from "@superset/shared/agent-launch";
-import { Button } from "@superset/ui/button";
+import type { AgentLaunchRequest } from "@valence/shared/agent-launch";
+import { Button } from "@valence/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
-import { Label } from "@superset/ui/label";
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { toast } from "@superset/ui/sonner";
-import { Spinner } from "@superset/ui/spinner";
-import { Switch } from "@superset/ui/switch";
+} from "@valence/ui/dropdown-menu";
+import { Label } from "@valence/ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "@valence/ui/popover";
+import { toast } from "@valence/ui/sonner";
+import { Spinner } from "@valence/ui/spinner";
+import { Switch } from "@valence/ui/switch";
 import { ChevronDownIcon } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 import { HiCheck, HiMiniPlay, HiXMark } from "react-icons/hi2";

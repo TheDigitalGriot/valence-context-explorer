@@ -1,13 +1,13 @@
-import { Button } from "@superset/ui/button";
+import { Button } from "@valence/ui/button";
 import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { InputGroup, InputGroupInput } from "@superset/ui/input-group";
-import { Label } from "@superset/ui/label";
+} from "@valence/ui/dialog";
+import { InputGroup, InputGroupInput } from "@valence/ui/input-group";
+import { Label } from "@valence/ui/label";
 
 interface AnthropicApiKeyDialogProps {
 	open: boolean;

@@ -1,4 +1,4 @@
-import { Spinner } from "@superset/ui/spinner";
+import { Spinner } from "@valence/ui/spinner";
 import { useCallback, useEffect, useMemo } from "react";
 import { HiCheckCircle } from "react-icons/hi2";
 import type { TaskWithStatus } from "../../hooks/useTasksData";

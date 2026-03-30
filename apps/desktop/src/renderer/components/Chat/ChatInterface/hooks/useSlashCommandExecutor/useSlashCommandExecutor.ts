@@ -1,5 +1,5 @@
-import { chatServiceTrpc } from "@superset/chat/client";
-import { toast } from "@superset/ui/sonner";
+import { chatServiceTrpc } from "@valence/chat/client";
+import { toast } from "@valence/ui/sonner";
 import { useCallback } from "react";
 import type {
 	McpOverviewPayload,

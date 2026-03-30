@@ -959,7 +959,7 @@ export function createHotkeysExport(
 	return {
 		schemaVersion: HOTKEYS_STATE_VERSION,
 		exportedAt: new Date().toISOString(),
-		app: "@superset/desktop",
+		app: "@valence/desktop",
 		hotkeys: {
 			darwin: getEffectiveHotkeysMap(hotkeysState.byPlatform.darwin, "darwin"),
 			win32: getEffectiveHotkeysMap(hotkeysState.byPlatform.win32, "win32"),

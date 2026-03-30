@@ -1,7 +1,7 @@
-import { Button } from "@superset/ui/button";
-import { Kbd, KbdGroup } from "@superset/ui/kbd";
-import { toast } from "@superset/ui/sonner";
-import { Textarea } from "@superset/ui/textarea";
+import { Button } from "@valence/ui/button";
+import { Kbd, KbdGroup } from "@valence/ui/kbd";
+import { toast } from "@valence/ui/sonner";
+import { Textarea } from "@valence/ui/textarea";
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";

@@ -1,4 +1,4 @@
-import type { PaneWorkspaceState } from "@superset/pane-layout";
+import type { PaneWorkspaceState } from "@valence/pane-layout";
 import { z } from "zod";
 
 const persistedDateSchema = z

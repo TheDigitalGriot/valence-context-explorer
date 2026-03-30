@@ -1,5 +1,5 @@
 import { DurableStream } from "@durable-streams/client";
-import { auth } from "@superset/auth/server";
+import { auth } from "@valence/auth/server";
 import { env } from "@/env";
 
 export const PROTOCOL_QUERY_PARAMS = ["offset", "live", "cursor"];

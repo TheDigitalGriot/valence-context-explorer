@@ -104,7 +104,7 @@ export function MainPanel({ activeDemo }: MainPanelProps) {
 								</div>
 								<div>Opus 4.5 · Claude Max</div>
 								<div className="text-muted-foreground/60">
-									~/.superset/worktrees/superset/cloud-ws
+									~/.valence/worktrees/valence/cloud-ws
 								</div>
 							</div>
 						</div>
@@ -125,7 +125,7 @@ export function MainPanel({ activeDemo }: MainPanelProps) {
 							<div className="mt-2">
 								<span className="text-muted-foreground/50">❯</span>
 								<span className="ml-1 text-foreground">1.</span>
-								<span className="ml-1 text-[#D97757]/75">superset-mcp</span>
+								<span className="ml-1 text-[#D97757]/75">valence-mcp</span>
 								<span className="ml-2 text-emerald-300/75">✓ connected</span>
 							</div>
 
@@ -163,7 +163,7 @@ export function MainPanel({ activeDemo }: MainPanelProps) {
 				>
 					<div className="mb-3 text-foreground">
 						<span className="text-muted-foreground/60">❯</span>{" "}
-						<span className="text-[#D97757]/80">superset new</span>
+						<span className="text-[#D97757]/80">valence new</span>
 					</div>
 					<div className="space-y-2 text-muted-foreground/70">
 						<div className="flex items-center gap-2">

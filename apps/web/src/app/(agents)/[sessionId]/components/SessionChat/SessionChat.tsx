@@ -4,13 +4,13 @@ import {
 	Conversation,
 	ConversationContent,
 	ConversationScrollButton,
-} from "@superset/ui/ai-elements/conversation";
-import { FileDiffTool } from "@superset/ui/ai-elements/file-diff-tool";
+} from "@valence/ui/ai-elements/conversation";
+import { FileDiffTool } from "@valence/ui/ai-elements/file-diff-tool";
 import {
 	Message,
 	MessageContent,
 	MessageResponse,
-} from "@superset/ui/ai-elements/message";
+} from "@valence/ui/ai-elements/message";
 import { mockDiffFiles, mockMessages } from "../../../mock-data";
 
 export function SessionChat() {

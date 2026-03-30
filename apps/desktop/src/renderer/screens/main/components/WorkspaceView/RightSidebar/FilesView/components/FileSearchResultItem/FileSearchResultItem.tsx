@@ -4,8 +4,8 @@ import {
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
-import { cn } from "@superset/ui/utils";
+} from "@valence/ui/context-menu";
+import { cn } from "@valence/ui/utils";
 import {
 	LuClipboard,
 	LuCopy,

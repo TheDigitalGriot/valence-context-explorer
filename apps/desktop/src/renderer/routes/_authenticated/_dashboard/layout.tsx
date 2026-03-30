@@ -1,4 +1,4 @@
-import { FEATURE_FLAGS } from "@superset/shared/constants";
+import { FEATURE_FLAGS } from "@valence/shared/constants";
 import {
 	createFileRoute,
 	Outlet,

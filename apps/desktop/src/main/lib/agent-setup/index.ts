@@ -73,7 +73,7 @@ export function setupAgentHooks(): void {
 	console.log("[agent-setup] Agent hooks initialized");
 }
 
-export function getSupersetBinDir(): string {
+export function getValenceBinDir(): string {
 	return BIN_DIR;
 }
 

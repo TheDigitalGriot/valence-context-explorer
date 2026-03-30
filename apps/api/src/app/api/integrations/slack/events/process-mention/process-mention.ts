@@ -1,9 +1,9 @@
-import { db } from "@superset/db/client";
+import { db } from "@valence/db/client";
 import {
 	integrationConnections,
 	subscriptions,
 	usersSlackUsers,
-} from "@superset/db/schema";
+} from "@valence/db/schema";
 import { and, eq } from "drizzle-orm";
 import { posthog } from "@/lib/analytics";
 import { generateConnectUrl } from "../utils/generate-connect-url";
@@ -107,13 +107,13 @@ export async function processSlackMention({
 		await slack.chat.postMessage({
 			channel: event.channel,
 			thread_ts: event.thread_ts ?? event.ts,
-			text: "The Superset Slack integration requires a Pro plan.",
+			text: "The Valence Slack integration requires a Pro plan.",
 			blocks: [
 				{
 					type: "section",
 					text: {
 						type: "mrkdwn",
-						text: "The Superset Slack integration requires a Pro plan.",
+						text: "The Valence Slack integration requires a Pro plan.",
 					},
 				},
 				{
@@ -122,7 +122,7 @@ export async function processSlackMention({
 						{
 							type: "button",
 							text: { type: "plain_text", text: "Upgrade to Pro", emoji: true },
-							url: "https://app.superset.sh/settings/billing",
+							url: "https://app.valence.sh/settings/billing",
 							style: "primary",
 						},
 					],
@@ -150,13 +150,13 @@ export async function processSlackMention({
 		await slack.chat.postMessage({
 			channel: event.channel,
 			thread_ts: event.thread_ts ?? event.ts,
-			text: "To use Superset, you need to link your Slack account first.",
+			text: "To use Valence, you need to link your Slack account first.",
 			blocks: [
 				{
 					type: "section",
 					text: {
 						type: "mrkdwn",
-						text: "To use Superset, you need to link your Slack account first.",
+						text: "To use Valence, you need to link your Slack account first.",
 					},
 				},
 				{

@@ -1,13 +1,13 @@
-import { FEATURE_FLAGS } from "@superset/shared/constants";
-import { Badge } from "@superset/ui/badge";
-import { Button } from "@superset/ui/button";
+import { FEATURE_FLAGS } from "@valence/shared/constants";
+import { Badge } from "@valence/ui/badge";
+import { Button } from "@valence/ui/button";
 import {
 	Card,
 	CardContent,
 	CardDescription,
 	CardHeader,
-} from "@superset/ui/card";
-import { Skeleton } from "@superset/ui/skeleton";
+} from "@valence/ui/card";
+import { Skeleton } from "@valence/ui/skeleton";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useCallback, useEffect, useState } from "react";

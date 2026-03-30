@@ -2,8 +2,8 @@ import type {
 	SelectInvitation,
 	SelectMember,
 	SelectUser,
-} from "@superset/db/schema/auth";
-import type { OrganizationRole } from "@superset/shared/auth";
+} from "@valence/db/schema/auth";
+import type { OrganizationRole } from "@valence/shared/auth";
 
 export type TeamMember = SelectUser &
 	SelectMember & {

@@ -1,4 +1,4 @@
-import { Kbd, KbdGroup } from "@superset/ui/kbd";
+import { Kbd, KbdGroup } from "@valence/ui/kbd";
 import type { ReactNode } from "react";
 import {
 	useEffectiveHotkeysMap,

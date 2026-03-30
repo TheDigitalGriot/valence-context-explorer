@@ -1,5 +1,5 @@
-import { Popover, PopoverContent, PopoverTrigger } from "@superset/ui/popover";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+import { Popover, PopoverContent, PopoverTrigger } from "@valence/ui/popover";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@valence/ui/tooltip";
 import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { HiOutlineArrowPath, HiOutlineCpuChip } from "react-icons/hi2";
@@ -171,17 +171,17 @@ export function ResourceConsumption() {
 							<MetricBadge
 								label="CPU"
 								value={formatCpu(normalizedSnapshot.totalCpu)}
-								tooltip="Sum of CPU used by Superset and monitored terminal process trees. Over 100% means multiple CPU cores are busy. Sustained high values usually cause UI sluggishness and higher battery drain."
+								tooltip="Sum of CPU used by Valence and monitored terminal process trees. Over 100% means multiple CPU cores are busy. Sustained high values usually cause UI sluggishness and higher battery drain."
 							/>
 							<MetricBadge
 								label="Memory"
 								value={formatMemory(normalizedSnapshot.totalMemory)}
-								tooltip="Resident memory used by Superset and monitored terminal process trees. If this keeps climbing without dropping, a workspace process may be retaining memory. High values increase swap risk and can cause stutter."
+								tooltip="Resident memory used by Valence and monitored terminal process trees. If this keeps climbing without dropping, a workspace process may be retaining memory. High values increase swap risk and can cause stutter."
 							/>
 							<MetricBadge
 								label="RAM Share"
 								value={formatPercent(trackedMemorySharePercent)}
-								tooltip="Percent of total system RAM used by monitored Superset resources only (not all apps). A high share means Superset is a major contributor to system memory pressure; a low share means pressure is likely elsewhere."
+								tooltip="Percent of total system RAM used by monitored Valence resources only (not all apps). A high share means Valence is a major contributor to system memory pressure; a low share means pressure is likely elsewhere."
 							/>
 						</div>
 					)}

@@ -6,8 +6,8 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	EnterEnabledAlertDialogContent,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
+} from "@valence/ui/alert-dialog";
+import { Button } from "@valence/ui/button";
 
 interface DiscardConfirmDialogProps {
 	open: boolean;

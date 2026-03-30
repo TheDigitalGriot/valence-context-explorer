@@ -15,9 +15,9 @@ const envSchema = z.object({
 	NODE_ENV: z
 		.enum(["development", "production", "test"])
 		.default("development"),
-	NEXT_PUBLIC_API_URL: z.url().default("https://api.superset.sh"),
-	NEXT_PUBLIC_WEB_URL: z.url().default("https://app.superset.sh"),
-	NEXT_PUBLIC_MARKETING_URL: z.url().default("https://superset.sh"),
+	NEXT_PUBLIC_API_URL: z.url().default("https://api.valence.sh"),
+	NEXT_PUBLIC_WEB_URL: z.url().default("https://app.valence.sh"),
+	NEXT_PUBLIC_MARKETING_URL: z.url().default("https://valence.sh"),
 	NEXT_PUBLIC_ELECTRIC_URL: z
 		.url()
 		.default("https://electric-proxy.avi-6ac.workers.dev"),

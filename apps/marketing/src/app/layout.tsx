@@ -1,4 +1,4 @@
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@valence/shared/constants";
 import { GeistPixelGrid, GeistPixelSquare } from "geist/font/pixel";
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Inter, Micro_5 } from "next/font/google";
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
 		description:
 			"Run 10+ parallel coding agents on your machine. Spin up new coding tasks while waiting for your current agent to finish.",
 		images: ["/og-image.png"],
-		creator: "@superset_sh",
+		creator: "@valence_sh",
 	},
 	robots: {
 		index: true,

@@ -1,5 +1,5 @@
 {
-	"name": "@superset/pane-layout",
+	"name": "@valence/pane-layout",
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
@@ -15,12 +15,12 @@
 		"test": "bun test"
 	},
 	"dependencies": {
-		"@superset/ui": "workspace:*",
+		"@valence/ui": "workspace:*",
 		"lucide-react": "^0.563.0",
 		"zustand": "^5.0.8"
 	},
 	"devDependencies": {
-		"@superset/typescript": "workspace:*",
+		"@valence/typescript": "workspace:*",
 		"@types/bun": "^1.2.17",
 		"@types/react": "~19.2.2",
 		"react": "19.2.0",

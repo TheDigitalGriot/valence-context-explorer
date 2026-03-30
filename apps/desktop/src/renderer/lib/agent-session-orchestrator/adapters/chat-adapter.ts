@@ -1,4 +1,4 @@
-import type { AgentLaunchRequest } from "@superset/shared/agent-launch";
+import type { AgentLaunchRequest } from "@valence/shared/agent-launch";
 import type { ChatLaunchConfig } from "shared/tabs-types";
 import type { AgentSessionLaunchContext, LaunchResultPayload } from "../types";
 
@@ -75,7 +75,7 @@ export async function launchChatAdapter(
 		paneId = created.paneId;
 	}
 
-	tabs.setTabAutoTitle(tabId, "Superset Chat");
+	tabs.setTabAutoTitle(tabId, "Valence Chat");
 
 	const pane = tabs.getPane(paneId);
 	let sessionId = request.chat.sessionId ?? pane?.chat?.sessionId ?? null;

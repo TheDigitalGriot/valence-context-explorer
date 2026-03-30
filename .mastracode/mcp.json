@@ -1,8 +1,8 @@
 {
 	"mcpServers": {
-		"superset": {
+		"valence": {
 			"command": "npx",
-			"args": ["-y", "mcp-remote", "https://api.superset.sh/api/agent/mcp"]
+			"args": ["-y", "mcp-remote", "https://api.valence.sh/api/agent/mcp"]
 		},
 		"maestro": {
 			"command": "maestro",

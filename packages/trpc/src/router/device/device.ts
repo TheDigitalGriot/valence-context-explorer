@@ -1,11 +1,11 @@
-import { db, dbWs } from "@superset/db/client";
+import { db, dbWs } from "@valence/db/client";
 import {
 	devicePresence,
 	deviceTypeValues,
 	v2DevicePresence,
 	v2Devices,
 	v2UsersDevices,
-} from "@superset/db/schema";
+} from "@valence/db/schema";
 import { TRPCError, type TRPCRouterRecord } from "@trpc/server";
 import { z } from "zod";
 import { protectedProcedure } from "../../trpc";

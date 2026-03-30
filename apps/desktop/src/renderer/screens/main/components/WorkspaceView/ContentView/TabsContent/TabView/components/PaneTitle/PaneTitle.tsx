@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@valence/ui/utils";
 import { useState } from "react";
 import { RenameInput } from "renderer/screens/main/components/WorkspaceSidebar/RenameInput";
 

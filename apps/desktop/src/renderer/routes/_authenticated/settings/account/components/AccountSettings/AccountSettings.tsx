@@ -1,8 +1,8 @@
-import { Avatar } from "@superset/ui/atoms/Avatar";
-import { Button } from "@superset/ui/button";
-import { Card, CardContent } from "@superset/ui/card";
-import { Input } from "@superset/ui/input";
-import { toast } from "@superset/ui/sonner";
+import { Avatar } from "@valence/ui/atoms/Avatar";
+import { Button } from "@valence/ui/button";
+import { Card, CardContent } from "@valence/ui/card";
+import { Input } from "@valence/ui/input";
+import { toast } from "@valence/ui/sonner";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useEffect, useState } from "react";
 import { HiOutlinePencil } from "react-icons/hi2";
@@ -186,7 +186,7 @@ export function AccountSettings({ visibleItems }: AccountSettingsProps) {
 					<div className={showProfile ? "pt-6 border-t" : ""}>
 						<h3 className="text-sm font-medium mb-2">Sign Out</h3>
 						<p className="text-sm text-muted-foreground mb-4">
-							Sign out of your Superset account on this device.
+							Sign out of your Valence account on this device.
 						</p>
 						<Button variant="outline" onClick={() => signOutMutation.mutate()}>
 							Sign Out

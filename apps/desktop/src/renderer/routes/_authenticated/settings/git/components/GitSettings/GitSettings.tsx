@@ -1,14 +1,14 @@
-import type { BranchPrefixMode } from "@superset/local-db";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
+import type { BranchPrefixMode } from "@valence/local-db";
+import { Input } from "@valence/ui/input";
+import { Label } from "@valence/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@superset/ui/select";
-import { Switch } from "@superset/ui/switch";
+} from "@valence/ui/select";
+import { Switch } from "@valence/ui/switch";
 import { useEffect, useState } from "react";
 import { electronTrpc } from "renderer/lib/electron-trpc";
 import { resolveBranchPrefix, sanitizeSegment } from "shared/utils/branch";

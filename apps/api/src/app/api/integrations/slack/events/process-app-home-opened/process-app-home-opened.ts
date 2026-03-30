@@ -1,5 +1,5 @@
-import { db } from "@superset/db/client";
-import { integrationConnections, usersSlackUsers } from "@superset/db/schema";
+import { db } from "@valence/db/client";
+import { integrationConnections, usersSlackUsers } from "@valence/db/schema";
 import { and, eq } from "drizzle-orm";
 import { generateConnectUrl } from "../utils/generate-connect-url";
 import { createSlackClient } from "../utils/slack-client";

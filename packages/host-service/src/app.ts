@@ -49,7 +49,7 @@ export function createApp(options?: CreateAppOptions): CreateAppResult {
 			? createApiClient(options.cloudApiUrl, options.auth)
 			: null;
 
-	const dbPath = options?.dbPath ?? join(homedir(), ".superset", "host.db");
+	const dbPath = options?.dbPath ?? join(homedir(), ".valence", "host.db");
 	const db = createDb(dbPath);
 	const git = createGitFactory(credentials);
 	const modelProviderRuntimeResolver =

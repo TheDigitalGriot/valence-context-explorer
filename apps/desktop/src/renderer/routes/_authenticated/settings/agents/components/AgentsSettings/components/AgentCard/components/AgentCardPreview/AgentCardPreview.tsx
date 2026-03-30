@@ -1,4 +1,4 @@
-import { Button } from "@superset/ui/button";
+import { Button } from "@valence/ui/button";
 import { MarkdownRenderer } from "renderer/components/MarkdownRenderer";
 import type { ResolvedAgentConfig } from "shared/utils/agent-settings";
 

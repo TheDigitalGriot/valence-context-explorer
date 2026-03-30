@@ -8,9 +8,9 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	AlertDialogTrigger,
-} from "@superset/ui/alert-dialog";
-import { Button } from "@superset/ui/button";
-import { toast } from "@superset/ui/sonner";
+} from "@valence/ui/alert-dialog";
+import { Button } from "@valence/ui/button";
+import { toast } from "@valence/ui/sonner";
 import { motion } from "framer-motion";
 import { GoGitBranch } from "react-icons/go";
 import { electronTrpc } from "renderer/lib/electron-trpc";
@@ -92,7 +92,7 @@ export function ExternalWorktreesBanner({ projectId }: { projectId: string }) {
 							<AlertDialogTitle>Import all worktrees</AlertDialogTitle>
 							<AlertDialogDescription>
 								This will import {externalWorktrees.length} existing worktree
-								{externalWorktrees.length === 1 ? "" : "s"} into Superset as
+								{externalWorktrees.length === 1 ? "" : "s"} into Valence as
 								workspaces. Each worktree on disk will be tracked and appear in
 								your sidebar. No files will be modified.
 							</AlertDialogDescription>

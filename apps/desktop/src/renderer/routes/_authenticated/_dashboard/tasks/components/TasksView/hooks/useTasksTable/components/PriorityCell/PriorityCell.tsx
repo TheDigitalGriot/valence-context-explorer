@@ -1,10 +1,10 @@
-import type { TaskPriority } from "@superset/db/enums";
+import type { TaskPriority } from "@valence/db/enums";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@superset/ui/dropdown-menu";
+} from "@valence/ui/dropdown-menu";
 import type { CellContext } from "@tanstack/react-table";
 import { useState } from "react";
 import { useCollections } from "renderer/routes/_authenticated/providers/CollectionsProvider";

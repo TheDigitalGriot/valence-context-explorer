@@ -1,5 +1,5 @@
-import { Button } from "@superset/ui/button";
-import { toast } from "@superset/ui/sonner";
+import { Button } from "@valence/ui/button";
+import { toast } from "@valence/ui/sonner";
 import { useNavigate } from "@tanstack/react-router";
 import { XIcon } from "lucide-react";
 import { LinearIcon } from "renderer/components/icons/LinearIcon";

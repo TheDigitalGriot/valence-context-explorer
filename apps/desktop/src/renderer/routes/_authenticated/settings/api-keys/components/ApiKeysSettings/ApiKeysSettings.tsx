@@ -1,7 +1,7 @@
-import { COMPANY } from "@superset/shared/constants";
-import { alert } from "@superset/ui/atoms/Alert";
-import { Badge } from "@superset/ui/badge";
-import { Button } from "@superset/ui/button";
+import { COMPANY } from "@valence/shared/constants";
+import { alert } from "@valence/ui/atoms/Alert";
+import { Badge } from "@valence/ui/badge";
+import { Button } from "@valence/ui/button";
 import {
 	Dialog,
 	DialogContent,
@@ -9,11 +9,11 @@ import {
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "@superset/ui/dialog";
-import { Input } from "@superset/ui/input";
-import { Label } from "@superset/ui/label";
-import { Skeleton } from "@superset/ui/skeleton";
-import { toast } from "@superset/ui/sonner";
+} from "@valence/ui/dialog";
+import { Input } from "@valence/ui/input";
+import { Label } from "@valence/ui/label";
+import { Skeleton } from "@valence/ui/skeleton";
+import { toast } from "@valence/ui/sonner";
 import {
 	Table,
 	TableBody,
@@ -21,7 +21,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@superset/ui/table";
+} from "@valence/ui/table";
 import { useLiveQuery } from "@tanstack/react-db";
 import { useState } from "react";
 import {
@@ -152,7 +152,7 @@ export function ApiKeysSettings({ visibleItems }: ApiKeysSettingsProps) {
 						<h3 className="text-lg font-semibold">Your API Keys</h3>
 						<p className="text-sm text-muted-foreground">
 							API keys allow external applications like Claude Desktop or Claude
-							Code to interact with Superset on your behalf.
+							Code to interact with Valence on your behalf.
 						</p>
 
 						{showApiKeysList &&

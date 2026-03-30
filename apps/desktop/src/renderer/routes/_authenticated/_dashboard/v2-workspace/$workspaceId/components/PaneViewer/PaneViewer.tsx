@@ -2,12 +2,12 @@ import {
 	createPaneRoot,
 	type PaneRegistry,
 	PaneWorkspace,
-} from "@superset/pane-layout";
+} from "@valence/pane-layout";
 import {
 	DropdownMenuCheckboxItem,
 	DropdownMenuItem,
 	DropdownMenuSeparator,
-} from "@superset/ui/dropdown-menu";
+} from "@valence/ui/dropdown-menu";
 import { useNavigate } from "@tanstack/react-router";
 import { FileCode2, Globe, MessageSquare, TerminalSquare } from "lucide-react";
 import { useCallback, useMemo } from "react";

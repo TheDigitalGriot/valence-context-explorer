@@ -1,17 +1,17 @@
-import type { ExternalApp } from "@superset/local-db";
+import type { ExternalApp } from "@valence/local-db";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
+} from "@valence/ui/collapsible";
 import {
 	ContextMenu,
 	ContextMenuContent,
 	ContextMenuItem,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
-} from "@superset/ui/context-menu";
-import { cn } from "@superset/ui/utils";
+} from "@valence/ui/context-menu";
+import { cn } from "@valence/ui/utils";
 import { type ReactNode, useState } from "react";
 import {
 	VscAdd,

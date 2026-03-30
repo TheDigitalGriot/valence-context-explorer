@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/lib/utils";
+import { cn } from "@valence/ui/lib/utils";
 import { usePaneWorkspaceStore } from "../../hooks";
 import type { PaneWorkspaceProps } from "../../types";
 import { PaneRootTabs } from "./components/PaneRootTabs";

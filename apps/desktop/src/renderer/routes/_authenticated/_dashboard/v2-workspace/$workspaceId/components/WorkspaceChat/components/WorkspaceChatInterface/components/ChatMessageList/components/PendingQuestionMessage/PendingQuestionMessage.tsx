@@ -2,9 +2,9 @@ import {
 	Message,
 	MessageContent,
 	MessageResponse,
-} from "@superset/ui/ai-elements/message";
-import { Button } from "@superset/ui/button";
-import { Input } from "@superset/ui/input";
+} from "@valence/ui/ai-elements/message";
+import { Button } from "@valence/ui/button";
+import { Input } from "@valence/ui/input";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { UseChatDisplayReturn } from "renderer/routes/_authenticated/_dashboard/v2-workspace/$workspaceId/components/WorkspaceChat/hooks/useWorkspaceChatDisplay";
 

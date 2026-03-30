@@ -6,14 +6,14 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@superset/ui/card";
+} from "@valence/ui/card";
 import {
 	type ChartConfig,
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@superset/ui/chart";
-import { Skeleton } from "@superset/ui/skeleton";
+} from "@valence/ui/chart";
+import { Skeleton } from "@valence/ui/skeleton";
 import type { ReactNode } from "react";
 import { Area, AreaChart, XAxis, YAxis } from "recharts";
 

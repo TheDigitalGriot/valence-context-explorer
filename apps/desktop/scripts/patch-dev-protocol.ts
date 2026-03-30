@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 /**
  * Patches the development Electron.app's Info.plist to register a
- * workspace-specific URL scheme (superset-{workspace}://) for deep linking.
+ * workspace-specific URL scheme (valence-{workspace}://) for deep linking.
  *
  * Each worktree gets a unique bundle ID and protocol scheme so macOS Launch
  * Services treats them as distinct apps and routes deep links correctly.
@@ -39,8 +39,8 @@ import {
 	getWorkspaceName,
 } from "../src/shared/worktree-id";
 
-const DEFAULT_WORKTREE_BASE = resolve(homedir(), ".superset/worktrees");
-const DEFAULT_PROD_DB_PATH = resolve(homedir(), ".superset/local.db");
+const DEFAULT_WORKTREE_BASE = resolve(homedir(), ".valence/worktrees");
+const DEFAULT_PROD_DB_PATH = resolve(homedir(), ".valence/local.db");
 
 type ResolveWorkspaceIdentityOptions = {
 	cwd?: string;
@@ -184,8 +184,8 @@ export function main() {
 		process.exit(0);
 	}
 
-	const PROTOCOL_SCHEME = `superset-${workspaceName}`;
-	const BUNDLE_ID = `com.superset.desktop.${workspaceName}`;
+	const PROTOCOL_SCHEME = `valence-${workspaceName}`;
+	const BUNDLE_ID = `com.valence.desktop.${workspaceName}`;
 	const ELECTRON_DIST_DIR = resolve(
 		import.meta.dirname,
 		"../node_modules/electron/dist",
@@ -198,7 +198,7 @@ export function main() {
 		process.exit(0);
 	}
 
-	const DISPLAY_NAME = `Superset (${bundleDisplayWorkspaceName})`;
+	const DISPLAY_NAME = `Valence (${bundleDisplayWorkspaceName})`;
 
 	try {
 		const currentBundleId = execSync(
@@ -277,7 +277,7 @@ export function main() {
 	const commands = [
 		`Add :CFBundleURLTypes array`,
 		`Add :CFBundleURLTypes:0 dict`,
-		`Add :CFBundleURLTypes:0:CFBundleURLName string 'Superset Dev'`,
+		`Add :CFBundleURLTypes:0:CFBundleURLName string 'Valence Dev'`,
 		`Add :CFBundleURLTypes:0:CFBundleURLSchemes array`,
 		`Add :CFBundleURLTypes:0:CFBundleURLSchemes:0 string '${PROTOCOL_SCHEME}'`,
 		`Add :CFBundleURLTypes:0:CFBundleTypeRole string 'Editor'`,

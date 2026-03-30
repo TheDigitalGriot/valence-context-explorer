@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@valence/ui/utils";
 import { useMemo } from "react";
 import type { DashboardSidebarProject } from "../../types";
 import {

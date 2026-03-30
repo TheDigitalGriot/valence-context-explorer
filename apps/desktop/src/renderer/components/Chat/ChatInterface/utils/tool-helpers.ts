@@ -1,4 +1,4 @@
-import type { ToolDisplayState } from "@superset/ui/ai-elements/tool";
+import type { ToolDisplayState } from "@valence/ui/ai-elements/tool";
 import type { UIMessage } from "ai";
 
 // Extract tool part type from UIMessage
@@ -34,7 +34,7 @@ const TOOL_NAME_ALIASES: Record<string, string> = {
 	task_check: "task_check",
 	submit_plan: "submit_plan",
 
-	// Legacy Superset MCP names
+	// Legacy Valence MCP names
 	create_worktree: "create_workspace",
 	start_claude_session: "start_agent_session",
 };
@@ -43,8 +43,8 @@ export function normalizeToolName(toolName: string): string {
 	const directAlias = TOOL_NAME_ALIASES[toolName];
 	if (directAlias) return directAlias;
 
-	const unnamespacedToolName = toolName.startsWith("superset_")
-		? toolName.slice("superset_".length)
+	const unnamespacedToolName = toolName.startsWith("valence_")
+		? toolName.slice("valence_".length)
 		: toolName;
 	return TOOL_NAME_ALIASES[unnamespacedToolName] ?? unnamespacedToolName;
 }

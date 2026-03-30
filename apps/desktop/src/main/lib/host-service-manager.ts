@@ -4,7 +4,7 @@ import { randomBytes } from "node:crypto";
 import path from "node:path";
 import { app } from "electron";
 import { getProcessEnvWithShellPath } from "../../lib/trpc/routers/workspaces/utils/shell-env";
-import { SUPERSET_HOME_DIR } from "./app-environment";
+import { VALENCE_HOME_DIR } from "./app-environment";
 import { getDeviceName, getHashedDeviceId } from "./device-info";
 
 type HostServiceStatus = "starting" | "running" | "crashed";
@@ -170,7 +170,7 @@ export class HostServiceManager {
 			DEVICE_NAME: getDeviceName(),
 			HOST_SERVICE_SECRET: secret,
 			HOST_DB_PATH: path.join(
-				SUPERSET_HOME_DIR,
+				VALENCE_HOME_DIR,
 				"host",
 				organizationId,
 				"host.db",

@@ -1,18 +1,18 @@
-import { alert } from "@superset/ui/atoms/Alert";
-import { Button } from "@superset/ui/button";
-import { Input } from "@superset/ui/input";
+import { alert } from "@valence/ui/atoms/Alert";
+import { Button } from "@valence/ui/button";
+import { Input } from "@valence/ui/input";
 import {
 	Sheet,
 	SheetContent,
 	SheetDescription,
 	SheetHeader,
 	SheetTitle,
-} from "@superset/ui/sheet";
-import { toast } from "@superset/ui/sonner";
-import { Switch } from "@superset/ui/switch";
-import { Textarea } from "@superset/ui/textarea";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
-import { cn } from "@superset/ui/utils";
+} from "@valence/ui/sheet";
+import { toast } from "@valence/ui/sonner";
+import { Switch } from "@valence/ui/switch";
+import { Textarea } from "@valence/ui/textarea";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@valence/ui/tooltip";
+import { cn } from "@valence/ui/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
 	HiOutlineArrowDownTray,

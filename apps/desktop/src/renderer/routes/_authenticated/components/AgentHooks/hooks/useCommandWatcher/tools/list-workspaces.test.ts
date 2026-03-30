@@ -27,7 +27,7 @@ describe("buildWorkspaceList", () => {
 		const projects = [
 			{
 				id: "project-1",
-				mainRepoPath: "/repos/superset",
+				mainRepoPath: "/repos/valence",
 			},
 		] satisfies WorkspaceListSourceProject[];
 
@@ -38,14 +38,14 @@ describe("buildWorkspaceList", () => {
 				activeWorkspaceId: "workspace-worktree",
 				getWorktreePathByWorkspaceId: (workspaceId) =>
 					workspaceId === "workspace-worktree"
-						? "/repos/superset-feature-mcp-fix"
+						? "/repos/valence-feature-mcp-fix"
 						: undefined,
 			}),
 		).toEqual([
 			{
 				id: "workspace-worktree",
 				name: "MCP Fix",
-				path: "/repos/superset-feature-mcp-fix",
+				path: "/repos/valence-feature-mcp-fix",
 				branch: "feature/mcp-fix",
 				isActive: true,
 				projectId: "project-1",
@@ -54,7 +54,7 @@ describe("buildWorkspaceList", () => {
 			{
 				id: "workspace-branch",
 				name: "Main",
-				path: "/repos/superset",
+				path: "/repos/valence",
 				branch: "main",
 				isActive: false,
 				projectId: "project-1",

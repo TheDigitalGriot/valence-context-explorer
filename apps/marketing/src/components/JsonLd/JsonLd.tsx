@@ -1,4 +1,4 @@
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@valence/shared/constants";
 
 export function OrganizationJsonLd() {
 	const schema = {

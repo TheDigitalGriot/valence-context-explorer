@@ -1,15 +1,15 @@
-import { ShimmerLabel } from "@superset/ui/ai-elements/shimmer-label";
+import { ShimmerLabel } from "@valence/ui/ai-elements/shimmer-label";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
+} from "@valence/ui/collapsible";
 import { CheckIcon, Loader2Icon, WrenchIcon, XIcon } from "lucide-react";
 import type { ComponentType, ReactNode } from "react";
 import { useMemo, useState } from "react";
 import type { ToolPart } from "../../../../utils/tool-helpers";
 
-type SupersetToolCallProps = {
+type ValenceToolCallProps = {
 	part: ToolPart;
 	toolName: string;
 	icon?: ComponentType<{ className?: string }>;
@@ -25,12 +25,12 @@ function stringifyValue(value: unknown): string {
 	}
 }
 
-export function SupersetToolCall({
+export function ValenceToolCall({
 	part,
 	toolName,
 	icon: Icon = WrenchIcon,
 	details,
-}: SupersetToolCallProps) {
+}: ValenceToolCallProps) {
 	const [isOpen, setIsOpen] = useState(false);
 	const output =
 		"output" in part ? (part as { output?: unknown }).output : undefined;

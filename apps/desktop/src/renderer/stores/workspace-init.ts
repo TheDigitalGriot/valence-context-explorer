@@ -1,5 +1,5 @@
-import type { TerminalPreset } from "@superset/local-db";
-import type { AgentLaunchRequest } from "@superset/shared/agent-launch";
+import type { TerminalPreset } from "@valence/local-db";
+import type { AgentLaunchRequest } from "@valence/shared/agent-launch";
 import type { WorkspaceInitProgress } from "shared/types/workspace-init";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";

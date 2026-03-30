@@ -1,4 +1,4 @@
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@valence/shared/constants";
 import { ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 import { FaGithub } from "react-icons/fa";
@@ -9,7 +9,7 @@ import { ChangelogEntry } from "./components/ChangelogEntry";
 export const metadata: Metadata = {
 	title: "Changelog",
 	description:
-		"The latest updates, improvements, and new features in Superset.",
+		"The latest updates, improvements, and new features in Valence.",
 	alternates: {
 		canonical: "/changelog",
 		types: {
@@ -17,17 +17,17 @@ export const metadata: Metadata = {
 		},
 	},
 	openGraph: {
-		title: "Changelog | Superset",
+		title: "Changelog | Valence",
 		description:
-			"The latest updates, improvements, and new features in Superset.",
+			"The latest updates, improvements, and new features in Valence.",
 		url: "/changelog",
 		images: ["/opengraph-image"],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Changelog | Superset",
+		title: "Changelog | Valence",
 		description:
-			"The latest updates, improvements, and new features in Superset.",
+			"The latest updates, improvements, and new features in Valence.",
 		images: ["/opengraph-image"],
 	},
 };
@@ -60,10 +60,10 @@ export default async function ChangelogPage() {
 						What's New
 					</h1>
 					<p className="text-muted-foreground mt-3 max-w-lg">
-						The latest updates, improvements, and new features in Superset.
+						The latest updates, improvements, and new features in Valence.
 						Updated weekly. For detailed release notes, see{" "}
 						<a
-							href="https://github.com/superset-sh/superset/releases"
+							href="https://github.com/valence-sh/valence/releases"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="inline-flex items-center gap-1 hover:text-foreground transition-colors"

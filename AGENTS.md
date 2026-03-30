@@ -1,4 +1,4 @@
-# Superset Monorepo Guide
+# Valence Monorepo Guide
 
 Guidelines for agents and developers working in this repository.
 
@@ -6,8 +6,8 @@ Guidelines for agents and developers working in this repository.
 
 Bun + Turbo monorepo with:
 - **Apps**:
-  - `apps/web` - Main web application (app.superset.sh)
-  - `apps/marketing` - Marketing site (superset.sh)
+  - `apps/web` - Main web application (app.valence.sh)
+  - `apps/marketing` - Marketing site (valence.sh)
   - `apps/admin` - Admin dashboard
   - `apps/api` - API backend
   - `apps/desktop` - Electron desktop application

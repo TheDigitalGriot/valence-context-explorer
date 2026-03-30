@@ -1,6 +1,6 @@
 import { MonitorSmartphoneIcon } from "lucide-react";
 import type { ToolPart } from "../../../../utils/tool-helpers";
-import { SupersetToolCall } from "../SupersetToolCall";
+import { ValenceToolCall } from "../ValenceToolCall";
 
 interface ListDevicesToolCallProps {
 	part: ToolPart;
@@ -8,7 +8,7 @@ interface ListDevicesToolCallProps {
 
 export function ListDevicesToolCall({ part }: ListDevicesToolCallProps) {
 	return (
-		<SupersetToolCall
+		<ValenceToolCall
 			part={part}
 			toolName="List devices"
 			icon={MonitorSmartphoneIcon}

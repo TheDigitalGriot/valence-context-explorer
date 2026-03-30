@@ -8,8 +8,8 @@ export const authClient = createAuthClient({
 	baseURL: env.EXPO_PUBLIC_API_URL,
 	plugins: [
 		expoClient({
-			scheme: "superset",
-			storagePrefix: "superset",
+			scheme: "valence",
+			storagePrefix: "valence",
 			storage: SecureStore,
 		}),
 		organizationClient(),

@@ -1,8 +1,8 @@
-import type { TaskInput } from "@superset/shared/agent-command";
+import type { TaskInput } from "@valence/shared/agent-command";
 import type {
 	AgentLaunchRequest,
 	AgentLaunchSource,
-} from "@superset/shared/agent-launch";
+} from "@valence/shared/agent-launch";
 import {
 	type AgentDefinitionId,
 	buildFileCommandFromAgentConfig,
@@ -125,7 +125,7 @@ export function buildPromptAgentLaunchRequest({
 				}
 
 				usedFilenames.add(filename);
-				return `- .superset/attachments/${filename}`;
+				return `- .valence/attachments/${filename}`;
 			})
 			.join("\n");
 		// If prompt exists, prepend it; otherwise just use file list
@@ -202,7 +202,7 @@ export function buildTaskAgentLaunchRequest({
 	);
 	const taskPromptFileName = `task-${task.slug}.md`;
 	const command = buildFileCommandFromAgentConfig({
-		filePath: `.superset/${taskPromptFileName}`,
+		filePath: `.valence/${taskPromptFileName}`,
 		config: terminalConfig,
 	});
 

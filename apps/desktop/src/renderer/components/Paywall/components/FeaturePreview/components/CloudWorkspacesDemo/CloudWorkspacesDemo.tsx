@@ -6,7 +6,7 @@ import {
 } from "react-icons/hi2";
 
 const WORKSPACES = [
-	{ id: "1", name: "superset-app", branch: "main", synced: true },
+	{ id: "1", name: "valence-app", branch: "main", synced: true },
 	{ id: "2", name: "api-server", branch: "feature/auth", synced: true },
 	{ id: "3", name: "mobile-app", branch: "dev", synced: false },
 ];

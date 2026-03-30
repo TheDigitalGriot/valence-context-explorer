@@ -1,6 +1,6 @@
 "use client";
 
-import { MeshGradient } from "@superset/ui/mesh-gradient";
+import { MeshGradient } from "@valence/ui/mesh-gradient";
 import type { ReactNode } from "react";
 
 interface FeatureDemoProps {

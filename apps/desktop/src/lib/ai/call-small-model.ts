@@ -2,7 +2,7 @@ import {
 	getDefaultSmallModelProviders,
 	type SmallModelCredential,
 	type SmallModelProvider,
-} from "@superset/chat/server/desktop";
+} from "@valence/chat/server/desktop";
 import {
 	classifyProviderIssue,
 	type ProviderId,

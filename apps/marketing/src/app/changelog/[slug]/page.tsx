@@ -1,4 +1,4 @@
-import { COMPANY } from "@superset/shared/constants";
+import { COMPANY } from "@valence/shared/constants";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -26,7 +26,7 @@ export default async function ChangelogEntryPage({ params }: PageProps) {
 			<ArticleJsonLd
 				title={entry.title}
 				description={entry.description}
-				author={{ name: "Superset Team" }}
+				author={{ name: "Valence Team" }}
 				publishedTime={new Date(entry.date).toISOString()}
 				url={url}
 				image={entry.image}

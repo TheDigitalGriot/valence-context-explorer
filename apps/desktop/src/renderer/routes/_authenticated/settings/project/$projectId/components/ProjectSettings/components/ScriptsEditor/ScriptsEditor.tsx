@@ -1,5 +1,5 @@
-import { Button } from "@superset/ui/button";
-import { cn } from "@superset/ui/utils";
+import { Button } from "@valence/ui/button";
+import { cn } from "@valence/ui/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
 	HiArrowTopRightOnSquare,

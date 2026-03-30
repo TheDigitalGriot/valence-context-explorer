@@ -1,13 +1,13 @@
-import type { GitHubStatus, PullRequestComment } from "@superset/local-db";
-import { Avatar, AvatarFallback, AvatarImage } from "@superset/ui/avatar";
+import type { GitHubStatus, PullRequestComment } from "@valence/local-db";
+import { Avatar, AvatarFallback, AvatarImage } from "@valence/ui/avatar";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
-import { Skeleton } from "@superset/ui/skeleton";
-import { toast } from "@superset/ui/sonner";
-import { cn } from "@superset/ui/utils";
+} from "@valence/ui/collapsible";
+import { Skeleton } from "@valence/ui/skeleton";
+import { toast } from "@valence/ui/sonner";
+import { cn } from "@valence/ui/utils";
 import { useEffect, useRef, useState } from "react";
 import { LuArrowUpRight, LuCheck, LuCopy } from "react-icons/lu";
 import { VscChevronRight } from "react-icons/vsc";

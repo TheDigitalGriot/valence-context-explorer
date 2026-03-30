@@ -1,5 +1,5 @@
-import { auth } from "@superset/auth/server";
-import { db } from "@superset/db/client";
+import { auth } from "@valence/auth/server";
+import { db } from "@valence/db/client";
 import { headers } from "next/headers";
 import Image from "next/image";
 import { redirect } from "next/navigation";
@@ -33,7 +33,7 @@ export default async function ConsentPage({ searchParams }: ConsentPageProps) {
 					<a href={env.NEXT_PUBLIC_MARKETING_URL}>
 						<Image
 							src="/title.svg"
-							alt="Superset"
+							alt="Valence"
 							width={140}
 							height={24}
 							priority
@@ -78,7 +78,7 @@ export default async function ConsentPage({ searchParams }: ConsentPageProps) {
 				<a href={env.NEXT_PUBLIC_MARKETING_URL}>
 					<Image
 						src="/title.svg"
-						alt="Superset"
+						alt="Valence"
 						width={140}
 						height={24}
 						priority

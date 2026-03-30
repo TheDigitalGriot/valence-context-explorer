@@ -1,5 +1,5 @@
-import { auth } from "@superset/auth/server";
-import { COMPANY } from "@superset/shared/constants";
+import { auth } from "@valence/auth/server";
+import { COMPANY } from "@valence/shared/constants";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 

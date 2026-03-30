@@ -1332,8 +1332,8 @@
           "notNull": false,
           "autoincrement": false
         },
-        "created_by_superset": {
-          "name": "created_by_superset",
+        "created_by_valence": {
+          "name": "created_by_valence",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,

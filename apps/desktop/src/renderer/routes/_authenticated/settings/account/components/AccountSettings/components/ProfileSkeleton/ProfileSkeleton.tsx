@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@superset/ui/card";
-import { Skeleton } from "@superset/ui/skeleton";
+import { Card, CardContent } from "@valence/ui/card";
+import { Skeleton } from "@valence/ui/skeleton";
 
 export function ProfileSkeleton() {
 	return (

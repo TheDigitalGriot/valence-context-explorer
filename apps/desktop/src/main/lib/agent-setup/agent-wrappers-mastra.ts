@@ -4,7 +4,7 @@ import path from "node:path";
 import {
 	buildWrapperScript,
 	createWrapper,
-	isSupersetManagedHookCommand,
+	isValenceManagedHookCommand,
 	reconcileManagedEntries,
 	writeFileIfChanged,
 } from "./agent-wrappers-common";
@@ -76,7 +76,7 @@ export function getMastraHooksJsonContent(notifyScriptPath: string): string {
 			desired: [{ type: "command", command: notifyCommand }],
 			isManaged: (entry: MastraHookDefinition) =>
 				entry.command?.includes(notifyScriptPath) ||
-				isSupersetManagedHookCommand(entry.command, NOTIFY_SCRIPT_NAME),
+				isValenceManagedHookCommand(entry.command, NOTIFY_SCRIPT_NAME),
 			isEquivalent: (
 				entry: MastraHookDefinition,
 				desiredEntry: MastraHookDefinition,

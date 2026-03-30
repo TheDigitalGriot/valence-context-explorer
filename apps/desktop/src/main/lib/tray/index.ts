@@ -1,6 +1,6 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import { workspaces } from "@superset/local-db";
+import { workspaces } from "@valence/local-db";
 import { eq } from "drizzle-orm";
 import {
 	app,
@@ -111,7 +111,7 @@ function openTerminalSettings(): void {
 	menuEmitter.emit("open-settings", "terminal");
 }
 
-function openSessionInSuperset(workspaceId: string): void {
+function openSessionInValence(workspaceId: string): void {
 	showWindow();
 	menuEmitter.emit("open-workspace", workspaceId);
 }
@@ -185,8 +185,8 @@ function buildSessionsSubmenu(
 					label: formatSessionLabel(session),
 					submenu: [
 						{
-							label: "Open in Superset",
-							click: () => openSessionInSuperset(session.workspaceId),
+							label: "Open in Valence",
+							click: () => openSessionInValence(session.workspaceId),
 						},
 						{
 							label: "Kill",
@@ -223,8 +223,8 @@ async function quitApp(): Promise<void> {
 		buttons: ["Cancel", "Keep Sessions", "Kill Sessions"],
 		defaultId: 1,
 		cancelId: 0,
-		title: "Quit Superset?",
-		message: "Quit Superset?",
+		title: "Quit Valence?",
+		message: "Quit Valence?",
 		detail:
 			"Keep sessions running in the background, or kill all sessions and shut down the daemon?",
 	});
@@ -247,7 +247,7 @@ async function quitApp(): Promise<void> {
 					buttons: ["OK"],
 					defaultId: 0,
 					title: "Failed to kill sessions",
-					message: "Superset could not kill terminal sessions.",
+					message: "Valence could not kill terminal sessions.",
 					detail:
 						"The app will stay open so you can retry or quit while keeping sessions running in the background.",
 				})
@@ -283,7 +283,7 @@ async function updateTrayMenu(): Promise<void> {
 		},
 		{ type: "separator" },
 		{
-			label: "Open Superset",
+			label: "Open Valence",
 			click: showWindow,
 		},
 		{
@@ -318,7 +318,7 @@ export function initTray(): void {
 		}
 
 		tray = new Tray(icon);
-		tray.setToolTip("Superset");
+		tray.setToolTip("Valence");
 
 		updateTrayMenu().catch((error) => {
 			console.error("[Tray] Failed to build initial menu:", error);

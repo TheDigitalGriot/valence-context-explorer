@@ -1,13 +1,13 @@
-import { type AuthProvider, COMPANY } from "@superset/shared/constants";
-import { Button } from "@superset/ui/button";
-import { Spinner } from "@superset/ui/spinner";
+import { type AuthProvider, COMPANY } from "@valence/shared/constants";
+import { Button } from "@valence/ui/button";
+import { Spinner } from "@valence/ui/spinner";
 import { createFileRoute, Navigate } from "@tanstack/react-router";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { env } from "renderer/env.renderer";
 import { track } from "renderer/lib/analytics";
 import { electronTrpc } from "renderer/lib/electron-trpc";
-import { SupersetLogo } from "./components/SupersetLogo";
+import { ValenceLogo } from "./components/ValenceLogo";
 import { useSessionRecovery } from "./hooks/useSessionRecovery";
 
 export const Route = createFileRoute("/sign-in/")({
@@ -49,12 +49,12 @@ function SignInPage() {
 			<div className="flex flex-1 items-center justify-center">
 				<div className="flex flex-col items-center w-full max-w-md px-8">
 					<div className="mb-8">
-						<SupersetLogo className="h-12 w-auto" />
+						<ValenceLogo className="h-12 w-auto" />
 					</div>
 
 					<div className="text-center mb-8">
 						<h1 className="text-xl font-semibold text-foreground mb-2">
-							Welcome to Superset
+							Welcome to Valence
 						</h1>
 						<p className="text-sm text-muted-foreground">
 							{hasLocalToken

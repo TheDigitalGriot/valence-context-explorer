@@ -1,5 +1,5 @@
 /**
- * Theme type definitions for the Superset desktop app
+ * Theme type definitions for the Valence desktop app
  *
  * Themes control UI colors, terminal colors, and editor/diff colors.
  */

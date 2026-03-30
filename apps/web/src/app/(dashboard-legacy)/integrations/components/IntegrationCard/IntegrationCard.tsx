@@ -1,6 +1,6 @@
 "use client";
 
-import { Badge } from "@superset/ui/badge";
+import { Badge } from "@valence/ui/badge";
 import Link from "next/link";
 import { type MouseEvent, type ReactNode, useRef, useState } from "react";
 

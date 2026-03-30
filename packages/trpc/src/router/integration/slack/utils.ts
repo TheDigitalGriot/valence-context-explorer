@@ -1,5 +1,5 @@
-import { db } from "@superset/db/client";
-import { integrationConnections } from "@superset/db/schema";
+import { db } from "@valence/db/client";
+import { integrationConnections } from "@valence/db/schema";
 import { and, eq } from "drizzle-orm";
 
 export async function getSlackConnection(organizationId: string) {

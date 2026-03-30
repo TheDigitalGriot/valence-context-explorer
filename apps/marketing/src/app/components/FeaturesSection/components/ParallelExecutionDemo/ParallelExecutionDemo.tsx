@@ -1,6 +1,6 @@
 "use client";
 
-import { DOWNLOAD_URL_MAC_ARM64 } from "@superset/shared/constants";
+import { DOWNLOAD_URL_MAC_ARM64 } from "@valence/shared/constants";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { HiCheck } from "react-icons/hi2";
@@ -178,7 +178,7 @@ export function ParallelExecutionDemo() {
 					<div className="w-3 h-3 rounded-full bg-[#febc2e]" />
 					<div className="w-3 h-3 rounded-full bg-[#28c840]" />
 				</div>
-				<span className="text-xs text-white/40 ml-2 font-mono">Superset</span>
+				<span className="text-xs text-white/40 ml-2 font-mono">Valence</span>
 			</div>
 
 			<div className="flex h-[360px]">
@@ -285,7 +285,7 @@ export function ParallelExecutionDemo() {
 										rel="noopener noreferrer"
 										className="text-blue-400 hover:text-blue-300 underline underline-offset-2"
 									>
-										download Superset
+										download Valence
 									</a>
 								</div>
 								<div>{"\u00A0"}</div>

@@ -1,4 +1,4 @@
-import { useFileDocument } from "@superset/workspace-client";
+import { useFileDocument } from "@valence/workspace-client";
 
 interface WorkspaceFilePreviewContentProps {
 	selectedFilePath: string;

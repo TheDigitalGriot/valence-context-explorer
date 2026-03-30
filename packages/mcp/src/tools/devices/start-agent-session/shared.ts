@@ -1,16 +1,16 @@
-import { db } from "@superset/db/client";
-import { taskStatuses, tasks } from "@superset/db/schema";
+import { db } from "@valence/db/client";
+import { taskStatuses, tasks } from "@valence/db/schema";
 import {
 	type AGENT_TYPES,
 	buildAgentCommand,
 	buildAgentPromptCommand,
 	buildAgentTaskPrompt,
-} from "@superset/shared/agent-command";
+} from "@valence/shared/agent-command";
 import {
 	type AgentLaunchRequest,
 	STARTABLE_AGENT_LABELS,
 	STARTABLE_AGENT_TYPES,
-} from "@superset/shared/agent-launch";
+} from "@valence/shared/agent-launch";
 import { and, eq, isNull } from "drizzle-orm";
 import { alias } from "drizzle-orm/pg-core";
 import { type ZodError, z } from "zod";
@@ -44,7 +44,7 @@ export const commonInputSchemaShape = {
 		.enum(STARTABLE_AGENT_TYPES)
 		.optional()
 		.describe(
-			'AI agent to use: "claude", "codex", "gemini", "opencode", "pi", "copilot", "cursor-agent", or "superset-chat". Defaults to "claude".',
+			'AI agent to use: "claude", "codex", "gemini", "opencode", "pi", "copilot", "cursor-agent", or "valence-chat". Defaults to "claude".',
 		),
 };
 
@@ -135,11 +135,11 @@ export function buildTaskLaunchRequest({
 	agent: (typeof STARTABLE_AGENT_TYPES)[number];
 	task: TaskRecord;
 }): AgentLaunchRequest {
-	if (agent === "superset-chat") {
+	if (agent === "valence-chat") {
 		return {
 			kind: "chat",
 			workspaceId,
-			agentType: "superset-chat",
+			agentType: "valence-chat",
 			source: "mcp",
 			chat: {
 				...(paneId ? { paneId } : {}),
@@ -177,11 +177,11 @@ export function buildPromptLaunchRequest({
 	agent: (typeof STARTABLE_AGENT_TYPES)[number];
 	prompt: string;
 }): AgentLaunchRequest {
-	if (agent === "superset-chat") {
+	if (agent === "valence-chat") {
 		return {
 			kind: "chat",
 			workspaceId,
-			agentType: "superset-chat",
+			agentType: "valence-chat",
 			source: "mcp",
 			chat: {
 				...(paneId ? { paneId } : {}),

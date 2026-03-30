@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@valence/ui/utils";
 import { useEffect, useState } from "react";
 
 /** Braille-based spinner frames for a smooth animation */

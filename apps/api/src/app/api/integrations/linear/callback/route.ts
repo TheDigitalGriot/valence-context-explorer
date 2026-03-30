@@ -1,6 +1,6 @@
 import { LinearClient } from "@linear/sdk";
-import { db } from "@superset/db/client";
-import { integrationConnections, members } from "@superset/db/schema";
+import { db } from "@valence/db/client";
+import { integrationConnections, members } from "@valence/db/schema";
 import { Client } from "@upstash/qstash";
 import { and, eq } from "drizzle-orm";
 

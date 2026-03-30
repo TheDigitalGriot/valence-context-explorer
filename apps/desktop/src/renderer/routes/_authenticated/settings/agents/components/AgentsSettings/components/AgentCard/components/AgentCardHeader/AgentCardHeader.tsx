@@ -1,5 +1,5 @@
-import { CardDescription, CardHeader, CardTitle } from "@superset/ui/card";
-import { Switch } from "@superset/ui/switch";
+import { CardDescription, CardHeader, CardTitle } from "@valence/ui/card";
+import { Switch } from "@valence/ui/switch";
 import {
 	getPresetIcon,
 	useIsDarkTheme,

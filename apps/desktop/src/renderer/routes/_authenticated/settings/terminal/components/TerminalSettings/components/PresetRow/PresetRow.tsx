@@ -1,5 +1,5 @@
-import { normalizeExecutionMode } from "@superset/local-db";
-import { Badge } from "@superset/ui/badge";
+import { normalizeExecutionMode } from "@valence/local-db";
+import { Badge } from "@valence/ui/badge";
 import { useEffect, useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { LuGripVertical, LuPin } from "react-icons/lu";

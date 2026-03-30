@@ -1,4 +1,4 @@
-import type { ExternalApp } from "@superset/local-db";
+import type { ExternalApp } from "@valence/local-db";
 import { useParams } from "@tanstack/react-router";
 import { useCallback, useMemo } from "react";
 import type { IconType } from "react-icons";
@@ -13,7 +13,7 @@ import { useHotkeyDisplay } from "renderer/stores/hotkeys";
 import { useTabsStore } from "renderer/stores/tabs/store";
 import { useTabsWithPresets } from "renderer/stores/tabs/useTabsWithPresets";
 import { useTheme } from "renderer/stores/theme";
-import supersetEmptyStateWordmark from "./assets/superset-empty-state-wordmark.svg";
+import valenceEmptyStateWordmark from "./assets/valence-empty-state-wordmark.svg";
 import { EmptyTabActionButton } from "./components/EmptyTabActionButton";
 
 interface EmptyTabViewProps {
@@ -138,14 +138,14 @@ export function EmptyTabView({
 			<div className="w-full max-w-xl">
 				<div className="mb-7 flex items-center justify-center py-3">
 					<img
-						alt="Superset"
+						alt="Valence"
 						className={`h-8 w-auto select-none ${
 							activeTheme?.type === "dark"
 								? "opacity-85"
 								: "brightness-0 opacity-75"
 						}`}
 						draggable={false}
-						src={supersetEmptyStateWordmark}
+						src={valenceEmptyStateWordmark}
 					/>
 				</div>
 				<div className="mx-auto grid w-full max-w-md gap-0.5">

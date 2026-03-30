@@ -1,6 +1,6 @@
-import { Badge } from "@superset/ui/badge";
-import { Button } from "@superset/ui/button";
-import { Card, CardContent } from "@superset/ui/card";
+import { Badge } from "@valence/ui/badge";
+import { Button } from "@valence/ui/button";
+import { Card, CardContent } from "@valence/ui/card";
 import { format } from "date-fns";
 import { PLANS, type PlanTier } from "../../../../constants";
 

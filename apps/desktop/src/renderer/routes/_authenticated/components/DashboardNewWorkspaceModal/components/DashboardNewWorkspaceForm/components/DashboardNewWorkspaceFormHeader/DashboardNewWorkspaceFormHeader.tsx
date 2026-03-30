@@ -1,4 +1,4 @@
-import { Tabs, TabsList, TabsTrigger } from "@superset/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@valence/ui/tabs";
 import type { WorkspaceHostTarget } from "renderer/lib/v2-workspace-host";
 import type { DashboardNewWorkspaceTab } from "../../../../DashboardNewWorkspaceDraftContext";
 import { DevicePicker } from "../DevicePicker";

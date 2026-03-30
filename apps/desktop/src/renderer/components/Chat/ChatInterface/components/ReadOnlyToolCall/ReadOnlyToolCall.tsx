@@ -1,10 +1,10 @@
-import { ShimmerLabel } from "@superset/ui/ai-elements/shimmer-label";
-import { ToolInput, ToolOutput } from "@superset/ui/ai-elements/tool";
+import { ShimmerLabel } from "@valence/ui/ai-elements/shimmer-label";
+import { ToolInput, ToolOutput } from "@valence/ui/ai-elements/tool";
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@superset/ui/collapsible";
+} from "@valence/ui/collapsible";
 import { getToolName } from "ai";
 import {
 	CheckIcon,

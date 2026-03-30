@@ -1,4 +1,4 @@
-import { auth } from "@superset/auth/server";
+import { auth } from "@valence/auth/server";
 import { headers } from "next/headers";
 import Image from "next/image";
 import { redirect } from "next/navigation";
@@ -24,7 +24,7 @@ export default async function AuthLayout({
 				<a href={env.NEXT_PUBLIC_MARKETING_URL}>
 					<Image
 						src="/title.svg"
-						alt="Superset"
+						alt="Valence"
 						width={140}
 						height={24}
 						priority

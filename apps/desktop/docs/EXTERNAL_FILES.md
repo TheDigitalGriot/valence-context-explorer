@@ -1,17 +1,17 @@
-# External Files Written by Superset Desktop
+# External Files Written by Valence Desktop
 
-This document lists all files written by the Superset desktop app outside of user projects.
+This document lists all files written by the Valence desktop app outside of user projects.
 Understanding these files is critical for maintaining workspace isolation and avoiding conflicts.
 
 ## Workspace-Specific Directories
 
 The app uses different home directories based on workspace:
-- **Default**: `~/.superset/`
-- **Named workspace**: `~/.superset-{workspace}/` (e.g. `~/.superset-my-feature/`)
+- **Default**: `~/.valence/`
+- **Named workspace**: `~/.valence-{workspace}/` (e.g. `~/.valence-my-feature/`)
 
 This separation prevents multiple instances from interfering with each other.
 
-## Files in `~/.superset[-{workspace}]/`
+## Files in `~/.valence[-{workspace}]/`
 
 ### `bin/` - Agent Wrapper Scripts
 
@@ -19,11 +19,11 @@ This separation prevents multiple instances from interfering with each other.
 |------|---------|
 | `claude` | Wrapper for Claude Code CLI that injects notification hooks |
 | `codex` | Wrapper for Codex CLI that injects notification hooks |
-| `droid` | Wrapper for Factory Droid CLI that preserves Superset hook integration |
+| `droid` | Wrapper for Factory Droid CLI that preserves Valence hook integration |
 | `opencode` | Wrapper for OpenCode CLI that sets `OPENCODE_CONFIG_DIR` |
 
 These wrappers are added to `PATH` via shell integration, allowing them to intercept
-agent commands and inject Superset-specific configuration.
+agent commands and inject Valence-specific configuration.
 
 ### `hooks/` - Notification Hook Scripts
 
@@ -31,11 +31,11 @@ agent commands and inject Superset-specific configuration.
 |------|---------|
 | `notify.sh` | Shell script called by agents when they complete or need input |
 | `claude-settings.json` | Claude Code settings file with hook configuration |
-| `opencode/plugin/superset-notify.js` | OpenCode plugin for lifecycle events |
+| `opencode/plugin/valence-notify.js` | OpenCode plugin for lifecycle events |
 
 ## Global Tool Settings Files
 
-Some CLIs only support global user settings for hook registration. Superset merges
+Some CLIs only support global user settings for hook registration. Valence merges
 its hook entries into these files while preserving user-defined entries:
 
 | File | Purpose |
@@ -45,7 +45,7 @@ its hook entries into these files while preserving user-defined entries:
 | `~/.factory/settings.json` | Factory Droid hook registration (`UserPromptSubmit`, `Notification`, `PostToolUse`, `Stop`) |
 
 For Codex specifically, this global `hooks.json` is a fallback path only. The
-primary Superset integration is the wrapper in `~/.superset[-{workspace}]/bin/codex`,
+primary Valence integration is the wrapper in `~/.valence[-{workspace}]/bin/codex`,
 which injects `notify` and watches the Codex session log for richer lifecycle
 events without mutating project-local `.codex/` state.
 
@@ -58,7 +58,7 @@ events without mutating project-local `.codex/` state.
 
 Shell integration keeps interactive startup close to native shell behavior:
 - Interactive startup applies idempotent PATH prepend only (no persistent command interception functions).
-- App-owned non-interactive `-c` command execution still routes managed binaries through absolute Superset wrapper paths.
+- App-owned non-interactive `-c` command execution still routes managed binaries through absolute Valence wrapper paths.
 
 ## Global Files (AVOID ADDING NEW ONES)
 
@@ -67,7 +67,7 @@ These cause dev/prod conflicts when both environments are running.
 
 ### Known Issues with Global Files
 
-Previously, the OpenCode plugin was written to `~/.config/opencode/plugin/superset-notify.js`.
+Previously, the OpenCode plugin was written to `~/.config/opencode/plugin/valence-notify.js`.
 This caused severe issues:
 1. Dev would overwrite prod's plugin with incompatible protocol
 2. Prod terminals would send events that dev's server couldn't handle
@@ -78,12 +78,12 @@ with our marker is deleted to prevent conflicts from older versions.
 
 ## Shell RC File Modifications
 
-The app modifies shell RC files to add the Superset bin directory to PATH:
+The app modifies shell RC files to add the Valence bin directory to PATH:
 
 | Shell | RC File | Modification |
 |-------|---------|--------------|
-| Zsh | `~/.zshrc` | Prepends `~/.superset[-{workspace}]/bin` to PATH |
-| Bash | `~/.bashrc` | Prepends `~/.superset[-{workspace}]/bin` to PATH |
+| Zsh | `~/.zshrc` | Prepends `~/.valence[-{workspace}]/bin` to PATH |
+| Bash | `~/.bashrc` | Prepends `~/.valence[-{workspace}]/bin` to PATH |
 
 ## Terminal Environment Variables
 
@@ -91,19 +91,19 @@ Each terminal session receives these environment variables:
 
 | Variable | Purpose |
 |----------|---------|
-| `SUPERSET_PANE_ID` | Unique identifier for the terminal pane |
-| `SUPERSET_TAB_ID` | Identifier for the containing tab |
-| `SUPERSET_WORKSPACE_ID` | Identifier for the workspace |
-| `SUPERSET_WORKSPACE_NAME` | Human-readable workspace name |
-| `SUPERSET_WORKSPACE_PATH` | Filesystem path to the workspace |
-| `SUPERSET_ROOT_PATH` | Root path of the project |
-| `SUPERSET_PORT` | Port for the notification server |
-| `SUPERSET_ENV` | Environment (`development` or `production`) |
-| `SUPERSET_HOOK_VERSION` | Hook protocol version for compatibility |
+| `VALENCE_PANE_ID` | Unique identifier for the terminal pane |
+| `VALENCE_TAB_ID` | Identifier for the containing tab |
+| `VALENCE_WORKSPACE_ID` | Identifier for the workspace |
+| `VALENCE_WORKSPACE_NAME` | Human-readable workspace name |
+| `VALENCE_WORKSPACE_PATH` | Filesystem path to the workspace |
+| `VALENCE_ROOT_PATH` | Root path of the project |
+| `VALENCE_PORT` | Port for the notification server |
+| `VALENCE_ENV` | Environment (`development` or `production`) |
+| `VALENCE_HOOK_VERSION` | Hook protocol version for compatibility |
 
 ## Adding New External Files
 
-Before adding new files outside of `~/.superset[-{workspace}]/`:
+Before adding new files outside of `~/.valence[-{workspace}]/`:
 
 1. **Consider if it's necessary** - Can you use the environment-specific directory instead?
 2. **Check for conflicts** - Will dev and prod overwrite each other?
@@ -115,6 +115,6 @@ Before adding new files outside of `~/.superset[-{workspace}]/`:
 If you suspect dev/prod cross-talk:
 
 1. Check logs for "Environment mismatch" warnings
-2. Verify `SUPERSET_ENV` and `SUPERSET_PORT` are set correctly in terminal
-3. Delete stale global files: `rm -rf ~/.config/opencode/plugin/superset-notify.js`
+2. Verify `VALENCE_ENV` and `VALENCE_PORT` are set correctly in terminal
+3. Delete stale global files: `rm -rf ~/.config/opencode/plugin/valence-notify.js`
 4. Restart both dev and prod apps to regenerate hooks

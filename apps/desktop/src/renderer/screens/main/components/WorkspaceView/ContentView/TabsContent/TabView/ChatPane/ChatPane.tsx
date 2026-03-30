@@ -1,8 +1,8 @@
 import {
 	ChatRuntimeServiceProvider,
 	ChatServiceProvider,
-} from "@superset/chat/client";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@superset/ui/tooltip";
+} from "@valence/chat/client";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@valence/ui/tooltip";
 import { CopyIcon } from "lucide-react";
 import { useCallback } from "react";
 import type { MosaicBranch } from "react-mosaic-component";

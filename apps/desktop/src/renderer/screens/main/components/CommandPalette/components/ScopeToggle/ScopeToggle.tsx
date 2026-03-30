@@ -1,4 +1,4 @@
-import { cn } from "@superset/ui/utils";
+import { cn } from "@valence/ui/utils";
 import type { SearchScope } from "renderer/stores/search-dialog-state";
 
 interface ScopeToggleProps {
