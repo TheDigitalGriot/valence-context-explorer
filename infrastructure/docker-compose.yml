@@ -38,8 +38,35 @@ services:
       - valence_clickhouse_data:/var/lib/clickhouse
       - valence_clickhouse_logs:/var/log/clickhouse-server
 
+  valence:
+    image: valence-desktop:latest
+    build:
+      context: ../
+      dockerfile: infrastructure/Dockerfile.desktop
+    ports:
+      - "3000:3000"     # Web UI
+      - "4100:4100"     # Hook adapter (Bun HTTP)
+    volumes:
+      - ~/.claude:/home/node/.claude:ro    # Claude Code sessions (read-only)
+      - valence-data:/home/node/.valence   # Valence local data
+    environment:
+      - NEO4J_URI=bolt://neo4j:7687
+      - NEO4J_USERNAME=neo4j
+      - NEO4J_PASSWORD=valence
+      - CLICKHOUSE_URL=http://clickhouse:8123
+      - CLICKHOUSE_USER=clickhouse
+      - CLICKHOUSE_PASSWORD=clickhouse
+      - CLICKHOUSE_DB=default
+    depends_on:
+      neo4j:
+        condition: service_healthy
+      clickhouse:
+        condition: service_started
+    restart: unless-stopped
+
 volumes:
   valence_neo4j_data:
   valence_neo4j_logs:
   valence_clickhouse_data:
   valence_clickhouse_logs:
+  valence-data:
