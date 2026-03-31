@@ -1,11 +1,10 @@
+import { ProjectScanner, SessionParser } from "@valence/observability";
+import { gitIdentityResolver } from "@valence/observability/parsing";
 import { z } from "zod";
 import { publicProcedure, router } from "../..";
-import { ProjectScanner, SessionParser } from "@valence/observability";
-import { GitIdentityResolver } from "@valence/observability/parsing";
 
 const scanner = new ProjectScanner();
 const parser = new SessionParser(scanner);
-const gitResolver = new GitIdentityResolver();
 
 interface AgentSession {
 	sessionId: string;
@@ -36,10 +35,9 @@ export const createCrossAgentRouter = () => {
 				for (const project of projects) {
 					// Resolve git identity for this project
 					let repoUrl: string | null = null;
-					let repoName =
-						project.path.split(/[/\\]/).pop() ?? project.path;
+					let repoName = project.path.split(/[/\\]/).pop() ?? project.path;
 					try {
-						const identity = await gitResolver.resolveIdentity(
+						const identity = await gitIdentityResolver.resolveIdentity(
 							project.path,
 						);
 						if (identity) {
@@ -52,15 +50,21 @@ export const createCrossAgentRouter = () => {
 
 					for (const sessionId of project.sessions ?? []) {
 						try {
-							const parsed = await parser.parseSession(
-								project.id,
-								sessionId,
-							);
+							const parsed = await parser.parseSession(project.id, sessionId);
 							if (!parsed?.metrics) continue;
 
-							const startTime = parsed.metrics.startTime ?? "";
-							if (startTime && new Date(startTime) < cutoff)
-								continue;
+							// Derive startTime from first message timestamp
+							const firstMessage = parsed.messages[0];
+							const startTime = firstMessage?.timestamp
+								? firstMessage.timestamp.toISOString()
+								: "";
+							if (startTime && new Date(startTime) < cutoff) continue;
+
+							// Count tool calls across all messages
+							const toolCallCount = parsed.messages.reduce(
+								(sum, m) => sum + (m.toolCalls?.length ?? 0),
+								0,
+							);
 
 							sessions.push({
 								sessionId,
@@ -73,8 +77,7 @@ export const createCrossAgentRouter = () => {
 									(parsed.metrics.inputTokens ?? 0) +
 									(parsed.metrics.outputTokens ?? 0),
 								costUsd: parsed.metrics.costUsd ?? 0,
-								toolCallCount:
-									parsed.metrics.toolCallCount ?? 0,
+								toolCallCount,
 							});
 						} catch {
 							// Skip unparseable
@@ -146,20 +149,25 @@ export const createCrossAgentRouter = () => {
 				>();
 
 				for (const project of projects) {
-					const repoName =
-						project.path.split(/[/\\]/).pop() ?? project.path;
+					const repoName = project.path.split(/[/\\]/).pop() ?? project.path;
 
 					for (const sessionId of project.sessions ?? []) {
 						try {
-							const parsed = await parser.parseSession(
-								project.id,
-								sessionId,
-							);
+							const parsed = await parser.parseSession(project.id, sessionId);
 							if (!parsed?.metrics) continue;
 
-							const startTime = parsed.metrics.startTime ?? "";
-							if (startTime && new Date(startTime) < cutoff)
-								continue;
+							// Derive startTime from first message
+							const firstMessage = parsed.messages[0];
+							const startTime = firstMessage?.timestamp
+								? firstMessage.timestamp.toISOString()
+								: "";
+							if (startTime && new Date(startTime) < cutoff) continue;
+
+							// Count tool calls
+							const toolCallCount = parsed.messages.reduce(
+								(sum, m) => sum + (m.toolCalls?.length ?? 0),
+								0,
+							);
 
 							const agent = "Claude Code";
 							const existing = agentStats.get(agent) ?? {
@@ -172,13 +180,11 @@ export const createCrossAgentRouter = () => {
 							};
 
 							existing.sessionCount += 1;
-							existing.totalCost +=
-								parsed.metrics.costUsd ?? 0;
+							existing.totalCost += parsed.metrics.costUsd ?? 0;
 							existing.totalTokens +=
 								(parsed.metrics.inputTokens ?? 0) +
 								(parsed.metrics.outputTokens ?? 0);
-							existing.totalToolCalls +=
-								parsed.metrics.toolCallCount ?? 0;
+							existing.totalToolCalls += toolCallCount;
 							existing.repos.add(repoName);
 
 							agentStats.set(agent, existing);
@@ -198,13 +204,9 @@ export const createCrossAgentRouter = () => {
 					avgCostPerSession:
 						s.sessionCount > 0 ? s.totalCost / s.sessionCount : 0,
 					avgTokensPerSession:
-						s.sessionCount > 0
-							? s.totalTokens / s.sessionCount
-							: 0,
+						s.sessionCount > 0 ? s.totalTokens / s.sessionCount : 0,
 					avgToolCallsPerSession:
-						s.sessionCount > 0
-							? s.totalToolCalls / s.sessionCount
-							: 0,
+						s.sessionCount > 0 ? s.totalToolCalls / s.sessionCount : 0,
 					repoCount: s.repos.size,
 				}));
 			}),
