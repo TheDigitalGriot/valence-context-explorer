@@ -1,30 +1,34 @@
 {
-  "name": "@valence/observability",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "main": "src/index.ts",
-  "exports": {
-    ".": {
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
-    },
-    "./parsing": {
-      "types": "./src/parsing/index.ts",
-      "default": "./src/parsing/index.ts"
-    },
-    "./analysis": {
-      "types": "./src/analysis/index.ts",
-      "default": "./src/analysis/index.ts"
-    },
-    "./discovery": {
-      "types": "./src/discovery/index.ts",
-      "default": "./src/discovery/index.ts"
-    },
-    "./types": {
-      "types": "./src/types/index.ts",
-      "default": "./src/types/index.ts"
-    }
-  },
-  "dependencies": {}
+	"name": "@valence/observability",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"main": "src/index.ts",
+	"exports": {
+		".": {
+			"types": "./src/index.ts",
+			"default": "./src/index.ts"
+		},
+		"./parsing": {
+			"types": "./src/parsing/index.ts",
+			"default": "./src/parsing/index.ts"
+		},
+		"./analysis": {
+			"types": "./src/analysis/index.ts",
+			"default": "./src/analysis/index.ts"
+		},
+		"./discovery": {
+			"types": "./src/discovery/index.ts",
+			"default": "./src/discovery/index.ts"
+		},
+		"./types": {
+			"types": "./src/types/index.ts",
+			"default": "./src/types/index.ts"
+		},
+		"./export": {
+			"types": "./src/export/index.ts",
+			"default": "./src/export/index.ts"
+		}
+	},
+	"dependencies": {}
 }

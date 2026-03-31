@@ -6,6 +6,16 @@
  * ~/.claude/projects/.
  */
 
+import type { Session as ObsSession, Project } from "@valence/observability";
+import {
+	ChunkBuilder,
+	DataCache,
+	FileWatcher,
+	type ParsedSession,
+	ProjectScanner,
+	SessionParser,
+	SubagentResolver,
+} from "@valence/observability";
 import { BaseIngestionAdapter } from "../base/BaseIngestionAdapter";
 import type {
 	AdapterSource,
@@ -14,18 +24,6 @@ import type {
 	SubagentSummary,
 	ToolCallSummary,
 } from "../shared/types";
-
-import {
-	ProjectScanner,
-	SubagentResolver,
-} from "@valence/observability";
-import {
-	SessionParser,
-	type ParsedSession,
-} from "@valence/observability";
-import { ChunkBuilder } from "@valence/observability";
-import { FileWatcher, DataCache } from "@valence/observability";
-import type { Session as ObsSession, Project, SessionMetrics } from "@valence/observability";
 
 export interface ClaudeCodeLogAdapterOptions {
 	/** Custom path to the Claude projects directory (defaults to ~/.claude/projects/) */
@@ -51,7 +49,6 @@ export class ClaudeCodeLogAdapter extends BaseIngestionAdapter {
 
 	private readonly scanner: ProjectScanner;
 	private readonly parser: SessionParser;
-	private readonly chunkBuilder: ChunkBuilder;
 	private readonly subagentResolver: SubagentResolver;
 	private readonly dataCache: DataCache;
 	private fileWatcher: FileWatcher | null = null;
@@ -223,10 +220,7 @@ export class ClaudeCodeLogAdapter extends BaseIngestionAdapter {
 		for (const message of parsed.byType.assistant) {
 			for (const tc of message.toolCalls) {
 				// Try to find the matching result
-				const resultInfo = this.parser.findToolResult(
-					parsed.messages,
-					tc.id,
-				);
+				const resultInfo = this.parser.findToolResult(parsed.messages, tc.id);
 
 				summaries.push({
 					toolName: tc.name,
@@ -278,7 +272,8 @@ export class ClaudeCodeLogAdapter extends BaseIngestionAdapter {
 			return "completed";
 		}
 
-		const lastMsg = parsed.messages[parsed.messages.length - 1]!;
+		const lastMsg = parsed.messages[parsed.messages.length - 1];
+		if (!lastMsg) return "completed";
 
 		// If last message is from user with no assistant response, likely still running
 		if (lastMsg.type === "user") {
@@ -287,10 +282,7 @@ export class ClaudeCodeLogAdapter extends BaseIngestionAdapter {
 
 		// If the last assistant message has no content, session may still be running
 		if (lastMsg.type === "assistant" && lastMsg.toolCalls.length === 0) {
-			const text =
-				typeof lastMsg.content === "string"
-					? lastMsg.content
-					: "";
+			const text = typeof lastMsg.content === "string" ? lastMsg.content : "";
 			if (text.length === 0) {
 				return "running";
 			}
