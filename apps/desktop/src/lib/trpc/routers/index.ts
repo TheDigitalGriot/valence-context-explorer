@@ -11,6 +11,8 @@ import { createChatRuntimeServiceRouter } from "./chat-runtime-service";
 import { createChatServiceRouter } from "./chat-service";
 import { createConfigRouter } from "./config";
 import { createContextGraphRouter } from "./context-graph";
+import { createCostAnalyticsRouter } from "./cost-analytics";
+import { createExportRouter } from "./export";
 import { createExternalRouter } from "./external";
 import { createFilesystemRouter } from "./filesystem";
 import { createHostServiceManagerRouter } from "./host-service-manager";
@@ -24,11 +26,10 @@ import { createPortsRouter } from "./ports";
 import { createProjectsRouter } from "./projects";
 import { createResourceMetricsRouter } from "./resource-metrics";
 import { createRingtoneRouter } from "./ringtone";
+import { createCrossAgentRouter } from "./cross-agent";
+import { createScheduledReportsRouter } from "./scheduled-reports";
 import { createSettingsRouter } from "./settings";
 import { createTerminalRouter } from "./terminal";
-import { createCostAnalyticsRouter } from "./cost-analytics";
-import { createExportRouter } from "./export";
-import { createScheduledReportsRouter } from "./scheduled-reports";
 import { createTracesRouter } from "./traces";
 import { createUiStateRouter } from "./ui-state";
 import { createWindowRouter } from "./window";
@@ -69,6 +70,7 @@ export const createAppRouter = (getWindow: () => BrowserWindow | null) => {
 		liveDashboard: createLiveDashboardRouter(),
 		export: createExportRouter(),
 		scheduledReports: createScheduledReportsRouter(),
+		crossAgent: createCrossAgentRouter(),
 	});
 };
 
