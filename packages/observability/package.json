@@ -28,6 +28,10 @@
 		"./export": {
 			"types": "./src/export/index.ts",
 			"default": "./src/export/index.ts"
+		},
+		"./security": {
+			"types": "./src/security/index.ts",
+			"default": "./src/security/index.ts"
 		}
 	},
 	"dependencies": {}
