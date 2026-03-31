@@ -1,7 +1,15 @@
 import { Link, useMatchRoute, useNavigate } from "@tanstack/react-router";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@valence/ui/tooltip";
 import { cn } from "@valence/ui/utils";
-import { DollarSign, FileText, Network, Radio, Workflow } from "lucide-react";
+import {
+	BarChart3,
+	DollarSign,
+	FileText,
+	GitCompare,
+	Network,
+	Radio,
+	Workflow,
+} from "lucide-react";
 import { LuLayers, LuPlus } from "react-icons/lu";
 import {
 	STROKE_WIDTH,
@@ -141,6 +149,18 @@ export function DashboardSidebarHeader({
 						className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground [&.active]:bg-muted [&.active]:text-foreground"
 					>
 						<Workflow className="h-3.5 w-3.5" /> Workflows
+					</Link>
+					<Link
+						to="/cross-agent"
+						className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground [&.active]:bg-muted [&.active]:text-foreground"
+					>
+						<GitCompare className="h-3.5 w-3.5" /> Cross-Agent
+					</Link>
+					<Link
+						to="/comparison"
+						className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground [&.active]:bg-muted [&.active]:text-foreground"
+					>
+						<BarChart3 className="h-3.5 w-3.5" /> Comparison
 					</Link>
 				</nav>
 			</div>
