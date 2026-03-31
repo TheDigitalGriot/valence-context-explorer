@@ -3,8 +3,6 @@ import { router } from "..";
 import { createAnalyticsRouter } from "./analytics";
 import { createAuthRouter } from "./auth";
 import { createAutoUpdateRouter } from "./auto-update";
-import { createContextGraphRouter } from "./context-graph";
-import { createLiveDashboardRouter } from "./live-dashboard";
 import { createBrowserRouter } from "./browser/browser";
 import { createBrowserHistoryRouter } from "./browser-history";
 import { createCacheRouter } from "./cache";
@@ -12,10 +10,12 @@ import { createChangesRouter } from "./changes";
 import { createChatRuntimeServiceRouter } from "./chat-runtime-service";
 import { createChatServiceRouter } from "./chat-service";
 import { createConfigRouter } from "./config";
+import { createContextGraphRouter } from "./context-graph";
 import { createExternalRouter } from "./external";
 import { createFilesystemRouter } from "./filesystem";
 import { createHostServiceManagerRouter } from "./host-service-manager";
 import { createHotkeysRouter } from "./hotkeys";
+import { createLiveDashboardRouter } from "./live-dashboard";
 import { createMenuRouter } from "./menu";
 import { createModelProvidersRouter } from "./model-providers";
 import { createNotificationsRouter } from "./notifications";
@@ -26,6 +26,7 @@ import { createResourceMetricsRouter } from "./resource-metrics";
 import { createRingtoneRouter } from "./ringtone";
 import { createSettingsRouter } from "./settings";
 import { createTerminalRouter } from "./terminal";
+import { createCostAnalyticsRouter } from "./cost-analytics";
 import { createTracesRouter } from "./traces";
 import { createUiStateRouter } from "./ui-state";
 import { createWindowRouter } from "./window";
@@ -61,6 +62,7 @@ export const createAppRouter = (getWindow: () => BrowserWindow | null) => {
 		ringtone: createRingtoneRouter(getWindow),
 		hostServiceManager: createHostServiceManagerRouter(),
 		traces: createTracesRouter(),
+		costAnalytics: createCostAnalyticsRouter(),
 		contextGraph: createContextGraphRouter(),
 		liveDashboard: createLiveDashboardRouter(),
 	});
