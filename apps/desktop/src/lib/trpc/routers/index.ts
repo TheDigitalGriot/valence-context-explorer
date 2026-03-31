@@ -27,6 +27,8 @@ import { createRingtoneRouter } from "./ringtone";
 import { createSettingsRouter } from "./settings";
 import { createTerminalRouter } from "./terminal";
 import { createCostAnalyticsRouter } from "./cost-analytics";
+import { createExportRouter } from "./export";
+import { createScheduledReportsRouter } from "./scheduled-reports";
 import { createTracesRouter } from "./traces";
 import { createUiStateRouter } from "./ui-state";
 import { createWindowRouter } from "./window";
@@ -65,6 +67,8 @@ export const createAppRouter = (getWindow: () => BrowserWindow | null) => {
 		costAnalytics: createCostAnalyticsRouter(),
 		contextGraph: createContextGraphRouter(),
 		liveDashboard: createLiveDashboardRouter(),
+		export: createExportRouter(),
+		scheduledReports: createScheduledReportsRouter(),
 	});
 };
 
