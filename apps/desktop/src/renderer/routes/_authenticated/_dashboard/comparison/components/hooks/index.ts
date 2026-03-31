@@ -1,0 +1,1 @@
+export { useComparisonData } from "./useComparisonData";
