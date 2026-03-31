@@ -83,6 +83,7 @@
 		"@valence/chat": "workspace:*",
 		"@valence/db": "workspace:*",
 		"@valence/desktop-mcp": "workspace:*",
+		"@valence/observability": "workspace:*",
 		"@valence/host-service": "workspace:*",
 		"@valence/local-db": "workspace:*",
 		"@valence/macos-process-metrics": "workspace:*",
